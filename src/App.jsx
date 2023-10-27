@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Feed from "./pages/Feed";
 import Profile from "./pages/Profile";
+import "./firebase-config";
 
 function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
