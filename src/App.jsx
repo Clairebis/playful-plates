@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
 import { useEffect, useState } from "react";
-import { getAuth, onAuthStateChanged } from "@firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Feed from "./pages/Feed";
 import Profile from "./pages/Profile";
 
@@ -38,7 +38,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/recipes" element={<Home />} />
         <Route path="/feed" element={<Feed />} />
-        <Route path="profile" element={<Profile />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
