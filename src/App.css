@@ -1,15 +1,15 @@
 :root {
-  --lime: var(rgb(167, 201, 87));
-  --kale: var(rgb(56, 102, 65));
-  --green-bean: var(#6a994e);
-  --eggplant-900: var(rgb(43, 36, 42));
-  --eggplant-700: var(rgb(72, 60, 70));
-  --eggplant-25: var(rgb(198, 193, 187));
-  --banana: var(rgb(255, 212, 73));
-  --banana-300: var(rgb(255, 238, 182));
-  --oatmeal: var(rgb(242, 232, 207));
-  --oatmeal-300: var(rgb(251, 248, 241));
-  --oatmeal-100: var(rgb(254, 253, 250));
+  --lime: rgba(167, 201, 87, 1);
+  --kale: rgba(56, 102, 65);
+  --green-bean: rgba(106, 153, 78, 1);
+  --eggplant-900: rgba(43, 36, 42, 1);
+  --eggplant-700: rgba(72, 60, 70, 1);
+  --eggplant-25: rgba(198, 193, 187);
+  --banana: rgba(255, 212, 73, 1);
+  --banana-300: rgba(255, 238, 182, 1);
+  --oatmeal: rgba(242, 232, 207, 1);
+  --oatmeal-300: rgba(251, 248, 241, 1);
+  --oatmeal-100: rgba(254, 253, 250, 1);
   --heading-font: "Merriweather Sans", sans-serif;
   --body-font: "Lato", sans-serif;
   --heading-size: 2.0064rem;
@@ -24,6 +24,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: var(--lime);
 }
 
 .logo {
