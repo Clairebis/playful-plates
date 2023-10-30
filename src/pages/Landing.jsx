@@ -5,7 +5,7 @@ export default function Landing() {
   return (
     <div>
       <h1>Landing page</h1>
-      <Button/>
+      <Button />
       <Link to="/login">Log In</Link>
       <Link to="/signup">Sign Up</Link>
     </div>
