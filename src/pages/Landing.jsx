@@ -3,7 +3,6 @@ import Button from "../components/Button/Button";
 
 
 export default function Landing() {
-
   return (
     <div>
       <h1>Landing page</h1>
