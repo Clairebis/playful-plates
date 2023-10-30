@@ -38,7 +38,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/recipes" element={<Home />} />
-        <Route path="/feed" element={<Feed />} />
+        <Route path="/feed" element={<Feed />} />g
         <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
