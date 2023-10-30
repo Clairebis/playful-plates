@@ -1,3 +1,24 @@
+:root {
+  --lime: var(rgb(167, 201, 87));
+  --kale: var(rgb(56, 102, 65));
+  --green-bean: var(#6a994e);
+  --eggplant-900: var(rgb(43, 36, 42));
+  --eggplant-700: var(rgb(72, 60, 70));
+  --eggplant-25: var(rgb(198, 193, 187));
+  --banana: var(rgb(255, 212, 73));
+  --banana-300: var(rgb(255, 238, 182));
+  --oatmeal: var(rgb(242, 232, 207));
+  --oatmeal-300: var(rgb(251, 248, 241));
+  --oatmeal-100: var(rgb(254, 253, 250));
+  --heading-font: "Merriweather Sans", sans-serif;
+  --body-font: "Lato", sans-serif;
+  --heading-size: 2.0064rem;
+  --subheading-size: 1.672rem;
+  --body-text-size: 1.1704rem;
+  --body-text-small-size: 1.0032rem;
+  --box-shadow: (0px 2px 4px rgba(0, 0, 0, 0.12));
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
