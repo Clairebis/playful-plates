@@ -1,6 +1,7 @@
 import { getAuth, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import HomeHeader from "../components/HomeHeader/HomeHeader";
 
 export default function Home() {
   const auth = getAuth();
@@ -39,6 +40,7 @@ export default function Home() {
 
   return (
     <div>
+      <HomeHeader/>
       <h1>Home</h1>
       <p>Hello {username}</p>
       <div>
