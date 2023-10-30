@@ -1,9 +1,6 @@
 import { Link } from "react-router-dom";
-import Button from "../components/Button";
-
 
 export default function Landing() {
-
   return (
     <div>
       <h1>Landing page</h1>
