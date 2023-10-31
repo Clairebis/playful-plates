@@ -12,9 +12,46 @@
   --oatmeal-100: rgba(254, 253, 250, 1);
   --heading-font: "Merriweather Sans", sans-serif;
   --body-font: "Lato", sans-serif;
-  --heading-size: 2.0064rem;
-  --subheading-size: 1.672rem;
-  --body-text-size: 1.1704rem;
-  --body-text-small-size: 1.0032rem;
+  --heading-size: 1.5rem;
+  --subheading-size: 1.25rem;
+  --body-text-size: 0.875rem;
+  --body-text-small-size: 0.75rem;
   --box-shadow: (0px 2px 4px rgba(0, 0, 0, 0.12));
+  --font-weight-bold: 700;
+  --font-weight-regular: 500;
 }
+
+body, html {
+  background-color: var(--oatmeal-100);
+  color: var(--eggplant-900);
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- Typography ---------- */
+h1 {
+  font-family: var(--heading-font);
+  font-size: var(--heading-size);
+  font-weight: var(--font-weight-bold);
+}
+
+h2 {
+  font-family: var(--heading-font);
+  font-size: var(--subheading-size);
+  font-weight: var(--font-weight-bold);
+}
+
+p {
+  font-family: var(--body-font);
+  font-size: var(--body-text-size);
+  font-weight: var(--font-weight-regular);
+}
+
+.small {
+  font-family: var(--body-font);
+  font-size: var(--body-text-small-size);
+  font-weight: var(--font-weight-regular);
+}
+
+

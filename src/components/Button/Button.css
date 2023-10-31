@@ -1,23 +1,18 @@
 
-.primary-button {
+.primary {
     border-radius: 8px;
-    border: 1px solid transparent;
     text-decoration: none;
     padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 500;
+    font-size: var(--body-text-size);
+    font-weight: var(--font-weight-bold);
     font-family: var(--body-font);
+    color: var(--eggplant-900);
     background-color: var(--lime);
     cursor: pointer;
-    transition: border-color 0.25s;
-  
+    box-shadow: var(--box-shadow);
   }
-  
-  .green {
-    background-color: var(--lime);
-  }
-  
-  .yellow {
+
+  .secondary {
     background-color: var(--banana);
   }
   
