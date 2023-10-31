@@ -1,10 +1,10 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { /*useNavigate,*/ useParams } from "react-router-dom";
 import PostCardUser from "../components/userAvatars/PostCardUser";
 import { useEffect, useState } from "react";
 
 export default function FullPost() {
   const { postId } = useParams();
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const url = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/posts/${postId}.json`;
 
   const [post, setPost] = useState({
@@ -18,10 +18,6 @@ export default function FullPost() {
     publishedAt: "",
   });
 
-  function backToFeed() {
-    navigate("/feed");
-  }
-
   useEffect(() => {
     //fetch post data based on postId
     async function getPost() {
@@ -34,7 +30,7 @@ export default function FullPost() {
 
   return (
     <section className="page">
-      <div onClick={backToFeed}>backarrow</div>
+      <div>backarrow</div>
 
       <article>
         <img src={post.image} alt={post.title} />
