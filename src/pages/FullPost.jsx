@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
-import PostCardUser from "../components/userAvatars/PostCardUser";
+
 import { useEffect, useState } from "react";
+import FullPostUser from "../components/userAvatars/FullPostUser";
 
 export default function FullPost() {
   const { postId } = useParams();
@@ -41,7 +42,7 @@ export default function FullPost() {
         <section className="postCardLower">
           <h2>{post.title}</h2>
           <p>{post.challengeid}</p>
-          <PostCardUser uid={post.uid} />
+          <FullPostUser uid={post.uid} />
           <p>{post.description}</p>
           {/*<div className="tags">
           {post.tags.map((tag) => (
