@@ -2,11 +2,13 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import { useEffect, useState } from "react";
 import FullPostUser from "../components/userAvatars/FullPostUser";
+import Heart from "react-heart";
 
 export default function FullPost() {
   const { postId } = useParams();
   const navigate = useNavigate();
   const url = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/posts/${postId}.json`;
+  const [active, setActive] = useState(false);
 
   const [post, setPost] = useState({
     image: "",
@@ -37,7 +39,7 @@ export default function FullPost() {
     <section className="page">
       <div onClick={backToFeed}>backarrow</div>
 
-      <article>
+      <article style={{ marginBottom: "7rem" }}>
         <img src={post.image} alt={post.title} />
         <section className="postCardLower">
           <h2>{post.title}</h2>
@@ -49,7 +51,12 @@ export default function FullPost() {
             <span key={tag.id} tag={tag}></span>
           ))}
           </div>*/}
-          <div className="likes"> {post.likes} likes</div>
+          <div className="likes">
+            <div style={{ width: "2rem" }}>
+              <Heart isActive={active} onClick={() => setActive(!active)} />
+            </div>
+            <div> {post.likes} likes </div>
+          </div>
           <p>Published {post.publishedAt}</p>
         </section>
       </article>
