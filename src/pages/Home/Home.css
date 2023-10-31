@@ -1,3 +1,9 @@
 h1 {
     text-align: center;
 }
+
+.slider {
+    display:flex;
+    flex-direction:row;
+    height:20rem;
+}
