@@ -90,7 +90,7 @@ export default function SignUp() {
       </form>
 
       <p>
-        Already have an account? <NavLink to="/login">Sign in</NavLink>
+        Already have an account? <NavLink to="/login">Log in</NavLink>
       </p>
     </div>
   );
