@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import HomeHeader from "../../components/HomeHeader/HomeHeader";
 import "../../pages/Home/Home.css"
+import ChallengeItem from "../../components/ChallengeItem";
 
 
 export default function Home() {
@@ -46,7 +47,7 @@ export default function Home() {
   useEffect(() => {
       async function getPosts() {
           const url =
-              "https://fb-rest-race-default-rtdb.firebaseio.com/posts.json";
+              "https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/challenges";
           const response = await fetch(url);
           const data = await response.json();
           const postsArray = Object.keys(data).map(key => ({
@@ -79,9 +80,9 @@ export default function Home() {
     <div>
       <HomeHeader/>
       <h1>Hello {username}</h1>
-      <section className="grid">
+      <section className="slider">
                 {postsToDisplay.map(post => (
-                    <PostItem post={post} key={post.id} />
+                    <ChallengeItem post={post} key={post.id} />
                 ))}
             </section>
       {/* <div>
