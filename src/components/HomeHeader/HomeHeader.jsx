@@ -8,12 +8,15 @@ export default function HomeHeader () {
         <>
             <div className="container">
                 <img 
+                    className="logo"
                     src={logo}
                     alt="logo of plates with text playful plates"
                 />
-                <div>250 XP</div>
+
+                <button className="xp-points">250 XP</button>
 
                 <img 
+                    className="notification-icon"
                     src={notifications}
                     alt="notifications icon"
                 />

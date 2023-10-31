@@ -41,8 +41,7 @@ export default function Home() {
   return (
     <div>
       <HomeHeader/>
-      <h1>Home</h1>
-      <p>Hello {username}</p>
+      <h1>Hello {username}</h1>
       <div>
         <button onClick={handleLogout}>Logout</button>
       </div>
