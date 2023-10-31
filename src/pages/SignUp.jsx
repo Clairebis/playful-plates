@@ -13,12 +13,14 @@ export default function SignUp() {
   const onSubmit = async (event) => {
     event.preventDefault();
 
-    await createUserWithEmailAndPassword(auth, email, password, username)
+    await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in and create user
         const user = userCredential.user;
         console.log(user);
-        createUser(user.uid, email, username);
+
+        const level = "Kitchen Assistant";
+        createUser(user.uid, email, username, level);
 
         navigate("/login");
       })
@@ -29,11 +31,11 @@ export default function SignUp() {
       });
   };
 
-  async function createUser(uid, email, username) {
+  async function createUser(uid, email, username, level) {
     const url = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/users/${uid}.json`;
     const response = await fetch(url, {
       method: "PUT",
-      body: JSON.stringify({ email, username }),
+      body: JSON.stringify({ email, username, level }),
     });
     if (response.ok) {
       const data = await response.json();
