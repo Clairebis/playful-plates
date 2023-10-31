@@ -21,7 +21,8 @@
   --font-weight-regular: 500;
 }
 
-body, html {
+body,
+html {
   background-color: var(--oatmeal-100);
   color: var(--eggplant-900);
   line-height: 1.5;
@@ -53,5 +54,3 @@ p {
   font-size: var(--body-text-small-size);
   font-weight: var(--font-weight-regular);
 }
-
-

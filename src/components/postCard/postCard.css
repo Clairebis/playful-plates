@@ -1,0 +1,39 @@
+.postCardImage {
+  width: 100%;
+  height: 136px;
+  object-fit: cover;
+  border-radius: 8px 8px 0px 0px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.likes {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: "1 rem";
+  gap: 0.5 rem;
+}
+
+.postCard {
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 8px;
+
+  box-shadow: var(--box-shadow);
+}
+
+.postCardLower {
+  display: flex;
+  flex-direction: column;
+
+  padding: 0.5rem;
+}
+
+.heart {
+  width: 1rem;
+  margin-left: 0.5rem;
+}

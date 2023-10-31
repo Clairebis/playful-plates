@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import PostCardUser from "../userAvatars/PostCardUser";
 import Heart from "react-heart";
 import { useState } from "react";
+import "./postCard.css";
 
 export default function PostCard({ post }) {
   const navigate = useNavigate();
@@ -14,18 +15,18 @@ export default function PostCard({ post }) {
   return (
     <section style={{ marginBottom: "5rem" }}>
       <article className="postCard" onClick={openPost}>
-        <img src={post.image} alt={post.title} />
+        <img src={post.image} alt={post.title} className="postCardImage" />
         <section className="postCardLower">
           <PostCardUser uid={post.uid} />
-          <h2>{post.title}</h2>
-          <p>{post.publishedAt}</p>
+          <p className="bold">{post.title}</p>
+          <p className="small">{post.publishedAt}</p>
         </section>
       </article>
       <div className="likes">
-        <div style={{ width: "2rem" }}>
+        <div className="heart">
           <Heart isActive={active} onClick={() => setActive(!active)} />
         </div>
-        <div> {post.likes} likes </div>
+        <div className="likeText"> {post.likes} likes </div>
       </div>
     </section>
   );

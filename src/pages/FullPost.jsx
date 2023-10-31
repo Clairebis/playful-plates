@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import FullPostUser from "../components/userAvatars/FullPostUser";
 import Heart from "react-heart";
+import "./fullpost.css";
 
 export default function FullPost() {
   const { postId } = useParams();
@@ -36,14 +37,16 @@ export default function FullPost() {
   }, [url]);
 
   return (
-    <section className="page">
-      <div onClick={backToFeed}>backarrow</div>
+    <section>
+      <div onClick={backToFeed} className="padding8">
+        backarrow
+      </div>
 
-      <article style={{ marginBottom: "7rem" }}>
-        <img src={post.image} alt={post.title} />
+      <article style={{ marginBottom: "10rem" }}>
+        <img src={post.image} alt={post.title} className="image" />
         <section className="postCardLower">
-          <h2>{post.title}</h2>
-          <p>{post.challengeid}</p>
+          <h2 className="bottom8">{post.title}</h2>
+          <p className="small ">{post.challengeid}</p>
           <FullPostUser uid={post.uid} />
           <p>{post.description}</p>
           {/*<div className="tags">

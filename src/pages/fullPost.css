@@ -1,0 +1,19 @@
+.image {
+  height: 392px;
+  width: 100%;
+  object-fit: cover;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+h2 {
+  margin: 0;
+}
+
+.bottom8 {
+  margin-bottom: 8px;
+}
+
+.padding8 {
+  padding-left: 8px;
+}

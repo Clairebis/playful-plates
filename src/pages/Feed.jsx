@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import PostCard from "../components/postCard/PostCard";
+import "./feed.css";
 
 export default function Feed() {
   const [posts, setPosts] = useState([]);
