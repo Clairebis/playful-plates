@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./userAvatars.css";
 
 export default function FullPostUser({ uid }) {
   const [user, setUser] = useState({});
@@ -17,10 +18,14 @@ export default function FullPostUser({ uid }) {
 
   return (
     <div className="fullPostUser">
-      <img src={user?.image} alt={user?.username} />
+      <img
+        src={user?.image}
+        alt={user?.username}
+        className="fullPostAvatarImage"
+      />
       <div className="fullPostUserText">
         <p>{user?.username}</p>
-        <p>{user?.level}</p>
+        <p className="small">{user?.level}</p>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./userAvatars.css";
 
 export default function PostCardUser({ uid }) {
   const [user, setUser] = useState({});
@@ -16,8 +17,12 @@ export default function PostCardUser({ uid }) {
   }, [uid]);
 
   return (
-    <div className="postCardAvatar">
-      <img src={user?.image} alt={user?.username} />
+    <div className="postCardAvatar small">
+      <img
+        src={user?.image}
+        alt={user?.username}
+        className="postCardAvatarImage"
+      />
       <span>
         <p>{user?.username}</p>
       </span>
