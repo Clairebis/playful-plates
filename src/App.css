@@ -12,9 +12,13 @@
   --oatmeal-100: rgba(254, 253, 250, 1);
   --heading-font: "Merriweather Sans", sans-serif;
   --body-font: "Lato", sans-serif;
-  --heading-size: 2.0064rem;
-  --subheading-size: 1.672rem;
-  --body-text-size: 1.1704rem;
-  --body-text-small-size: 1.0032rem;
+  --heading-size: 1.5rem;
+  --subheading-size: 1.25rem;
+  --body-text-size: 0.875rem;
+  --body-text-small-size: 0.75rem;
   --box-shadow: (0px 2px 4px rgba(0, 0, 0, 0.12));
+}
+
+* {
+  background-color: var(--oatmeal-100);
 }
