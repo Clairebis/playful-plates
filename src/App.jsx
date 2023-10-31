@@ -3,8 +3,10 @@ import "./App.css";
 import Nav from "./components/Nav";
 import Landing from "./pages/Landing";
 import Home from "./pages/Home";
+import Recipes from "./pages/Recipes";
 import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
+import FullPost from "./pages/FullPost";
 import { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Feed from "./pages/Feed";
@@ -37,8 +39,9 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/recipes" element={<Home />} />
-        <Route path="/feed" element={<Feed />} />g
+        <Route path="/recipes" element={<Recipes />} />
+        <Route path="/feed" element={<Feed />} />
+        <Route path="/post/:postId" element={<FullPost />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
