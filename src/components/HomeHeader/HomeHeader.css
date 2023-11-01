@@ -4,10 +4,14 @@
     align-items:center;
     justify-content: space-between;
     gap:2rem;
-    padding-left:1rem;
-    padding-right:1rem;
+    margin-top: 91px; /*to test*/
+    margin-bottom:16px;
 }
 
 .home-logo {
-    width:50%;
+    width:10rem;
+}
+
+.notification-icon {
+    width:1.5rem;
 }
