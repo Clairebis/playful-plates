@@ -4,6 +4,7 @@ import Nav from "./components/Navigation/Nav";
 import Landing from "./pages/Landing";
 import Home from "./pages/Home/Home";
 import Recipes from "./pages/Recipes";
+import PostChallenge from "./pages/PostChallenge";
 import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
 import FullPost from "./pages/FullPost";
@@ -39,7 +40,7 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/recipes" element={<Recipes />} />
+        <Route path="/recipes" element={<PostChallenge />} />
         <Route path="/feed" element={<Feed />} />
         <Route path="/post/:postId" element={<FullPost />} />
         <Route path="/profile" element={<Profile />} />
