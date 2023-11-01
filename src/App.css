@@ -16,7 +16,7 @@
   --subheading-size: 1.25rem;
   --body-text-size: 0.875rem;
   --body-text-small-size: 0.75rem;
-  --box-shadow: (0px 2px 4px rgba(0, 0, 0, 0.12));
+  --box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
   --font-weight-bold: 700;
   --font-weight-regular: 500;
 }

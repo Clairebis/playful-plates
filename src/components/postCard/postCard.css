@@ -12,18 +12,16 @@
 .likes {
   display: flex;
   flex-direction: row;
+  gap: 0.5rem;
   align-items: center;
-  margin-top: "1 rem";
-  gap: 0.5 rem;
+
+  margin-bottom: 0.5rem;
 }
 
 .postCard {
   display: flex;
   flex-direction: column;
-
   border-radius: 8px;
-
-  box-shadow: var(--box-shadow);
 }
 
 .postCardLower {
@@ -33,7 +31,21 @@
   padding: 0.5rem;
 }
 
+.postCardDate {
+  font-family: var(--body-font);
+  font-size: var(--body-text-small-size);
+}
+
+.likeText {
+  font-family: var(--body-font);
+  font-size: var(--body-text-small-size);
+}
+
 .heart {
   width: 1rem;
   margin-left: 0.5rem;
+}
+
+.container {
+  box-shadow: var(--box-shadow);
 }

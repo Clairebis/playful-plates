@@ -13,13 +13,13 @@ export default function PostCard({ post }) {
   }
 
   return (
-    <section style={{ marginBottom: "5rem" }}>
+    <section className="container">
       <article className="postCard" onClick={openPost}>
         <img src={post.image} alt={post.title} className="postCardImage" />
         <section className="postCardLower">
           <PostCardUser uid={post.uid} />
           <p className="bold">{post.title}</p>
-          <p className="small">{post.publishedAt}</p>
+          <p className="postCardDate">{post.publishedAt}</p>
         </section>
       </article>
       <div className="likes">
