@@ -5,11 +5,11 @@
   border-radius: 8px 8px 0px 0px;
 }
 
-.bold {
+.postCardBold {
   font-weight: bold;
 }
 
-.likes {
+.postCardLikes {
   display: flex;
   flex-direction: row;
   gap: 0.5rem;
@@ -36,16 +36,16 @@
   font-size: var(--body-text-small-size);
 }
 
-.likeText {
+.postCardLikeText {
   font-family: var(--body-font);
   font-size: var(--body-text-small-size);
 }
 
-.heart {
+.postCardHeart {
   width: 1rem;
   margin-left: 0.5rem;
 }
 
-.container {
+.postCardContainer {
   box-shadow: var(--box-shadow);
 }
