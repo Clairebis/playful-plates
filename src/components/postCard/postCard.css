@@ -1,0 +1,51 @@
+.postCardImage {
+  width: 100%;
+  height: 136px;
+  object-fit: cover;
+  border-radius: 8px 8px 0px 0px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.likes {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+
+  margin-bottom: 0.5rem;
+}
+
+.postCard {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+}
+
+.postCardLower {
+  display: flex;
+  flex-direction: column;
+
+  padding: 0.5rem;
+}
+
+.postCardDate {
+  font-family: var(--body-font);
+  font-size: var(--body-text-small-size);
+}
+
+.likeText {
+  font-family: var(--body-font);
+  font-size: var(--body-text-small-size);
+}
+
+.heart {
+  width: 1rem;
+  margin-left: 0.5rem;
+}
+
+.container {
+  box-shadow: var(--box-shadow);
+}

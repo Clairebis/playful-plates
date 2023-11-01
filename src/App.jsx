@@ -6,6 +6,7 @@ import Home from "./pages/Home/Home";
 import Recipes from "./pages/Recipes";
 import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
+import FullPost from "./pages/FullPost";
 import { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Feed from "./pages/Feed";
@@ -37,27 +38,12 @@ function App() {
     <>
       <Nav />
       <Routes>
-        <Route
-          path="/"
-          element={<Home />}
-        />
-        <Route
-          path="/recipes"
-          element={<Recipes />}
-        />
-        <Route
-          path="/feed"
-          element={<Feed />}
-        />
-        g
-        <Route
-          path="/profile"
-          element={<Profile />}
-        />
-        <Route
-          path="*"
-          element={<Navigate to="/" />}
-        />
+        <Route path="/" element={<Home />} />
+        <Route path="/recipes" element={<Recipes />} />
+        <Route path="/feed" element={<Feed />} />
+        <Route path="/post/:postId" element={<FullPost />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
   );
@@ -66,22 +52,10 @@ function App() {
   const publicRoutes = (
     <>
       <Routes>
-        <Route
-          path="/"
-          element={<Landing />}
-        />
-        <Route
-          path="/signup"
-          element={<SignUp />}
-        />
-        <Route
-          path="/login"
-          element={<LogIn />}
-        />
-        <Route
-          path="*"
-          element={<Navigate to="/" />}
-        />
+        <Route path="/" element={<Landing />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<LogIn />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
   );
