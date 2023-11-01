@@ -2,7 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Nav from "./components/Navigation/Nav";
 import Landing from "./pages/Landing";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 import Recipes from "./pages/Recipes";
 import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
