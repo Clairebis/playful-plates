@@ -9,14 +9,14 @@ export default function ChallengeItem({ post }) {
     }
 
     return (
-        <div className="challenge-card-container">
+        <>
         <article className="challenge-card" key={post.id} onClick={handleClick}>
-            <img src={post.image} alt={post.title} />
+            <img className="challenge-image"src={post.image} alt={post.title} />
             <div>
                 <h2>{post.title}</h2>
                 <p>{post.subheading}</p>
             </div>
         </article>
-        </div>
+        </>
     );
     }

@@ -24,13 +24,13 @@ export default function ChallengeSlider ({sliderTitle}) {
     let postsToDisplay = [...posts];
 
     return (
-    <section>
+    <>
         <h2>{sliderTitle}</h2>
-        <div className="myCallengeSlider">
+        <div className="myChallengeSlider">
                 {postsToDisplay.map(post => (
                     <ChallengeItem post={post} key={post.id} />
                 ))}
         </div>
-      </section>
+      </>
     )
 }

@@ -1,8 +1,7 @@
 import logo from "../../assets/logo.png"
-import chefHatIcon from "../../assets/Icons/chefHatIcon.svg"
 import notifications from "../../assets/Icons/notifications.svg"
 import "../../components/HomeHeader/HomeHeader.css";
-import { Link } from "react-router-dom";
+import HomeXpPoints from "./HomeXPButton";
 
 
 export default function HomeHeader () {
@@ -16,18 +15,13 @@ export default function HomeHeader () {
                     alt="logo of plates with text playful plates"
                 />
 
-                <Link className="homeXpPoints">
-                    <img
-                        src={chefHatIcon}
-                        alt="chef hat icon"
-                    />
-                    <p>250 XP</p>
-                </Link>
+            <HomeXpPoints/>
 
                 <img 
                     className="notification-icon"
                     src={notifications}
                     alt="notifications icon"
+                    Link to="/recipes"
                 />
 
             </div>
