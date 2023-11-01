@@ -64,11 +64,13 @@ export default function Home() {
     <div>
       <HomeHeader/>
       <h1>Hello {username}</h1>
-      <section className="slider">
+      <section>
         <h2>My challenges</h2>
+        <div className="slider">
                 {postsToDisplay.map(post => (
                     <ChallengeItem post={post} key={post.id} />
                 ))}
+        </div>
       </section>
 
       {/* <div>

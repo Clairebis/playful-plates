@@ -2,8 +2,11 @@ h1 {
     text-align: center;
 }
 
+
 .slider {
     display:flex;
     flex-direction:row;
     height:20rem;
+    gap:2rem;
+    margin:1rem;
 }

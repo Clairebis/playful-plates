@@ -1,8 +1,15 @@
-.challenge-card-container {
-    width:10rem;
-}
 
 .challenge-card-container img {
     height:10rem;
 }
 
+.challenge-card {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--banana-300);
+    padding:1rem;
+    width:18rem;
+    height:auto;
+    border-radius: 8px;
+}

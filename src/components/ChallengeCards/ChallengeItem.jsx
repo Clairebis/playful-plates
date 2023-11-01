@@ -10,10 +10,12 @@ export default function ChallengeItem({ post }) {
 
     return (
         <div className="challenge-card-container">
-        <article key={post.id} onClick={handleClick}>
+        <article className="challenge-card" key={post.id} onClick={handleClick}>
             <img src={post.image} alt={post.title} />
-            <h1>{post.title}</h1>
-            <h2>{post.subheading}</h2>
+            <div>
+                <h2>{post.title}</h2>
+                <p>{post.subheading}</p>
+            </div>
         </article>
         </div>
     );
