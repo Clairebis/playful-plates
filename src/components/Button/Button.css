@@ -17,6 +17,7 @@
   }
   
   .button-outline {
-    border-color: var(--lime);
-
+    border: 2px solid var(--green-bean);
+    background-color: var(--oatmeal-100);
+    color:var(--green-bean);
   }
