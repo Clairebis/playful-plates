@@ -9,6 +9,7 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -20,7 +21,11 @@ export default function SignUp() {
         console.log(user);
 
         const level = "Kitchen Assistant";
-        createUser(user.uid, email, username, level);
+        const xp = 0;
+        const image =
+          "https://firebasestorage.googleapis.com/v0/b/playful-plates-b4a84.appspot.com/o/blank-profile-picture-973460_1280.png?alt=media&token=12c66c11-8e80-4810-ab29-7c7a857a712e";
+
+        createUser(user.uid, email, username, level, name, image, xp);
 
         navigate("/login");
       })
@@ -31,11 +36,11 @@ export default function SignUp() {
       });
   };
 
-  async function createUser(uid, email, username, level) {
+  async function createUser(uid, email, username, level, name, image, xp) {
     const url = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/users/${uid}.json`;
     const response = await fetch(url, {
       method: "PUT",
-      body: JSON.stringify({ email, username, level }),
+      body: JSON.stringify({ email, username, level, name, image, xp }),
     });
     if (response.ok) {
       const data = await response.json();
@@ -69,6 +74,18 @@ export default function SignUp() {
             onChange={(e) => setPassword(e.target.value)}
             required
             placeholder="Password"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            label="Your name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+            placeholder="Name"
           />
         </div>
 
