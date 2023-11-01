@@ -8,7 +8,7 @@ export default function ChallengeSlider ({sliderTitle}) {
     useEffect(() => {
         async function getPosts() {
             const url =
-                "https://test-95fb8-default-rtdb.firebaseio.com/challenges.json";
+                "https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/challenges.json";
             const response = await fetch(url);
             const data = await response.json();
             const postsArray = Object.keys(data).map(key => ({
