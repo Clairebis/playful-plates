@@ -1,0 +1,22 @@
+.app-header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--oatmeal-100);
+  color: var(--eggplant);
+  font-family: var(--heading-font);
+  font-size: var(--heading-size);
+  font-weight: bold;
+  margin-top: 91px; /*to test*/
+}
+
+.arrow {
+  padding-right: 10px;
+  padding-left: 5px;
+}
+
+.page-title {
+  flex-grow: 1;
+  text-align: center;
+  margin-right: 24px;
+}
