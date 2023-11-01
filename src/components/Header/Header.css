@@ -12,9 +12,11 @@
 
 .arrow {
   padding-right: 10px;
+  padding-left: 5px;
 }
 
 .page-title {
   flex-grow: 1;
   text-align: center;
+  margin-right: 24px;
 }
