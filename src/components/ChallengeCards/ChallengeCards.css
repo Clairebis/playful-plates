@@ -1,15 +1,31 @@
 
-.challenge-card-container img {
+.challenge-image {
+    height:7rem;
+}
+
+.myChallengeSlider{
+    display:flex;
+    flex-direction:row;
+    overflow-y:auto;
+    white-space: nowrap;
+    padding:0;
+    margin:0;
+    gap:8px;
     height:10rem;
+}
+
+.myChallengeSlider::-webkit-scrollbar {
+    width: 0; /* Webkit (Chrome, Safari) */
+    display: none; /* Hide scrollbar */
 }
 
 .challenge-card {
     display:flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items:center;
     background-color: var(--banana-300);
     padding:1rem;
-    width:18rem;
     height:auto;
     border-radius: 8px;
 }
