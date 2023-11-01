@@ -3,13 +3,13 @@ import PostLabel from "./PostLabel";
 export default function LabelChoice() {
   return (
     <>
-      <div className="chooseLabelRow">
+      <div className="chooseALabelRow">
         Preparation:
         <PostLabel label="Quick" />
         <PostLabel label="Complex" />
       </div>
 
-      <div className="chooseLabelRow">
+      <div className="chooseALabelRow">
         Diet:
         <PostLabel label="Meat" />
         <PostLabel label="Fish" />
@@ -18,7 +18,7 @@ export default function LabelChoice() {
         <PostLabel label="Gluten-free" />
         <PostLabel label="Lactose-free" />
       </div>
-      <div className="chooseLabelRow">
+      <div className="chooseALabelRow">
         Type:
         <PostLabel label="Breakfast" />
         <PostLabel label="Lunch" />

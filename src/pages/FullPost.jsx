@@ -43,7 +43,7 @@ export default function FullPost() {
       </div>
 
       <article style={{ marginBottom: "10rem" }}>
-        <img src={post.image} alt={post.title} className="image" />
+        <img src={post.image} alt={post.title} className="fullPostImage" />
         <section className="postCardLower">
           <h2 className="bottom8">{post.title}</h2>
           <p className="small ">{post.challengeid}</p>

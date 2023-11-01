@@ -26,10 +26,6 @@
   flex-direction: column;
 }
 
-p {
-  margin: 0;
-}
-
 .fullPostUser {
   display: flex;
   flex-direction: row;

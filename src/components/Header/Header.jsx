@@ -14,7 +14,7 @@ export default function Header({ pageTitle }) {
 
   return (
     <div className="app-header">
-      <div className="arrow" onClick={goBack}>
+      <div className="header-arrow" onClick={goBack}>
         <img src={arrow} alt="" />
       </div>
       <div className="page-title">{pageTitle}</div>

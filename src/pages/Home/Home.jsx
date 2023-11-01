@@ -66,7 +66,7 @@ export default function Home() {
       <h1>Hello {username}</h1>
       <section>
         <h2>My challenges</h2>
-        <div className="slider">
+        <div className="myChallengeSlider">
                 {postsToDisplay.map(post => (
                     <ChallengeItem post={post} key={post.id} />
                 ))}

@@ -61,7 +61,7 @@
   border-radius: 0%;
 }
 
-.postLabel {
+.postALabel {
   background-color: rgba(167, 201, 87, 0.25);
   border-radius: 20px;
   color: var(--kale);
@@ -71,10 +71,10 @@
   margin: 2px 6px;
 }
 
-.selected {
+.postALabelSelected {
   background-color: rgba(167, 201, 87, 1);
 }
-.chooseLabelRow {
+.chooseALabelRow {
   font-family: var(--body-font);
   font-weight: var(--font-weight-bold);
   margin: 0px 16px;
@@ -84,7 +84,7 @@
   align-items: center;
   display: flex;
 }
-.chooseLabelRow::-webkit-scrollbar {
+.chooseALabelRow::-webkit-scrollbar {
   width: 0; /* Webkit (Chrome, Safari) */
   display: none; /* Hide scrollbar */
 }

@@ -1,9 +1,5 @@
-h1 {
-    text-align: center;
-}
 
-
-.slider {
+.myChallengeSlider {
     display:flex;
     flex-direction:row;
     height:20rem;

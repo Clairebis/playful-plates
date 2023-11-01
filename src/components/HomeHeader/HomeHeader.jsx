@@ -6,9 +6,9 @@ export default function HomeHeader () {
 
     return (
         <>
-            <div className="container">
+            <div className="home-header-container">
                 <img 
-                    className="logo"
+                    className="home-logo"
                     src={logo}
                     alt="logo of plates with text playful plates"
                 />

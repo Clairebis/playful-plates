@@ -1,4 +1,4 @@
-.image {
+.fullPostImage {
   height: 392px;
   width: 100%;
   object-fit: cover;
@@ -6,9 +6,6 @@
   padding-right: 0px !important;
 }
 
-h2 {
-  margin: 0;
-}
 
 .bottom8 {
   margin-bottom: 8px;

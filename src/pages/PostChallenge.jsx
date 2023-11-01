@@ -5,6 +5,7 @@ import TitleUpload from "../components/PostChallenge/TitleUpload";
 import DescriptionUpload from "../components/PostChallenge/DescriptionUpload";
 import LabelChoice from "../components/PostChallenge/LabelChoice";
 import TypeOfPost from "../components/PostChallenge/TypeOfPost";
+import Button from "../components/Button/Button";
 
 export default function PostChallenge() {
   return (
@@ -15,6 +16,7 @@ export default function PostChallenge() {
       <DescriptionUpload />
       <LabelChoice />
       <TypeOfPost />
+      <Button/>
     </>
   );
 }

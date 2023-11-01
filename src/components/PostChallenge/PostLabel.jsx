@@ -9,7 +9,7 @@ export default function PostLabel({ label }) {
 
   return (
     <span
-      className={`postLabel ${isSelected ? "selected" : ""}`}
+      className={`postALabel ${isSelected ? "postALabelSelected" : ""}`}
       onClick={selectLabel}
     >
       {label}
