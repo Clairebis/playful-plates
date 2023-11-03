@@ -1,0 +1,17 @@
+.bottom-sheet {
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    height: auto;
+    background: white;
+    transition: bottom 0.3s ease-in-out;
+  }
+  
+  .bottom-sheet.open {
+    bottom: 0;
+  }
+  
+  .bottom-sheet-content {
+    padding: 16px;
+  }

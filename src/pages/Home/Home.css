@@ -1,8 +1,4 @@
-
-.myChallengeSlider {
-    display:flex;
-    flex-direction:row;
-    height:20rem;
-    gap:2rem;
-    margin:1rem;
+.home-content h1 {
+text-align:center;
+margin-bottom:1rem;
 }

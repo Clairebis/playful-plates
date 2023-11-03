@@ -12,7 +12,8 @@
     padding:0;
     margin:0;
     gap:0.5rem;
-    height:13rem;
+    height:fit-content;
+    margin-bottom:1.5rem;
 }
 
 .myChallengeSlider::-webkit-scrollbar {
@@ -23,7 +24,7 @@
 .challenge-card-container {
     display:flex;
     flex-direction: column;
-    height:13rem;
+    height:fit-content;
 }
 
 .challenge-card {
@@ -33,10 +34,12 @@
     background-color: var(--lime);
     padding:1rem;
     height:auto;
-    width:18rem;
+    width:18.5rem;
     border-radius:8px 8px 0px 0px;
     gap:0.5rem;
+    margin-top:0.5rem;
 }
+
 
 .challenge-card p {
     text-wrap:wrap;
@@ -50,7 +53,8 @@
     padding:0;
     margin:0;
     gap:0.5rem;
-    height:13rem;
+    height:10rem;
+    margin-bottom:0.5rem;
 }
 
 .SmallChallengeSlider::-webkit-scrollbar {
@@ -69,6 +73,7 @@
     border-radius:8px;
     gap:0.5rem;
     text-align: center;
+    margin-top:0.5rem;
 }
 
 .challenge-card-small p {

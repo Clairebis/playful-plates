@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./Challengecards.css"
 
-export default function SmallChallengeCard({ challenge }) {
+export default function SmallChallengeCard({ challenge}) {
     const navigate = useNavigate();
 
     function handleClick() {
