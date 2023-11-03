@@ -42,9 +42,18 @@ export default function Feed() {
       </Tabs>
 
       <section className="feed">
-        {posts.map((post) => (
-          <PostCard post={post} key={post.id} />
-        ))}
+        {posts.map((post) => {
+          // Check the selected tab (value) and filter posts accordingly
+          if (value === 0 /*&& post.isFriendPost*/) {
+            // Show all friends public posts based on our logic (e.g., using the isFriendPost property)
+            return <PostCard post={post} key={post.id} />;
+          } else if (value === 1) {
+            // Display all posts for "All" tab
+            return <PostCard post={post} key={post.id} />;
+            // Show all public posts
+          }
+          return null; // Don't render if it doesn't match the selected tab's criteria
+        })}
       </section>
     </section>
   );
