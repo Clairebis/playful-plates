@@ -5,6 +5,7 @@ import HomeHeader from "../../components/HomeHeader/HomeHeader";
 import "../../pages/Home/Home.css";
 import ChallengeSlider from "../../components/ChallengeCards/ChallengeSlider";
 import Button from "../../components/Button/Button";
+import Countdown from "../../components/Countdown";
 
 export default function Home() {
   const auth = getAuth();
@@ -47,6 +48,7 @@ export default function Home() {
         <h1>Hello {username}</h1>
         <ChallengeSlider sliderTitle="My Challenges" />
         <Button className="button-outline" />
+        <Countdown/>
       </div>
       {/* <div>
         <button onClick={handleLogout}>Logout</button>
