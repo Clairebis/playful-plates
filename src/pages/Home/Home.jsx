@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import HomeHeader from "../../components/HomeHeader/HomeHeader";
 import "../../pages/Home/Home.css";
-import ChallengeSlider from "../../components/ChallengeCards/MyChallengeSlider";
 import Button from "../../components/Button/Button";
 import SmallChallengeSlider from "../../components/ChallengeCards/SmallChallengeSlider";
 import MyChallengeSlider from "../../components/ChallengeCards/MyChallengeSlider";
@@ -46,7 +45,7 @@ export default function Home() {
     <>
       <div className="pageLeftPadding home-content">
         <HomeHeader />
-        <h1>Hello {username}</h1>
+        <h1>Hello {username}!</h1>
         <MyChallengeSlider sliderTitle="My Challenges"/>
         <SmallChallengeSlider sliderTitle="Featured Challenges"/>
         <Button className="button-yellow home-challenge-button page" text="Discover more challenges" Link="/challenges"/>

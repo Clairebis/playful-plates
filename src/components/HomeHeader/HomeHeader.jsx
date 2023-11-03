@@ -9,7 +9,7 @@ export default function HomeHeader () {
     return (
         <>
             
-            <div className="homeHeaderContainer page">
+            <div className="homeHeaderContainer">
                 <img 
                     className="home-logo"
                     src={logo}

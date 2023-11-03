@@ -1,6 +1,7 @@
 import Header from "../components/Header/Header"
 import SmallChallengeSlider from "../components/ChallengeCards/SmallChallengeSlider"
 import SearchAndFilter from "../components/SearchAndFilter/SearchAndFilter"
+import BottomSheetTest from "../components/BottomSheetTest"
 
 export default function Challenges() {
 

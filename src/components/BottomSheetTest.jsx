@@ -1,52 +1,23 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
+import Draggable from 'react-draggable';
 
 const BottomSheetTest = ({ isOpen, onClose, children }) => {
-  const sheetRef = useRef(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startY, setStartY] = useState(0);
-  const [currentY, setCurrentY] = useState(0);
-
-  const handleDragStart = (e) => {
-    if (isOpen) {
-      setIsDragging(true);
-      setStartY(e.clientY || e.touches[0].clientY);
-    }
-  };
-
-  const handleDragMove = (e) => {
-    if (isDragging) {
-      const deltaY = (e.clientY || e.touches[0].clientY) - startY;
-      setCurrentY(deltaY);
-      sheetRef.current.style.transform = `translateY(${deltaY}px)`;
-    }
-  };
-
-  const handleDragEnd = () => {
-    if (isDragging) {
-      setIsDragging(false);
-      if (currentY >= 100) {
-        onClose();
-      } else {
-        sheetRef.current.style.transform = '';
-      }
+  const onDragStop = (e, data) => {
+    if (data.lastY > 100) {
+      onClose();
     }
   };
 
   return (
-    <div
-      className={`bottom-sheet ${isOpen ? 'open' : ''}`}
-      ref={sheetRef}
-      onMouseDown={handleDragStart}
-      onMouseMove={handleDragMove}
-      onMouseUp={handleDragEnd}
-      onTouchStart={handleDragStart}
-      onTouchMove={handleDragMove}
-      onTouchEnd={handleDragEnd}
-    >
-      <div className="bottom-sheet-content">
-        {children}
-        <button onClick={onClose}>Close</button>
-      </div>
+    <div className={`bottom-sheet ${isOpen ? 'open' : ''}`}>
+      <Draggable
+        axis="y"
+        onStop={onDragStop}
+      >
+        <div className="sheet-content">
+          {children}
+        </div>
+      </Draggable>
     </div>
   );
 };
