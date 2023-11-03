@@ -1,6 +1,6 @@
-import { getAuth, signOut } from "firebase/auth";
+import { getAuth /*signOut*/ } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import HomeHeader from "../../components/HomeHeader/HomeHeader";
 import "../../pages/Home/Home.css";
 import ChallengeSlider from "../../components/ChallengeCards/ChallengeSlider";
@@ -8,7 +8,7 @@ import Button from "../../components/Button/Button";
 
 export default function Home() {
   const auth = getAuth();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const uid = auth.currentUser.uid;
   const [username, setUsername] = useState("");
 

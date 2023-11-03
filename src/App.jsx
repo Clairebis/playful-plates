@@ -3,7 +3,7 @@ import "./App.css";
 import Nav from "./components/Navigation/Nav";
 import Landing from "./pages/Landing";
 import Home from "./pages/Home/Home";
-import Recipes from "./pages/Recipes";
+// import Recipes from "./pages/Recipes";
 import PostChallenge from "./pages/PostChallenge";
 import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
@@ -15,6 +15,9 @@ import Profile from "./pages/Profile";
 import "./firebase-config";
 
 function App() {
+  // const savedIsAuth = localStorage.getItem("isAuth");
+  // const initialIsAuth = savedIsAuth !== null ? savedIsAuth : false;
+  // const [isAuth, setIsAuth] = useState(initialIsAuth);
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
 
   // handle user authentication
