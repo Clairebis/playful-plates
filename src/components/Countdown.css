@@ -17,13 +17,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap:0;
     align-items: center;
     border-radius: 4px;
 }
 
 .counter-number {
     font-weight: var(--font-weight-bold);
-    font-size: var(--body-text-small-size);
+    font-size: var(--body-text-size);
     display:flex;
     align-content: center;
 }
