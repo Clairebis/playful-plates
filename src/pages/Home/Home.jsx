@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import HomeHeader from "../../components/HomeHeader/HomeHeader";
 import "../../pages/Home/Home.css";
-import ChallengeSlider from "../../components/ChallengeCards/ChallengeSlider";
+import ChallengeSlider from "../../components/ChallengeCards/MyChallengeSlider";
 import Button from "../../components/Button/Button";
+import SmallChallengeSlider from "../../components/ChallengeCards/SmallChallengeSlider";
 
 export default function Home() {
   const auth = getAuth();
@@ -42,11 +43,13 @@ export default function Home() {
 
   return (
     <>
-      <div className="page">
+      <div className="homePage">
         <HomeHeader />
         <h1>Hello {username}</h1>
-        <ChallengeSlider sliderTitle="My Challenges" />
-        <Button className="button-outline" />
+        <ChallengeSlider sliderTitle="My Challenges"/>
+        <SmallChallengeSlider sliderTitle="Featured Challenges"/>
+        <Button className="button-yellow home-challenge-button" text="Discover more challenges"/>
+
       </div>
       {/* <div>
         <button onClick={handleLogout}>Logout</button>

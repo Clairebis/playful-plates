@@ -11,7 +11,7 @@
     white-space: nowrap;
     padding:0;
     margin:0;
-    gap:8px;
+    gap:0.5rem;
     height:13rem;
 }
 
@@ -20,17 +20,65 @@
     display: none; /* Hide scrollbar */
 }
 
+.challenge-card-container {
+    display:flex;
+    flex-direction: column;
+    height:13rem;
+}
+
 .challenge-card {
     display:flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items:center;
     background-color: var(--lime);
     padding:1rem;
     height:auto;
+    width:18rem;
     border-radius:8px 8px 0px 0px;
-
+    gap:0.5rem;
 }
+
+.challenge-card p {
+    text-wrap:wrap;
+}
+
+.SmallChallengeSlider{
+    display:flex;
+    flex-direction:row;
+    overflow-y:auto;
+    white-space: nowrap;
+    padding:0;
+    margin:0;
+    gap:0.5rem;
+    height:13rem;
+}
+
+.SmallChallengeSlider::-webkit-scrollbar {
+    width: 0; /* Webkit (Chrome, Safari) */
+    display: none; /* Hide scrollbar */
+}
+
+.challenge-card-small {
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    background-color: var(--banana-300);
+    padding:0.5rem;
+    height:9rem;
+    width:9rem;
+    border-radius:8px;
+    gap:0.5rem;
+    text-align: center;
+}
+
+.challenge-card-small p {
+    text-wrap:wrap;
+}
+
+.challenge-card-small .challenge-image {
+    height:5rem;
+}
+
 
 .challenge-card-bottom {
     display:flex;
@@ -58,8 +106,4 @@
     font-size: var(--body-text-small-size)
 }
 
-.challenge-card-container {
-    display:flex;
-    flex-direction: column;
-    height:13rem;
-}
+

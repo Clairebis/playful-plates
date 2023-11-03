@@ -10,6 +10,7 @@
     background-color: var(--lime);
     cursor: pointer;
     box-shadow: var(--box-shadow);
+  
   }
 
   .button-yellow {
@@ -20,4 +21,8 @@
     border: 2px solid var(--green-bean);
     background-color: var(--oatmeal-100);
     color:var(--green-bean);
+  }
+
+  .home-challenge-button {
+    padding-left: 20px !important;
   }

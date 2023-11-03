@@ -8,7 +8,8 @@ export default function HomeHeader () {
 
     return (
         <>
-            <div className="homeHeaderContainer">
+            
+            <div className="homeHeaderContainer page">
                 <img 
                     className="home-logo"
                     src={logo}
