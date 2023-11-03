@@ -9,7 +9,7 @@ import Button from "../../components/Button/Button";
 export default function Home() {
   const auth = getAuth();
   // const navigate = useNavigate();
-  const uid = auth.currentUser.uid;
+  const uid = auth.currentUser?.uid;
   const [username, setUsername] = useState("");
 
   const url = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/users/${uid}.json`;

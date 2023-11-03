@@ -15,9 +15,6 @@ import Profile from "./pages/Profile";
 import "./firebase-config";
 
 function App() {
-  // const savedIsAuth = localStorage.getItem("isAuth");
-  // const initialIsAuth = savedIsAuth !== null ? savedIsAuth : false;
-  // const [isAuth, setIsAuth] = useState(initialIsAuth);
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
 
   // handle user authentication
@@ -25,7 +22,7 @@ function App() {
     const auth = getAuth();
 
     onAuthStateChanged(auth, (user) => {
-      if (user) {
+      if (user && user.metadata.creationTime !== user.metadata.lastSignInTime) {
         //user authenticted - signed in
         setIsAuth(true); //set isAuth to true
         localStorage.setItem("isAuth", true); //save isAuth to local storage
