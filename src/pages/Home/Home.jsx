@@ -6,6 +6,7 @@ import "../../pages/Home/Home.css";
 import Button from "../../components/Button/Button";
 import SmallChallengeSlider from "../../components/ChallengeCards/SmallChallengeSlider";
 import MyChallengeSlider from "../../components/ChallengeCards/MyChallengeSlider";
+import Countdown from "../../components/Countdown";
 
 export default function Home() {
   const auth = getAuth();
