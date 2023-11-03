@@ -1,6 +1,6 @@
 import { getAuth, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import HomeHeader from "../../components/HomeHeader/HomeHeader";
 import "../../pages/Home/Home.css";
 import ChallengeSlider from "../../components/ChallengeCards/MyChallengeSlider";
@@ -43,12 +43,12 @@ export default function Home() {
 
   return (
     <>
-      <div className="homePage">
+      <div className="pageLeftPadding">
         <HomeHeader />
         <h1>Hello {username}</h1>
         <ChallengeSlider sliderTitle="My Challenges"/>
         <SmallChallengeSlider sliderTitle="Featured Challenges"/>
-        <Button className="button-yellow home-challenge-button" text="Discover more challenges"/>
+        <Button className="button-yellow home-challenge-button" text="Discover more challenges" Link="/challenges"/>
 
       </div>
       {/* <div>

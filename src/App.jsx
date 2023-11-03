@@ -13,6 +13,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Feed from "./pages/Feed";
 import Profile from "./pages/Profile";
 import "./firebase-config";
+import Challenges from "./pages/Challenges"
 
 function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
@@ -41,6 +42,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/recipes" element={<PostChallenge />} />
+        <Route path="/challenges" element={<Challenges/>} />
         <Route path="/feed" element={<Feed />} />
         <Route path="/post/:postId" element={<FullPost />} />
         <Route path="/profile" element={<Profile />} />
