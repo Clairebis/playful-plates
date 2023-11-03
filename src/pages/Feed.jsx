@@ -33,8 +33,6 @@ export default function Feed() {
       <Tabs
         className="feedTabs"
         value={value}
-        textColor="primary"
-        indicatorColor="primary"
         onChange={(event, newValue) => {
           setValue(newValue);
         }}
