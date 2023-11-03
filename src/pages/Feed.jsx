@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import PostCard from "../components/postCard/PostCard";
 import "./feed.css";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
 
 export default function Feed() {
   const [posts, setPosts] = useState([]);
+  const [value, setValue] = useState(1);
 
   //fetch posts from firebase
   useEffect(() => {
@@ -27,7 +30,19 @@ export default function Feed() {
 
   return (
     <section className="page">
-      <h1>Feed</h1>
+      <Tabs
+        className="feedTabs"
+        value={value}
+        textColor="primary"
+        indicatorColor="primary"
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }}
+      >
+        <Tab label="My friends" className="feedTab" />
+        <Tab label="All" className="feedTab" />
+      </Tabs>
+
       <section className="feed">
         {posts.map((post) => (
           <PostCard post={post} key={post.id} />
