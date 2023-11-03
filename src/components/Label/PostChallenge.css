@@ -1,11 +1,11 @@
 .photoUpload {
-  background-color: var(--banana-300);
-  box-shadow: var(--box-shadow);
   width: 100%;
-  height: 180px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  height: 380px;
+  object-fit: cover;
+}
+
+.photoUpload > * {
+  margin-bottom: 10px;
 }
 .postATitle {
   display: flex;
@@ -87,4 +87,47 @@
 .chooseALabelRow::-webkit-scrollbar {
   width: 0; /* Webkit (Chrome, Safari) */
   display: none; /* Hide scrollbar */
+}
+
+.typeOfPost {
+  width: 140px;
+  height: auto;
+  background-color: var(--banana-300);
+  border-radius: 8px;
+  padding: 5px 2px;
+  font-family: var(--body-font);
+  font-size: var(--body-text-size);
+  margin: 8px 0px 16px 16px;
+  z-index: 1;
+  position: absolute;
+}
+
+.chosenTypeOfPost img {
+  padding: 0px 8px;
+}
+
+.alternativeTypeOfPost {
+  padding-left: 31px;
+}
+.horizontalDividerPost {
+  width: 95px;
+  height: 1px;
+  background-color: grey;
+  z-index: 4;
+  margin: 1px 0px;
+}
+
+.disabledBtnPost {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.buttonPostAChallenge {
+  margin: 50px auto;
+}
+
+.containerButtonPostChallenge {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  margin-top: 10px;
 }
