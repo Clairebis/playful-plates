@@ -57,19 +57,29 @@ export default function Profile() {
 
   return (
     <div className="profile-container">
-      <div className="profile-image-container">
-        <img
-          src={userData.image}
-          alt="Profile Image"
-          className="profile-image"
-        />
+      <h1>Hello, {userData.name}!</h1>
+      <div className="user-container">
+        <div className="profile-image-container">
+          <img
+            src={userData.image}
+            alt="Profile Image"
+            className="profile-image"
+          />
+        </div>
+        <div className="user-info">
+          <p className="user-name">{userData.name}</p>
+          <p className="user-username">{userData.username}</p>
+          <p className="user-level">{userData.level}</p>
+          <p className="user-xp">{userData.xp} XP</p>
+          <p className="user-upcoming-level">Sous Chef</p>
+          <div className="progress-bar"></div>
+          <div className="user-xp-info">
+            <p className="user-xp">100 XP</p>
+            <p className="user-xp">299 XP</p>
+          </div>
+        </div>
       </div>
-      <div className="user-info">
-        <h1>Hello, {userData.name}!</h1>
-        <p>{userData.name}</p>
-        <p>{userData.level}</p>
-        <p>{userData.xp}</p>
-      </div>
+
       <button onClick={handleLogout}>Logout</button>
     </div>
   );

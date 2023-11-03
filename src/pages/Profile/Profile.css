@@ -1,18 +1,73 @@
 .profile-container {
+  margin-top: 3rem;
   text-align: center;
   padding: 20px;
 }
 
+.user-container {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: start; /* Vertically center the content */
+}
+
 .profile-image-container {
-  width: 100px;
-  height: 100px;
+  width: 80%;
+  height: 80%;
   border-radius: 50%;
   overflow: hidden;
-  margin: 0 auto;
+  margin: 0;
+  margin-right: 1.5rem;
 }
 
 .profile-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.user-info {
+  text-align: left;
+  width: 100%;
+}
+
+.user-name {
+  font-family: var(--body-font);
+  font-weight: var(--font-weight-bold);
+}
+
+.user-username {
+  font-family: var(--body-font);
+  font-weight: 300;
+  font-size: var(--body-text-size);
+}
+.user-level {
+  font-family: var(--body-font);
+  font-weight: var(--font-weight-regular);
+}
+
+.user-xp {
+  font-family: var(--body-font);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--body-text-size);
+}
+
+.user-upcoming-level {
+  align-self: flex-end;
+  text-align: right;
+  margin-top: 0.75rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 23.2px;
+  border-radius: 8px;
+  background-color: var(--lime);
+}
+
+.user-xp-info {
+  display: flex;
+  flex-direction: row; /* Set flex direction to row */
+  justify-content: space-between;
+  font-family: var(--body-font);
+  font-weight: var(--font-weight-regular);
 }
