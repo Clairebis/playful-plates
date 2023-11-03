@@ -43,9 +43,11 @@ export default function Home() {
 
   return (
     <>
-      <div className="pageLeftPadding home-content">
+      <div className="page home-content">
         <HomeHeader />
         <h1>Hello {username}!</h1>
+      </div>
+      <div className="pageLeftPadding">
         <MyChallengeSlider sliderTitle="My Challenges"/>
         <SmallChallengeSlider sliderTitle="Featured Challenges"/>
         <Button className="button-yellow home-challenge-button page" text="Discover more challenges" Link="/challenges"/>
