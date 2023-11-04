@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"; // Add this import
 import "@splidejs/splide/dist/css/splide.min.css";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import ProfilePostCard from "./Profile/ProfilePostCard";
 import infoIcon from "../Assets/Icons/info-icon.svg";
+import editIcon from "../Assets/Icons/picture-edit.svg";
 import "./Profile/Profile.css";
 
 function Profile() {
@@ -18,6 +20,7 @@ function Profile() {
     xp: 0,
   });
   const [userPosts, setUserPosts] = useState([]);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
     const uid = auth.currentUser ? auth.currentUser.uid : null;
@@ -77,6 +80,68 @@ function Profile() {
     focus: "center",
   };
 
+  const handleEditProfile = () => {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*";
+    input.onchange = (e) => {
+      const file = e.target.files[0];
+      setSelectedImage(file);
+    };
+    input.click();
+  };
+
+  const uploadImage = async (imageFile) => {
+    if (imageFile) {
+      const storage = getStorage(); // Initialize Firebase Storage
+      const storageRef = ref(storage, "profile-images/" + auth.currentUser.uid);
+      const uploadTask = uploadBytesResumable(storageRef, imageFile);
+
+      uploadTask.on(
+        "state_changed",
+        () => {
+          // Handle progress (if needed)
+        },
+        (error) => {
+          console.error("Error uploading image", error);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref)
+            .then((downloadURL) => {
+              // Update the user's image in the Firebase Realtime Database
+              const uid = auth.currentUser.uid;
+              const userRef = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/users/${uid}.json`;
+
+              fetch(userRef, {
+                method: "PATCH", // Use PATCH to update the existing data
+                body: JSON.stringify({ image: downloadURL }),
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              })
+                .then(() => {
+                  // Update the user's profile image in the state
+                  setUserData((prevUserData) => ({
+                    ...prevUserData,
+                    image: downloadURL,
+                  }));
+                })
+                .catch((error) => {
+                  console.error("Error updating user image in the database", error);
+                });
+            })
+            .catch((error) => {
+              console.error("Error getting image download URL", error);
+            });
+        }
+      );
+    }
+  };
+
+  useEffect(() => {
+    uploadImage(selectedImage);
+  }, [selectedImage]);
+
   return (
     <div>
       <div className="profile-container">
@@ -88,6 +153,15 @@ function Profile() {
               alt="Profile Image"
               className="profile-image"
             />
+            <button
+              className="edit-button"
+              onClick={handleEditProfile}>
+              <img
+                src={editIcon}
+                alt="Edit Profile"
+                className="edit-icon"
+              />
+            </button>
           </div>
           <div className="user-info">
             <p className="user-name">{userData.name}</p>

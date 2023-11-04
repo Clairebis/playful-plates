@@ -3,25 +3,42 @@
   text-align: center;
   padding: 20px;
   box-shadow: 0px 4px 4px -3px rgba(0, 0, 0, 0.1); /* Add bottom shadow */
-  padding-bottom: 1rem; /* Add bottom padding */
 }
 
 .user-container {
   margin-top: 1.5rem;
   display: flex;
-  align-items: start; /* Vertically center the content */
+  align-items: center; /* Vertically center the content */
 }
 
 .profile-image-container {
   width: 300px;
   height: 160px;
   border-radius: 50%;
-  overflow: hidden;
   margin: 0;
   margin-right: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative; /* Keep this for positioning the edit button */
+  width: 100%;
+}
+
+.edit-button {
+  position: absolute;
+  bottom: -10px;
+  right: 0;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 1; /* Ensure the button is above the user image */
+}
+
+.edit-icon {
+  width: 46px; /* Adjust the size as needed */
+  height: 46px; /* Adjust the size as needed */
+  z-index: 2; /* Set a higher z-index for the icon to be above the user image */
 }
 
 .profile-image {
@@ -30,7 +47,6 @@
   object-fit: cover;
   border-radius: 50%;
 }
-
 .user-info {
   text-align: left;
   width: 100%;
