@@ -1,0 +1,20 @@
+.profile-post-card {
+  width: calc(33.33% - 1rem); /* 1rem is the margin between the cards */
+  margin: 0.5rem; /* Add some margin to space them out */
+  display: inline-block; /* Make them inline */
+  vertical-align: top; /* Align them to the top of the container */
+}
+
+.profile-post-card-image {
+  width: 100%;
+  height: 136px;
+  object-fit: cover;
+  border-radius: 8px 8px 0px 0px;
+}
+
+.profile-post-card-bold {
+  font-weight: bold;
+  padding: 0.5rem;
+  font-family: var(--body-font);
+  font-size: var(--body-text-small-size);
+}
