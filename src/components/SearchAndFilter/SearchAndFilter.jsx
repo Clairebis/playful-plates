@@ -1,7 +1,7 @@
 import sliders from "../../assets/Icons/sliders.svg"
 import './SearchAndFilter.css'; 
-import BottomSheetTest from "../BottomSheetTest";
 
+import MultiFilter from "../Multifilter";
 
 export default function SearchAndFilter() {
 
@@ -9,14 +9,15 @@ export default function SearchAndFilter() {
         <>
         <div className="searchFilterBar">
         <div className="searchBar">search</div>
-            <div className="challengesFilter">
-                <BottomSheetTest/>
-                <img 
+            <div className="challengesFilter">                
+            <img 
                     src={sliders}
                     alt="filtering button"
                 />
             </div>
         </div>
+            <MultiFilter/>
+        
         </>
         )
 }

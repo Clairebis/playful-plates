@@ -1,0 +1,31 @@
+
+  
+  .filter-buttons-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+    overflow-y: scroll;
+    white-space: nowrap;
+  }
+
+  .filter-buttons-container::-webkit-scrollbar {
+    width: 0; /* Webkit (Chrome, Safari) */
+    display: none; /* Hide scrollbar */
+}
+
+  .filter-button {
+    background-color: rgba(167, 201, 87, 0.25);
+    border-radius: 20px;
+    color: var(--kale);
+    padding: 6px 16px;
+    font-family: var(--body-font);
+    font-weight: var(--font-weight-bold);
+    margin: 2px 6px;
+    border: none;
+  }
+  
+  .selected-filter {
+    background-color: rgba(167, 201, 87, 1);
+
+  }
+  
