@@ -212,7 +212,7 @@ export default function PostChallenge() {
   }
 
   return (
-    <>
+    <section className="page">
       <Header pageTitle="Mystery Box" /> {/* change to fetch from challenges*/}
       {/* -------Photo upload section ----*/}
       <>
@@ -224,6 +224,7 @@ export default function PostChallenge() {
           style={{ display: "none" }}
           ref={fileInputRef}
         />
+
         <p className="textError">{errorMessage}</p>
         <div
           className="photoUpload"
@@ -314,6 +315,6 @@ export default function PostChallenge() {
           function={gatherAllData}
         />
       </div>
-    </>
+    </section>
   );
 }
