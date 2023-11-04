@@ -1,0 +1,70 @@
+.challengePageHeadings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.challengePageHeadings img {
+  width: 200px;
+  height: auto;
+}
+
+.challengePageHeadings > * {
+  margin-bottom: 4px;
+}
+
+.challengePageDifficulty {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: var(--body-font);
+  align-items: center;
+  margin: 8px 0px 16px 0px;
+}
+
+.boldSpan {
+  font-weight: var(--font-weight-bold);
+}
+
+.challengeXPLabel {
+  padding: 4px 20px;
+  background-color: var(--lime);
+  color: var(--eggplant);
+  border-radius: 16px;
+}
+
+.friendsChallengePage {
+  align-items: center;
+  display: flex;
+  margin-top: 8px;
+}
+.friendsChallengePage img {
+  width: 40px;
+  height: auto;
+  border-radius: 50%;
+  margin: 0px 8px 0px 0px;
+}
+.buttonsChallengePage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 30px 20px;
+}
+
+.buttonsChallengePageColumn {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--body-font);
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0px;
+}
+
+.completeBtn {
+  width: 180px;
+  padding: 10px 0px;
+}
+.removeBtnTertiary {
+  font-size: 12px;
+  padding: 12px 0px;
+}

@@ -1,13 +1,14 @@
 import { useNavigate } from "react-router-dom";
+import "./Challengecards.css";
 import "./Challengecards.css"
 import chefHatIconWhite from "../../assets/Icons/chefHatIconWhite.svg"
 
 export default function ChallengeItem({ post }) {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    function handleClick() {
-        navigate(`/challenges/${post.id}`);
-    }
+  function handleClick() {
+    navigate(`/challenges/${post.id}`);
+  }
 
     return (
         <>

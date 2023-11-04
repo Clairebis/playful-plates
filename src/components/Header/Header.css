@@ -1,7 +1,7 @@
 .app-header {
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 10px 0px;
   background-color: var(--oatmeal-100);
   color: var(--eggplant);
   font-family: var(--heading-font);
