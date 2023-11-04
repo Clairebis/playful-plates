@@ -1,5 +1,4 @@
 import { useNavigate, useParams } from "react-router-dom";
-
 import { useEffect, useState } from "react";
 import FullPostUser from "../components/userAvatars/FullPostUser";
 import Heart from "react-heart";
@@ -22,12 +21,11 @@ export default function FullPost() {
     publishedAt: "",
   });
 
-  function backToFeed() {
-    navigate("/feed");
-  }
+  const goBack = () => {
+    navigate(-1); // Go back to the previous page
+  };
 
   useEffect(() => {
-    //fetch post data based on postId
     async function getPost() {
       const response = await fetch(url);
       const postData = await response.json();
@@ -38,25 +36,29 @@ export default function FullPost() {
 
   return (
     <section>
-      <div onClick={backToFeed} className="padding8">
-        backarrow
+      <div
+        onClick={goBack}
+        className="padding8">
+        Go Back
       </div>
 
       <article style={{ marginBottom: "10rem" }}>
-        <img src={post.image} alt={post.title} className="fullPostImage" />
+        <img
+          src={post.image}
+          alt={post.title}
+          className="fullPostImage"
+        />
         <section className="postCardLower">
           <h2 className="bottom8">{post.title}</h2>
           <p className="small ">{post.challengeid}</p>
           <FullPostUser uid={post.uid} />
           <p>{post.description}</p>
-          {/*<div className="tags">
-          {post.tags.map((tag) => (
-            <span key={tag.id} tag={tag}></span>
-          ))}
-          </div>*/}
           <div className="likes">
             <div style={{ width: "2rem" }}>
-              <Heart isActive={active} onClick={() => setActive(!active)} />
+              <Heart
+                isActive={active}
+                onClick={() => setActive(!active)}
+              />
             </div>
             <div> {post.likes} likes </div>
           </div>

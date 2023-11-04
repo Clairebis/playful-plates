@@ -1,11 +1,13 @@
-import { getAuth, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { getAuth, signOut } from "firebase/auth";
+import "@splidejs/splide/dist/css/splide.min.css";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
 import ProfilePostCard from "./Profile/ProfilePostCard";
-import "./Profile/Profile.css"; // Import your Profile.css file
 import infoIcon from "../Assets/Icons/info-icon.svg";
+import "./Profile/Profile.css";
 
-export default function Profile() {
+function Profile() {
   const auth = getAuth();
   const navigate = useNavigate();
   const [userData, setUserData] = useState({
@@ -15,7 +17,7 @@ export default function Profile() {
     level: 0,
     xp: 0,
   });
-  const [userPosts, setUserPosts] = useState([]); // State to store user's posts
+  const [userPosts, setUserPosts] = useState([]);
 
   useEffect(() => {
     const uid = auth.currentUser ? auth.currentUser.uid : null;
@@ -65,6 +67,16 @@ export default function Profile() {
       });
   };
 
+  const sliderOptions = {
+    type: "slide",
+    perPage: 2.5,
+    perMove: 1,
+    gap: "1rem",
+    pagination: false,
+    arrows: false,
+    focus: "center",
+  };
+
   return (
     <div>
       <div className="profile-container">
@@ -103,17 +115,21 @@ export default function Profile() {
         {userPosts.length === 0 ? (
           <p>You have not posted anything yet...</p>
         ) : (
-          <div className="profile-posts-container">
+          <Splide options={sliderOptions}>
             {userPosts.map((post) => (
-              <ProfilePostCard
-                key={post.id}
-                post={post}
-              />
+              <SplideSlide key={post.id}>
+                <ProfilePostCard
+                  post={post}
+                  onClick={() => navigate(`/fullpost/${post.id}?fromProfile=true`)}
+                />
+              </SplideSlide>
             ))}
-          </div>
+          </Splide>
         )}
       </section>
       <button onClick={handleLogout}>Logout</button>
     </div>
   );
 }
+
+export default Profile;
