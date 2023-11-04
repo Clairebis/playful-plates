@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"; // Add this import
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import "@splidejs/splide/dist/css/splide.min.css";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
+import LevelInfoPopup from "../pages/Profile/LevelInfoPopup";
 import ProfilePostCard from "./Profile/ProfilePostCard";
 import infoIcon from "../Assets/Icons/info-icon.svg";
 import editIcon from "../Assets/Icons/picture-edit.svg";
@@ -21,6 +22,16 @@ function Profile() {
   });
   const [userPosts, setUserPosts] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
+
+  const [isPopupVisible, setPopupVisible] = useState(false);
+
+  const handleInfoIconClick = () => {
+    setPopupVisible(true);
+  };
+
+  const closePopup = () => {
+    setPopupVisible(false);
+  };
 
   useEffect(() => {
     const uid = auth.currentUser ? auth.currentUser.uid : null;
@@ -66,7 +77,6 @@ function Profile() {
       })
       .catch((error) => {
         console.error("Error signing out", error);
-        console.log("Error signing out");
       });
   };
 
@@ -93,7 +103,7 @@ function Profile() {
 
   const uploadImage = async (imageFile) => {
     if (imageFile) {
-      const storage = getStorage(); // Initialize Firebase Storage
+      const storage = getStorage();
       const storageRef = ref(storage, "profile-images/" + auth.currentUser.uid);
       const uploadTask = uploadBytesResumable(storageRef, imageFile);
 
@@ -108,19 +118,17 @@ function Profile() {
         () => {
           getDownloadURL(uploadTask.snapshot.ref)
             .then((downloadURL) => {
-              // Update the user's image in the Firebase Realtime Database
               const uid = auth.currentUser.uid;
               const userRef = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/users/${uid}.json`;
 
               fetch(userRef, {
-                method: "PATCH", // Use PATCH to update the existing data
+                method: "PATCH",
                 body: JSON.stringify({ image: downloadURL }),
                 headers: {
                   "Content-Type": "application/json",
                 },
               })
                 .then(() => {
-                  // Update the user's profile image in the state
                   setUserData((prevUserData) => ({
                     ...prevUserData,
                     image: downloadURL,
@@ -172,6 +180,7 @@ function Profile() {
                 src={infoIcon}
                 alt="Info Icon"
                 className="info-icon"
+                onClick={handleInfoIconClick}
               />
             </div>
             <p className="user-xp">{userData.xp} XP</p>
@@ -202,6 +211,12 @@ function Profile() {
         )}
       </section>
       <button onClick={handleLogout}>Logout</button>
+      {isPopupVisible && (
+        <LevelInfoPopup
+          isVisible={isPopupVisible}
+          onClose={closePopup}
+        />
+      )}
     </div>
   );
 }
