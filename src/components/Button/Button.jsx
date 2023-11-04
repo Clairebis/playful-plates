@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./Button.css";
 
 
-const Button = (props) =>
+const Button = (props) => {
 return (
     <Link
       to={props.Link}
@@ -12,7 +12,6 @@ return (
     >
       {props.text || "button"}
     </Link>
-  );
-};
-
+  )
+}
 export default Button;

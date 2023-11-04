@@ -3,6 +3,7 @@
     flex-direction: row;
     gap:0.4rem;
     font-family: var(--body-font);
+    justify-content: flex-end;
 }
 
 .counter p {

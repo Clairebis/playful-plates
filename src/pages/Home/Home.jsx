@@ -6,8 +6,7 @@ import "../../pages/Home/Home.css";
 import Button from "../../components/Button/Button";
 import SmallChallengeSlider from "../../components/ChallengeCards/SmallChallengeSlider";
 import MyChallengeSlider from "../../components/ChallengeCards/MyChallengeSlider";
-import Countdown from "../../components/Countdown";
-import ComingChallengeCard from "../../components/ChallengeCards/ComingChallengeCard";
+import ComingChallengeSlider from "../../components/ChallengeCards/ComingChallengeSlider.jsx";
 
 export default function Home() {
   const auth = getAuth();
@@ -50,9 +49,10 @@ export default function Home() {
         <h1>Hello {username}!</h1>
       </div>
       <div className="pageLeftPadding">
-        <MyChallengeSlider sliderTitle="My Challenges"/>
-        <SmallChallengeSlider sliderTitle="Featured Challenges"/>
+        <MyChallengeSlider sliderTitle="My challenges"/>
+        <SmallChallengeSlider sliderTitle="Featured challenges"/>
         <Button className="button-yellow home-challenge-button page" text="Discover more challenges" Link="/challenges"/>
+        <ComingChallengeSlider sliderTitle="Coming soon"/>
         
       </div>
       {/* <div>

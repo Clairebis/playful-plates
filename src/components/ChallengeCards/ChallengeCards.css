@@ -16,6 +16,12 @@
     margin-bottom:1.5rem;
 }
 
+.myChallengeSlider .coming-soon {
+    margin-right:0;
+    gap:0;
+
+}
+
 .myChallengeSlider::-webkit-scrollbar {
     width: 0; /* Webkit (Chrome, Safari) */
     display: none; /* Hide scrollbar */
@@ -85,7 +91,6 @@
     height:5rem;
 }
 
-
 .challenge-card-bottom {
     display:flex;
     flex-direction: row;
@@ -119,18 +124,21 @@
     justify-content: space-between;
     background-color: var(--lime-25);
     padding:1rem;
-    width:18.5rem;
     border-radius:8px 8px 0px 0px;
     gap:0.5rem;
     margin-top:0.5rem;
     box-shadow: var(--box-shadow);
     border-radius: 8px;
+    width: auto;
+    margin-right:1rem;
 }
 
 .challenge-card-coming 
 .challenge-image, .challenge-card-text {
     opacity: 50%;
 }
+
+
 
 .challenge-card-content {
     display:flex;

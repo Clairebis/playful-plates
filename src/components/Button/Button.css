@@ -12,7 +12,7 @@
   background-color: var(--lime);
   cursor: pointer;
   box-shadow: var(--box-shadow);
-    text-align:center;
+  text-align:center;
   
 }
 
@@ -28,6 +28,9 @@
 
   .home-challenge-button {
     display:block;
+    width: auto;
     margin-right:1rem;
+    margin-bottom:1.5rem;
+
   }
 
