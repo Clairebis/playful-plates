@@ -23,8 +23,21 @@ export default function FullPost() {
     publishedAt: "",
   });
 
+  const [likeCount, setLikeCount] = useState(post.likes);
+
   function backToFeed() {
     navigate("/feed");
+  }
+
+  function handleLikeClick() {
+    setActive(!active);
+
+    // Update the like count based on the active state (not connected to db...)
+    if (active) {
+      setLikeCount(likeCount - 1);
+    } else {
+      setLikeCount(likeCount + 1);
+    }
   }
 
   useEffect(() => {
@@ -57,9 +70,9 @@ export default function FullPost() {
           </div>*/}
           <div className="fullPostLikes">
             <div className="fullPostHeart">
-              <Heart isActive={active} onClick={() => setActive(!active)} />
+              <Heart isActive={active} onClick={handleLikeClick} />
             </div>
-            <div> {post.likes} likes </div>
+            <div> {likeCount} likes </div>
           </div>
           <p>Published {post.publishedAt}</p>
         </section>

@@ -64,21 +64,25 @@ export default function Feed() {
       </section>
 
       <section className="feed">
-        {postsToDisplay.map((post) => {
-          // Check if the "public" attribute is true before displaying the post
-          if (post.public === true) {
-            // Check the selected tab (value) and filter posts accordingly
-            if (value === 0 /*&& post.isFriendPost*/) {
-              // Show all friends public posts based on our logic (e.g., using the isFriendPost property)
-              return <PostCard post={post} key={post.id} />;
-            } else if (value === 1) {
-              // Display all public posts for "All" tab
-              return <PostCard post={post} key={post.id} />;
-              // Show all public posts
+        {postsToDisplay.length === 0 ? (
+          <p>No matching posts found.</p>
+        ) : (
+          postsToDisplay.map((post) => {
+            // Check if the "public" attribute is true before displaying the post
+            if (post.public === true) {
+              // Check the selected tab (value) and filter posts accordingly
+              if (value === 0 /*&& post.isFriendPost*/) {
+                // Show all friends public posts based on our logic (e.g., using the isFriendPost property)
+                return <PostCard post={post} key={post.id} />;
+              } else if (value === 1) {
+                // Display all public posts for "All" tab
+                return <PostCard post={post} key={post.id} />;
+                // Show all public posts
+              }
             }
-          }
-          return null; // Don't render if public or if it doesn't match the selected tab's criteria
-        })}
+            return null; // Don't render if public or if it doesn't match the selected tab's criteria
+          })
+        )}
       </section>
     </section>
   );
