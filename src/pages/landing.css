@@ -1,0 +1,26 @@
+.landingPage {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.landingLogo {
+  display: flex;
+  margin: auto;
+  margin-top: 9rem;
+}
+
+.landingText {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.landingButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 4rem;
+}
+
+.landingButton {
+  text-align: center;
+}
