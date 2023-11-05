@@ -2,10 +2,12 @@
 .searchBar {
   display: flex;
   align-items: center;
-  background: #f0f0f0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  background: var(--oatmeal-100);
+  border: none;
+  border-radius: 8px;
   padding: 10px;
+  box-shadow: var(--box-shadow);
+  color: var(--eggplant-900);
 }
 /*Styling for the search input */
 .searchBarInput {
@@ -20,12 +22,5 @@
 .searchIcon {
   position: absolute;
   right: 10px;
-  color: #888;
-  cursor: pointer;
-}
-
-/* Styling for the search input when focused */
-.search-input:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 5px #007bff;
+  color: var(--eggplant-900);
 }
