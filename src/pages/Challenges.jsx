@@ -1,6 +1,8 @@
 import Header from "../components/Header/Header"
-import SmallChallengeSlider from "../components/ChallengeCards/SmallChallengeSlider"
+import SmallChallengeSlider from "../components/ChallengeCards/Sliders/SmallChallengeSlider"
 import SearchAndFilter from "../components/SearchAndFilter/SearchAndFilter"
+import LatestChallengeSlider from "../components/ChallengeCards/Sliders/LatestChallengeSlider"
+import SeasonalChallengeSlider from "../components/ChallengeCards/Sliders/SeasonalChallengeSlider"
 
 export default function Challenges() {
 
@@ -11,9 +13,9 @@ export default function Challenges() {
                 <SearchAndFilter/>
             </section>
             <section className="pageLeftPadding">
-                <SmallChallengeSlider sliderTitle="Latest Challenges"/>
+                <LatestChallengeSlider sliderTitle="Latest Challenges"/>
                 <SmallChallengeSlider sliderTitle="Popular with Friends"/>
-                <SmallChallengeSlider sliderTitle="Seasonal"/>
+                <SeasonalChallengeSlider sliderTitle="Seasonal Challenges"/>
             </section>
         </>
     )

@@ -1,7 +1,7 @@
-import MyChallengeCard from "./MyChallengeCard";
 import { useEffect, useState } from "react";
+import SmallChallengeCard from "../SmallChallengeCard";
 
-export default function MyChallengeSlider ({sliderTitle}) {
+export default function LatestChallengeSlider ({sliderTitle}) {
 
     const [challenges, setChallenges] = useState([]);
 
@@ -28,9 +28,9 @@ export default function MyChallengeSlider ({sliderTitle}) {
     return (
     <>
         <h2>{sliderTitle}</h2>
-        <div className="myChallengeSlider">
-                {challengesToDisplay.filter(c => c.categories.includes("Many Ingredients") || c.categories.includes("One Ingredient")).map(challenge => (
-                    <MyChallengeCard challenge={challenge} key={challenge.id} />
+        <div className="SmallChallengeSlider">
+                {challengesToDisplay.filter(c => c.categories.includes("Easy")).map(challenge => (
+                    <SmallChallengeCard challenge={challenge} key={challenge.id} />
                 ))}
         </div>
 

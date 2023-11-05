@@ -4,9 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import HomeHeader from "../../components/HomeHeader/HomeHeader";
 import "../../pages/Home/Home.css";
 import Button from "../../components/Button/Button";
-import SmallChallengeSlider from "../../components/ChallengeCards/SmallChallengeSlider";
-import MyChallengeSlider from "../../components/ChallengeCards/MyChallengeSlider";
-import ComingChallengeSlider from "../../components/ChallengeCards/ComingChallengeSlider.jsx";
+import SmallChallengeSlider from "../../components/ChallengeCards/Sliders/SmallChallengeSlider";
+import MyChallengeSlider from "../../components/ChallengeCards/Sliders/MyChallengeSlider";
+import ComingChallengeSlider from "../../components/ChallengeCards/Sliders/ComingChallengeSlider.jsx";
 
 export default function Home() {
   const auth = getAuth();

@@ -1,8 +1,7 @@
-import ComingChallengeCard from "./ComingChallengeCard";
-import MyChallengeCard from "./MyChallengeCard";
 import { useEffect, useState } from "react";
+import SmallChallengeCard from "../SmallChallengeCard";
 
-export default function ComingChallengeSlider ({sliderTitle}) {
+export default function SmallChallengeSlider ({sliderTitle}) {
 
     const [challenges, setChallenges] = useState([]);
 
@@ -29,9 +28,9 @@ export default function ComingChallengeSlider ({sliderTitle}) {
     return (
     <>
         <h2>{sliderTitle}</h2>
-        <div>
-                {challengesToDisplay.filter(c => c.categories.includes("Coming Soon")).map(challenge => (
-                    <ComingChallengeCard challenge={challenge} key={challenge.id} />
+        <div className="SmallChallengeSlider">
+                {challengesToDisplay.filter(c => c.categories.includes("Featured")).map(challenge => (
+                    <SmallChallengeCard challenge={challenge} key={challenge.id} />
                 ))}
         </div>
 
