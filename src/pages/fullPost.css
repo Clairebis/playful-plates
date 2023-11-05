@@ -12,7 +12,10 @@
 
 .fullPostBack {
   padding: 16px;
-  width: 90vw;
+  width: 91vw;
+  position: sticky;
+  top: 0;
+  background-color: var(--oatmeal-100);
 }
 
 .fullPostLower {

@@ -4,11 +4,13 @@ export default function SearchBar({
   placeholder,
 }) {
   return (
-    <input
-      type="text"
-      placeholder={placeholder} // Use the placeholder prop here
-      value={searchValue}
-      onChange={(event) => setSearchValue(event.target.value.toLowerCase())}
-    />
+    <div className="searchBar">
+      <input
+        type="text"
+        placeholder={placeholder} // Use the placeholder prop here
+        value={searchValue}
+        onChange={(event) => setSearchValue(event.target.value.toLowerCase())}
+      />
+    </div>
   );
 }

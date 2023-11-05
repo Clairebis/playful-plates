@@ -2,12 +2,16 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+  margin-bottom: 7rem;
 }
 
 .feedTabs {
   width: 100%;
   margin-bottom: 1rem;
-  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+  position: sticky;
+  top: 0;
+  background-color: var(--oatmeal-100);
 }
 
 .feedTabs .MuiTabs-indicator {
@@ -25,4 +29,8 @@
   width: 45vw;
   font-size: var(--subheading-size);
   text-transform: capitalize;
+}
+
+.feedSearch {
+  margin-bottom: 1rem;
 }
