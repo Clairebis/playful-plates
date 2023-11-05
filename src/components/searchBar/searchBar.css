@@ -1,0 +1,31 @@
+/* Styling for the search container */
+.searchBar {
+  display: flex;
+  align-items: center;
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+}
+/*Styling for the search input */
+.searchBarInput {
+  border: none;
+  outline: none;
+  background: url("../../Assets/Icons/searchIcon.svg") no-repeat left center;
+  padding-left: 32px;
+  width: 100%;
+}
+
+/* Styling for the search icon */
+.searchIcon {
+  position: absolute;
+  right: 10px;
+  color: #888;
+  cursor: pointer;
+}
+
+/* Styling for the search input when focused */
+.search-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px #007bff;
+}

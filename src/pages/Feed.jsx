@@ -8,6 +8,7 @@ import SearchBar from "../components/searchBar/SearchBar";
 export default function Feed() {
   const [posts, setPosts] = useState([]);
   const [value, setValue] = useState(1);
+  const [searchValue, setSearchValue] = useState("");
 
   //fetch posts from firebase
   useEffect(() => {
@@ -29,6 +30,18 @@ export default function Feed() {
     getPosts();
   }, []);
 
+  let postsToDisplay = [...posts]; // copy of the posts array
+
+  //filter the posts based on the searchValue input by the user
+  //does the searchValue match any of the post properties?
+  if (searchValue) {
+    postsToDisplay = postsToDisplay.filter(
+      (post) =>
+        post.title.toLowerCase().includes(searchValue) ||
+        post.description.toLowerCase().includes(searchValue)
+    );
+  }
+
   return (
     <section className="page">
       <Tabs
@@ -43,11 +56,15 @@ export default function Feed() {
       </Tabs>
 
       <section className="feedSearch">
-        <SearchBar placeholder="Search posts" />
+        <SearchBar
+          placeholder="Search posts"
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+        />
       </section>
 
       <section className="feed">
-        {posts.map((post) => {
+        {postsToDisplay.map((post) => {
           // Check if the "public" attribute is true before displaying the post
           if (post.public === true) {
             // Check the selected tab (value) and filter posts accordingly

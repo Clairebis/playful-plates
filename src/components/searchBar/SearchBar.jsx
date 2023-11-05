@@ -1,3 +1,5 @@
+import "./SearchBar.css";
+
 export default function SearchBar({
   searchValue,
   setSearchValue,
@@ -6,6 +8,7 @@ export default function SearchBar({
   return (
     <div className="searchBar">
       <input
+        className="searchBarInput"
         type="text"
         placeholder={placeholder} // Use the placeholder prop here
         value={searchValue}
