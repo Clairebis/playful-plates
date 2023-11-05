@@ -23,11 +23,11 @@
   font-size: var(--body-text-small-size);
   color: rgba(43, 36, 42, 0.4);
 }
-
-/* Add a color to the active/current link */
 .nav-link.active {
+  /* Your styles for active links go here */
   color: var(--eggplant-900);
-  opacity: 1; /* Full opacity for the active link */
+  opacity: 1;
+  /* Add any other styles you want for active links */
 }
 
 /* Set the opacity for icons within .nav-link */

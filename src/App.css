@@ -35,24 +35,24 @@ h1 {
   font-family: var(--heading-font);
   font-size: var(--heading-size);
   font-weight: var(--font-weight-bold);
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
 
 h2 {
   font-family: var(--heading-font);
   font-size: var(--subheading-size);
   font-weight: var(--font-weight-bold);
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
 
 p {
   font-family: var(--body-font);
   font-size: var(--body-text-size);
   font-weight: var(--font-weight-regular);
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
 
 .small {
@@ -64,4 +64,8 @@ p {
 .page {
   padding-left: 16px;
   padding-right: 16px;
+}
+
+a {
+  text-decoration: none;
 }

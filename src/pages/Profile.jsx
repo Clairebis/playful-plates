@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { getAuth, signOut } from "firebase/auth";
+import { useNavigate, Link } from "react-router-dom";
+import { getAuth } from "firebase/auth";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import "@splidejs/splide/dist/css/splide.min.css";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import LevelInfoPopup from "../pages/Profile/LevelInfoPopup";
+import friendsImage from "../Assets/Icons/friends-image.svg";
 import ProfilePostCard from "./Profile/ProfilePostCard";
 import infoIcon from "../Assets/Icons/info-icon.svg";
 import editIcon from "../Assets/Icons/picture-edit.svg";
@@ -68,17 +69,6 @@ function Profile() {
         });
     }
   }, [auth.currentUser]);
-
-  const handleLogout = () => {
-    signOut(auth)
-      .then(() => {
-        navigate("/");
-        console.log("Signed out successfully");
-      })
-      .catch((error) => {
-        console.error("Error signing out", error);
-      });
-  };
 
   const sliderOptions = {
     type: "slide",
@@ -210,7 +200,26 @@ function Profile() {
           </Splide>
         )}
       </section>
-      <button onClick={handleLogout}>Logout</button>
+      <Link
+        to="/myfriends"
+        className="friends-container">
+        <div className="friends-content">
+          <h2 className="friends-heading">Friends</h2>
+          <img
+            src={friendsImage}
+            alt="Friends Image"
+            width="115"
+            height="95"
+          />
+        </div>
+      </Link>
+      <Link
+        to="/settings"
+        className="settings-container">
+        <div className="settings-content">
+          <h2>Settings</h2>
+        </div>
+      </Link>
       {isPopupVisible && (
         <LevelInfoPopup
           isVisible={isPopupVisible}
