@@ -3,10 +3,12 @@ import SmallChallengeCard from "./ChallengeCards/SmallChallengeCard";
 import "./Multifilter.css";
 
 export default function MultiFilter() {
+  // State variables to store challenges, selected filters, selected difficulty, and filtered challenges
   const [challenges, setChallenges] = useState([]);
   const [selectedFilters, setSelectedFilters] = useState([]);
-  const [filteredItems, setFilteredItems] = useState([]); // Initialize with an empty array
   const [selectedDifficulty, setSelectedDifficulty] = useState("");
+  const [filteredItems, setFilteredItems] = useState([]);
+  const [filtersSelected, setFiltersSelected] = useState(false);
 
   let difficultyFilters = ["Easy", "Medium", "Hard"];
   let categoryFilters = [
@@ -33,18 +35,20 @@ export default function MultiFilter() {
     getChallenges();
   }, []);
 
-  const handleFilter = (selectedCategory, isDifficultyFilter) => {
-    if (isDifficultyFilter) {
-      setSelectedDifficulty((prevDifficulty) =>
-        prevDifficulty === selectedCategory ? "" : selectedCategory
-      );
+  const handleFilter = (category) => {
+    if (selectedFilters.includes(category)) {
+      const updatedFilters = selectedFilters.filter((filter) => filter !== category);
+      setSelectedFilters(updatedFilters);
     } else {
-      if (selectedFilters.includes(selectedCategory)) {
-        setSelectedFilters(selectedFilters.filter((el) => el !== selectedCategory));
-      } else {
-        setSelectedFilters([...selectedFilters, selectedCategory]);
-      }
+      setSelectedFilters([...selectedFilters, category]);
     }
+  };
+
+  const handleDifficultyFilter = (difficulty) => {
+    // If the same difficulty filter is selected again, clear it
+    setSelectedDifficulty((prevDifficulty) =>
+      prevDifficulty === difficulty ? "" : difficulty
+    );
   };
 
   useEffect(() => {
@@ -58,23 +62,24 @@ export default function MultiFilter() {
         selectedFilters.every((selectedCategory) =>
           challenge.categories.includes(selectedCategory)
         );
-
       const hasSelectedDifficulty =
         selectedDifficulty === "" || challenge.categories.includes(selectedDifficulty);
 
       return hasSelectedCategory && hasSelectedDifficulty;
     });
+
     setFilteredItems(filteredItems);
+    setFiltersSelected(selectedFilters.length > 0 || selectedDifficulty !== "");
   };
 
   return (
     <div>
       <div className="filter-buttons-container">
-      <h2>Difficulty</h2>
         <div className="difficulty-filter">
+          <h2>Difficulty</h2>
           {difficultyFilters.map((difficulty, idx) => (
             <button
-              onClick={() => handleFilter(difficulty, true)}
+              onClick={() => handleDifficultyFilter(difficulty)}
               className={`filter-button ${
                 selectedDifficulty === difficulty ? "selected-filter" : ""
               }`}
@@ -84,12 +89,11 @@ export default function MultiFilter() {
             </button>
           ))}
         </div>
-        
-        <h2>Category</h2>
         <div className="category-filter">
+          <h2>Category</h2>
           {categoryFilters.map((category, idx) => (
             <button
-              onClick={() => handleFilter(category, false)}
+              onClick={() => handleFilter(category)}
               className={`filter-button ${
                 selectedFilters.includes(category) ? "selected-filter" : ""
               }`}
@@ -101,12 +105,16 @@ export default function MultiFilter() {
         </div>
       </div>
 
-      <h2>Filtered challenges</h2>
-      <div className="SmallChallengeSlider">
-        {filteredItems.map((challenge) => (
-          <SmallChallengeCard challenge={challenge} key={challenge.id} />
-        ))}
-      </div>
+      {filtersSelected && (
+        <>
+          <h2>Results</h2>
+          <div className="SmallChallengeSlider">
+            {filteredItems.map((challenge) => (
+              <SmallChallengeCard challenge={challenge} key={challenge.id} />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }
