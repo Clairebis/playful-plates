@@ -1,4 +1,4 @@
-import { getAuth, signOut } from "firebase/auth";
+import { getAuth /*signOut*/ } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import HomeHeader from "../../components/HomeHeader/HomeHeader";
@@ -10,8 +10,8 @@ import ComingChallengeSlider from "../../components/ChallengeCards/Sliders/Comin
 
 export default function Home() {
   const auth = getAuth();
-  const navigate = useNavigate();
-  const uid = auth.currentUser.uid;
+  // const navigate = useNavigate();
+  const uid = auth.currentUser?.uid;
   const [username, setUsername] = useState("");
 
   const url = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/users/${uid}.json`;
