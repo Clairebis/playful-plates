@@ -5,8 +5,9 @@
   border-radius: 8px 8px 0px 0px;
 }
 
-.postCardBold {
+.postCardBoldTitle {
   font-weight: bold;
+  height: 2.9rem;
 }
 
 .postCardLikes {
@@ -27,7 +28,7 @@
 .postCardLower {
   display: flex;
   flex-direction: column;
-
+  color: var(--eggplant-900);
   padding: 0.5rem;
 }
 

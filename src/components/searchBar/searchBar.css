@@ -1,0 +1,26 @@
+/* Styling for the search container */
+.searchBar {
+  display: flex;
+  align-items: center;
+  background: var(--oatmeal-100);
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: var(--box-shadow);
+  color: var(--eggplant-900);
+}
+/*Styling for the search input */
+.searchBarInput {
+  border: none;
+  outline: none;
+  background: url("../../Assets/Icons/searchIcon.svg") no-repeat left center;
+  padding-left: 32px;
+  width: 100%;
+}
+
+/* Styling for the search icon */
+.searchIcon {
+  position: absolute;
+  right: 10px;
+  color: var(--eggplant-900);
+}

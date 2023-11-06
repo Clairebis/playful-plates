@@ -2,6 +2,8 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { NavLink, useNavigate } from "react-router-dom";
 import { auth } from "../firebase-config";
 import { useState } from "react";
+import logoLarge from "../Assets/logoLarge.png";
+import "./signUp.css";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -52,6 +54,7 @@ export default function SignUp() {
 
   return (
     <div>
+      <img src={logoLarge} alt="logo" className="landingLogo" />
       <form>
         <div>
           <label htmlFor="email-address">Email address</label>
