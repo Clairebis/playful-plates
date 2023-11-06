@@ -1,4 +1,3 @@
-import Button from "../components/Button/Button";
 import "../components/Label/PostChallenge.css";
 import { useState, useEffect } from "react";
 import placeholderImage from "../Assets/uploadPlaceholder.png";
@@ -123,7 +122,8 @@ export default function UpdatePost() {
 
           {/* Button to Update Post */}
           <div className="containerButtonPostChallenge">
-            <Button text="Update Post" Link="/feed" />
+            {/* <Button text="Update Post" Link="/feed" /> */}
+            <input type="submit" value="Update Post"></input>
           </div>
         </section>
       </form>

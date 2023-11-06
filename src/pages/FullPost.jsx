@@ -11,6 +11,7 @@ export default function FullPost() {
   const navigate = useNavigate();
   const url = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/posts/${params.postId}.json`;
   const [active, setActive] = useState(false);
+  const postId = params.postId;
 
   const [post, setPost] = useState({
     image: "",
@@ -87,9 +88,9 @@ export default function FullPost() {
             <Button
               text="Delete"
               className="button-outline"
-              onClick={deletePost}
+              function={deletePost}
             ></Button>
-            <Link to={`/post/${post.id}/update`} className="button-green">
+            <Link to={`/post/${postId}/update`} className="button-green">
               Edit
             </Link>
           </section>
