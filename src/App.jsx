@@ -4,7 +4,7 @@ import Nav from "./components/Navigation/Nav";
 import Landing from "./pages/Landing";
 import Home from "./pages/Home/Home";
 import Recipes from "./pages/Recipes";
-// import PostChallenge from "./pages/PostChallenge";
+import PostChallenge from "./pages/PostChallenge";
 import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
 import FullPost from "./pages/FullPost";
@@ -16,6 +16,7 @@ import MyFriends from "./pages/Profile/MyFriends";
 import Settings from "./pages/Profile/Settings";
 import "./firebase-config";
 import ChallengePage from "./pages/ChallengePage/ChallengePage";
+import ChallengeCompleted from "./pages/ChallengeCompleted/ChallengeCompleted";
 import Challenges from "./pages/Challenges";
 
 function App() {
