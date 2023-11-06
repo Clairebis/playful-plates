@@ -2,14 +2,35 @@
 import Header from "../components/Header/Header";
 import Button from "../components/Button/Button";
 import "../components/Label/PostChallenge.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRef } from "react";
 import placeholderImage from "../Assets/uploadPlaceholder.png";
 import PostLabel from "../components/Label/PostLabel";
 import arrowDown from "../Assets/Icons/arrow_down.svg";
 import arrowUp from "../Assets/Icons/arrow_up.svg";
+import { useNavigate, useParams } from "react-router-dom";
+import { getAuth } from "firebase/auth";
 
 export default function PostChallenge() {
+  //fetch information about currently logged in user - uid
+  const auth = getAuth();
+  const uid = auth.currentUser.uid;
+  //------------------------------GET CHALLENGE NAME--------------------------------
+  let { challengeId } = useParams();
+  const [challengeTitle, setChallengeTitle] = useState("");
+  const challengeURL = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/challenges/${challengeId}.json`;
+
+  useEffect(() => {
+    async function getChallengeTitle() {
+      const response = await fetch(challengeURL);
+      const challengeData = await response.json();
+
+      // Set the challengeTitle state with the title from challengeData
+      setChallengeTitle(challengeData.title);
+    }
+    getChallengeTitle();
+  }, [challengeId]);
+
   //-------------------------------PHOTO UPLOAD-------------------------------------
   const [errorMessage, setErrorMessage] = useState("");
   const [image, setImage] = useState(null);
@@ -174,21 +195,22 @@ export default function PostChallenge() {
   }
 
   //------------------------GATHER ALL INFORMATION -------------------
-
+  const navigate = useNavigate();
   async function gatherAllData(event) {
     event.preventDefault();
     try {
       const imageUrl = await uploadImage();
 
-      const newPost = {
+      // Create a new post object with updated values
+      const updatedPost = {
         challengeCompleted: true,
         image: imageUrl,
-        title: title,
-        description: description,
+        title: title, // Update the title with the user input
+        description: description, // Update the description with the user input
         tags: getChosenTags(),
-        uid: 1, // Change to dynamic (user-specific UID)
+        uid: uid, // Keep the original uid
         publishedAt: formatDateToCustomSyntax(),
-        challengeId: 1, // Change to dynamic
+        challengeId: challengeId, // Keep the original challengeId
         public: isPostPublic(),
       };
 
@@ -196,13 +218,14 @@ export default function PostChallenge() {
         "https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/posts.json";
       const response = await fetch(url, {
         method: "POST",
-        body: JSON.stringify(newPost),
+        body: JSON.stringify(updatedPost), // Send the updated post object
       });
 
       if (response.ok) {
         console.log("Post added");
-        console.log(newPost);
-        navigate("/");
+        console.log(updatedPost); // This will include the user's input
+
+        navigate(`/challengecompleted/${challengeId}`);
       } else {
         console.log("An error occurred when posting");
       }
@@ -213,7 +236,8 @@ export default function PostChallenge() {
 
   return (
     <section className="page">
-      <Header pageTitle="Mystery Box" /> {/* change to fetch from challenges*/}
+      <Header pageTitle={challengeTitle} />{" "}
+      {/* change to fetch from challenges*/}
       {/* -------Photo upload section ----*/}
       <>
         <input
