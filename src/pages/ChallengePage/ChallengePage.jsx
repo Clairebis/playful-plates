@@ -1,31 +1,37 @@
 /*----------------------------NATALIA---------------------------*/
-
 import Header from "../../components/Header/Header";
 import Button from "../../components/Button/Button";
-import { useParams } from "react-router-dom";
+import { Route, Routes, useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import "./ChallengePage.css";
 import placeholderImg from "../../Assets/Portrait_Placeholder.png";
+import { getAuth } from "firebase/auth";
+import PostChallenge from "../PostChallenge";
+import close from "../../Assets/Icons/close.svg";
+import tick from "../../Assets/Icons/tick.svg";
 
 export default function ChallengePage() {
-  // fetch all information about challenge from the database
+  //fetch information about currently logged in user - uid
+  const auth = getAuth();
+  const uid = auth.currentUser.uid;
+
+  //fetch all information about challenge from the database
   let { challengeId } = useParams();
-  let { userId } = useParams();
-  challengeId -= 1; //adjusted manually
+
   const url = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/challenges/${challengeId}.json`;
   const urlPosts =
     "https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/posts.json";
 
-  console.log("Challenge Id", challengeId);
-  console.log("User ID", userId);
+  console.log("Challenge Id", typeof challengeId, challengeId);
+  console.log("User ID", typeof uid, uid);
 
   const [challenge, setChallenge] = useState({
     description: "",
     title: "",
     subheading: "",
     image: "",
-    difficultylevel: "",
+    categories: "",
     xppoints: "",
   });
 
@@ -42,21 +48,113 @@ export default function ChallengePage() {
   //render div with buttons depending on post database
   const [postExists, setPostExists] = useState(false);
   useEffect(() => {
-    //fetch posts data based on challengeId and userId
+    //fetch posts data based on challengeId and current user uid
     async function getPostExists() {
       const response = await fetch(urlPosts);
       const postsData = await response.json();
-      console.log(postsData);
-      const exists = postsData.some(
-        (post) => post.uid === userId && post.challengeId === challengeId
+      console.log(typeof postsData, postsData);
+      const exists = Object.values(postsData).some(
+        (post) => post.uid == uid && post.challengeId == challengeId
       );
       if (exists) {
         // The user has already joined the challenge, so set the state to true
+        console.log(exists);
         setPostExists(true);
+        console.log("Post Exists");
+      } else {
+        console.log("Post does not exist");
+        console.log(exists);
       }
     }
     getPostExists();
-  }, [userId, challengeId]);
+  }, [uid, challengeId]);
+
+  //create an empty post when CTA Join Challenge is clicked and rerender the div with buttons
+  async function joinChallenge(event) {
+    event.preventDefault();
+    try {
+      const newPost = {
+        challengeCompleted: false,
+        image: "",
+        title: "",
+        description: "",
+        tags: "",
+        uid: uid,
+        publishedAt: "",
+        challengeId: challengeId,
+        public: false,
+        likes: "",
+      };
+
+      const url =
+        "https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/posts.json";
+      const response = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(newPost),
+      });
+      const data = await response.json(); // Get the response data, which includes the postID
+      console.log("Post added with ID:", data.name);
+
+      if (response.ok) {
+        console.log(newPost);
+        setPostExists(true);
+      } else {
+        console.log("An error occurred when posting");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  }
+  //everything about modals function
+  const modal = document.querySelector(".modalRemove");
+  const modalConfirmation = document.querySelector(".confirmation");
+  function closeModal() {
+    modal.style.display = "none";
+    modalConfirmation.style.display = "none";
+  }
+
+  function openModal() {
+    modal.style.display = "block";
+  }
+
+  //delete empty Post with current uid and challenge Id to remove the challenge from list of active and rerender the div with buttons
+  async function removeChallenge() {
+    try {
+      // Fetch the post ID of the post associated with the challenge
+      const response = await fetch(urlPosts);
+      const postsData = await response.json();
+      const post = Object.values(postsData).find(
+        (post) => post.uid === uid && post.challengeId === challengeId
+      );
+
+      if (post) {
+        // If the post is found, delete it
+        const postId = Object.keys(postsData).find(
+          (key) => postsData[key] === post
+        );
+
+        const deleteUrl = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/posts/${postId}.json`;
+
+        const deleteResponse = await fetch(deleteUrl, {
+          method: "DELETE",
+        });
+
+        if (deleteResponse.ok) {
+          console.log("Post deleted successfully");
+          setPostExists(false);
+          modal.style.display = "none";
+          modalConfirmation.style.display = "block";
+          // You can update the state or perform any other necessary actions here
+        } else {
+          console.log("An error occurred when deleting the post");
+        }
+      } else {
+        console.log("Post not found for this challenge");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  }
 
   return (
     <section className="page">
@@ -73,7 +171,7 @@ export default function ChallengePage() {
           {" "}
           <p>
             Difficulty:{" "}
-            <span className="boldSpan">{challenge.difficultylevel} </span>
+            <span className="boldSpan">{challenge.categories[1]} </span>
           </p>
         </div>
         <div className="challengeXPLabel">
@@ -94,16 +192,64 @@ export default function ChallengePage() {
 
       {/*----------Part that renders based on Posts in database----------*/}
 
-      <div className="buttonsChallengePage" style={{ display: "none" }}>
-        {postExists ? (
-          <Button text="Complete Challenge" />
-        ) : (
-          <Button text="Join Challenge" />
-        )}
+      {postExists ? (
+        <div className="buttonsChallengePageColumn">
+          <Button
+            text="Complete Challenge"
+            className="completeBtn"
+            Link={`/postchallenge/${challengeId}`}
+          />
+          <div>
+            {" "}
+            <p className="removeBtnTertiary" onClick={openModal}>
+              Remove challenge from your list
+            </p>
+          </div>
+        </div>
+      ) : (
+        <div className="buttonsChallengePage">
+          <Button text="Share with Friends" className="button-outline" />
+          <Button text="Join Challenge" function={joinChallenge} />
+        </div>
+      )}
+      {/*----------Modal when CTA Remove this challenge is clicked ------- */}
+      <div className="modalRemove">
+        <div className="modalRemoveContent">
+          <div className="closeModalRemove">
+            <img src={close} alt="" onClick={closeModal} />
+          </div>
+          <div className="modalRemoveText">
+            <p style={{ fontWeight: "bold" }}>
+              Are you sure you want to remove this challenge from your list?
+            </p>
+            <div className="modalBtnHorizontal">
+              <Button
+                text="No"
+                className="button-outline btnSmall"
+                function={closeModal}
+              />
+              <Button
+                text="Yes"
+                className="btnSmall"
+                function={removeChallenge}
+              />
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="buttonsChallengePage">
-        <Button text="Share with Friends" className="button-outline" />
-        <Button text="Join Challenge" />
+      {/*----------Modal with removal confirmation ------- */}
+      <div className="modalRemove confirmation">
+        <div className="modalRemoveContent">
+          <div className="closeModalRemove">
+            <img src={close} alt="" onClick={closeModal} />
+          </div>
+          <div className="modalRemoveText">
+            <p style={{ fontWeight: "bold" }}>
+              Challenge was removed from your active challenges.
+            </p>
+            <img src={tick} alt="" />
+          </div>
+        </div>
       </div>
     </section>
   );
