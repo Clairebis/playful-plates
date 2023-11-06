@@ -16,8 +16,6 @@ export default function Challenges() {
             <section className="page">
                 <Header pageTitle="Challenges"/>
                 <SearchAndFilter/>
-            </section>
-            <section className="pageLeftPadding">
                 <LatestChallengeSlider sliderTitle="Latest Challenges"/>
                 <SmallChallengeSlider sliderTitle="Popular with Friends"/>
                 <SeasonalChallengeSlider sliderTitle="Seasonal Challenges"/>
