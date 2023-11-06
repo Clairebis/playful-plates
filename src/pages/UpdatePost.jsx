@@ -18,7 +18,7 @@ export default function UpdatePost() {
     title: "",
     description: "",
     image: "",
-    uid: user.uid, // Make sure to set the correct user ID here
+    // uid: user.uid, // Make sure to set the correct user ID here
   });
 
   const [errorMessage, setErrorMessage] = useState("");
@@ -55,11 +55,12 @@ export default function UpdatePost() {
       console.log("You are not authorised to update this post.");
       return;
     }
-
+    console.log("Sending PUT request to update post...");
     const response = await fetch(url, {
       method: "PUT",
       body: JSON.stringify(post),
     });
+    console.log("PUT request completed with status:", response.status);
 
     if (response.ok) {
       console.log("Post updated");

@@ -7,9 +7,9 @@ import arrow from "../Assets/Icons/arrowback.svg";
 import Button from "../components/Button/Button";
 
 export default function FullPost() {
-  const { postId } = useParams();
+  const params = useParams();
   const navigate = useNavigate();
-  const url = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/posts/${postId}.json`;
+  const url = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/posts/${params.postId}.json`;
   const [active, setActive] = useState(false);
 
   const [post, setPost] = useState({
