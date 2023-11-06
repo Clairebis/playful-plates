@@ -2,14 +2,9 @@ import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import Nav from "./components/Navigation/Nav";
 import Landing from "./pages/Landing";
-<<<<<<< Updated upstream
+import PostChallenge from "./pages/PostChallenge";
 import Home from "./pages/Home/Home";
 import Recipes from "./pages/Recipes";
-import PostChallenge from "./pages/PostChallenge";
-=======
-import Home from "./pages/Home";
-import Recipes from "./pages/Recipes";
->>>>>>> Stashed changes
 import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
 import FullPost from "./pages/FullPost";
@@ -59,29 +54,22 @@ function App() {
           element={<Recipes />}
         />
         <Route
-<<<<<<< Updated upstream
           path="/challenges"
           element={<Challenges />}
         />
         <Route
-=======
->>>>>>> Stashed changes
           path="/feed"
           element={<Feed />}
         />
         <Route
-<<<<<<< Updated upstream
           path="/post/:postId"
           element={<FullPost />}
         />
         <Route
-=======
->>>>>>> Stashed changes
           path="/profile"
           element={<Profile />}
         />
         <Route
-<<<<<<< Updated upstream
           path="/challenges/:challengeId"
           element={<ChallengePage />}
         />
@@ -93,10 +81,19 @@ function App() {
           path="/settings"
           element={<Settings />}
         />
-
         <Route
-=======
->>>>>>> Stashed changes
+          path="/postchallenge/:challengeId"
+          element={<PostChallenge />}
+        />
+        <Route
+          path="/challengecompleted/:challengeId"
+          element={<ChallengeCompleted />}
+        />
+        {/* Testing <Route
+          path="/fullpost/:post.id"
+          element={<FullPost />}
+        /> */}
+        <Route
           path="*"
           element={<Navigate to="/" />}
         />
@@ -106,7 +103,6 @@ function App() {
 
   // public route, no nav bar
   const publicRoutes = (
-<<<<<<< Updated upstream
     <Routes>
       <Route
         path="/"
@@ -125,28 +121,6 @@ function App() {
         element={<Navigate to="/" />}
       />
     </Routes>
-=======
-    <>
-      <Routes>
-        <Route
-          path="/"
-          element={<Landing />}
-        />
-        <Route
-          path="/signup"
-          element={<SignUp />}
-        />
-        <Route
-          path="/login"
-          element={<LogIn />}
-        />
-        <Route
-          path="*"
-          element={<Navigate to="/" />}
-        />
-      </Routes>
-    </>
->>>>>>> Stashed changes
   );
 
   // return private routes if the user is authenticated, otherwise return public routes
