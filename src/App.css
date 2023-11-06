@@ -79,3 +79,48 @@ a {
   padding-left: 16px;
   margin-bottom: 8rem;
 }
+
+.bottom-nav {
+  background-color: #fefdfa;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* Style the links inside the navigation bar */
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  padding: 12px;
+  font-family: "Lato", sans-serif; /* Use the Lato font family */
+  font-weight: 400; /* Lato Regular font weight */
+  font-size: 0.75rem; /* Font size of 0.75rem (equivalent to 12 pixels) */
+  color: rgba(
+    43,
+    36,
+    42,
+    0.4
+  ); /* Set the color to #2B242A with 40% opacity for inactive icons and text */
+}
+
+/* Add a color to the active/current link */
+.nav-link.active {
+  color: #2b242a;
+  opacity: 1; /* Full opacity for the active link */
+}
+/* Set the opacity for icons within .nav-link */
+.nav-link img {
+  opacity: 0.4; /* Set the opacity to 40% for all icons */
+}
+
+/* Set the opacity for icons within .nav-link.active */
+.nav-link.active img {
+  opacity: 1; /* Full opacity for icons in the active link */
+}
