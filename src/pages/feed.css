@@ -6,11 +6,11 @@
 }
 
 .feedTabs {
-  width: 100%;
+  width: 100% !important;
   margin-bottom: 1rem;
   padding-top: 2.5rem;
   position: sticky;
-  top: 0;
+  top: 0 !important;
   background-color: var(--oatmeal-100);
 }
 
@@ -18,17 +18,17 @@
   background-color: var(--banana);
 }
 .MuiButtonBase-root.MuiTab-root.MuiTab-textColorPrimary.Mui-selected.feedTab.css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
-  color: var(--aubergine);
-  width: 45 vw;
-  font-size: var(--subheading-size);
-  text-transform: capitalize;
+  color: var(--aubergine) !important;
+  width: 45 vw !important;
+  font-size: var(--subheading-size) !important;
+  text-transform: capitalize !important;
 }
 
 .MuiButtonBase-root.MuiTab-root.MuiTab-textColorPrimary.feedTab.css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
-  color: #d9d9d9;
-  width: 45vw;
-  font-size: var(--subheading-size);
-  text-transform: capitalize;
+  color: #d9d9d9 !important;
+  width: 45vw !important;
+  font-size: var(--subheading-size) !important;
+  text-transform: capitalize !important;
 }
 
 .feedSearch {
