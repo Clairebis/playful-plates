@@ -1,15 +1,17 @@
-import { getAuth, signOut } from "firebase/auth";
+import { getAuth /*signOut*/ } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import HomeHeader from "../../components/HomeHeader/HomeHeader";
 import "../../pages/Home/Home.css";
-import ChallengeSlider from "../../components/ChallengeCards/ChallengeSlider";
 import Button from "../../components/Button/Button";
+import SmallChallengeSlider from "../../components/ChallengeCards/Sliders/SmallChallengeSlider";
+import MyChallengeSlider from "../../components/ChallengeCards/Sliders/MyChallengeSlider";
+import ComingChallengeSlider from "../../components/ChallengeCards/Sliders/ComingChallengeSlider.jsx";
 
 export default function Home() {
   const auth = getAuth();
-  const navigate = useNavigate();
-  const uid = auth.currentUser.uid;
+  // const navigate = useNavigate();
+  const uid = auth.currentUser?.uid;
   const [username, setUsername] = useState("");
 
   const url = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/users/${uid}.json`;
@@ -42,11 +44,16 @@ export default function Home() {
 
   return (
     <>
-      <div className="page">
+      <div className="page home-content">
         <HomeHeader />
-        <h1>Hello {username}</h1>
-        <ChallengeSlider sliderTitle="My Challenges" />
-        <Button className="button-outline" />
+        <h1>Hello {username}!</h1>
+      </div>
+      <div className="pageLeftPadding">
+        <MyChallengeSlider sliderTitle="My challenges"/>
+        <SmallChallengeSlider sliderTitle="Featured challenges"/>
+        <Button className="button-yellow home-challenge-button page" text="Discover more challenges" Link="/challenges"/>
+        <ComingChallengeSlider sliderTitle="Coming soon"/>
+        
       </div>
       {/* <div>
         <button onClick={handleLogout}>Logout</button>

@@ -3,7 +3,7 @@ import "./App.css";
 import Nav from "./components/Navigation/Nav";
 import Landing from "./pages/Landing";
 import Home from "./pages/Home/Home";
-import Recipes from "./pages/Recipes";
+// import Recipes from "./pages/Recipes";
 import PostChallenge from "./pages/PostChallenge";
 import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
@@ -15,6 +15,8 @@ import Profile from "./pages/Profile";
 import "./firebase-config";
 import ChallengePage from "./pages/ChallengePage/ChallengePage";
 import ChallengeCompleted from "./pages/ChallengeCompleted/ChallengeCompleted";
+import Challenges from "./pages/Challenges"
+
 
 function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
@@ -24,7 +26,7 @@ function App() {
     const auth = getAuth();
 
     onAuthStateChanged(auth, (user) => {
-      if (user) {
+      if (user && user.metadata.creationTime !== user.metadata.lastSignInTime) {
         //user authenticted - signed in
         setIsAuth(true); //set isAuth to true
         localStorage.setItem("isAuth", true); //save isAuth to local storage
@@ -43,6 +45,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/recipes" element={<Recipes />} />
+        <Route path="/challenges" element={<Challenges/>} />
         <Route path="/feed" element={<Feed />} />
         <Route path="/post/:postId" element={<FullPost />} />
         <Route path="/profile" element={<Profile />} />

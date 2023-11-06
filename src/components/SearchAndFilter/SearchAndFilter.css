@@ -1,0 +1,28 @@
+
+
+.searchFilterBar {
+    margin-left:0;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap:1rem;
+
+}
+
+.searchBar {
+    background-color: var(--oatmeal-300);
+    width: 16rem;
+    height:(0.8+0.8+1.5);
+    box-shadow: var(--box-shadow);
+    border-radius:8px;
+}
+
+.challengesFilter {
+    background-color: var(--kale);
+    height:1.5rem;
+    width:2.5rem;
+    display:flex;
+    padding:0.8rem;
+    border-radius:8px;
+    justify-content: center;
+}

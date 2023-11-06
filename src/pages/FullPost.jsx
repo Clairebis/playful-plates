@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import FullPostUser from "../components/userAvatars/FullPostUser";
 import Heart from "react-heart";
 import "./fullpost.css";
+import arrow from "../Assets/Icons/arrowback.svg";
 
 export default function FullPost() {
   const { postId } = useParams();
@@ -22,8 +23,21 @@ export default function FullPost() {
     publishedAt: "",
   });
 
+  const [likeCount, setLikeCount] = useState(post.likes);
+
   function backToFeed() {
     navigate("/feed");
+  }
+
+  function handleLikeClick() {
+    setActive(!active);
+
+    // Update the like count based on the active state (not connected to db...)
+    if (active) {
+      setLikeCount(likeCount - 1);
+    } else {
+      setLikeCount(likeCount + 1);
+    }
   }
 
   useEffect(() => {
@@ -38,27 +52,27 @@ export default function FullPost() {
 
   return (
     <section>
-      <div onClick={backToFeed} className="padding8">
-        backarrow
+      <div onClick={backToFeed} className="fullPostBack">
+        <img src={arrow} alt="back arrow" />
       </div>
 
       <article style={{ marginBottom: "10rem" }}>
         <img src={post.image} alt={post.title} className="fullPostImage" />
-        <section className="postCardLower">
+        <section className="fullPostLower">
           <h2 className="bottom8">{post.title}</h2>
           <p className="small ">{post.challengeid}</p>
           <FullPostUser uid={post.uid} />
-          <p>{post.description}</p>
+          <p className="fullPostDescription">{post.description}</p>
           {/*<div className="tags">
           {post.tags.map((tag) => (
             <span key={tag.id} tag={tag}></span>
           ))}
           </div>*/}
-          <div className="likes">
-            <div style={{ width: "2rem" }}>
-              <Heart isActive={active} onClick={() => setActive(!active)} />
+          <div className="fullPostLikes">
+            <div className="fullPostHeart">
+              <Heart isActive={active} onClick={handleLikeClick} />
             </div>
-            <div> {post.likes} likes </div>
+            <div> {likeCount} likes </div>
           </div>
           <p>Published {post.publishedAt}</p>
         </section>

@@ -1,5 +1,6 @@
 :root {
   --lime: rgba(167, 201, 87, 1);
+  --lime-25: rgba(167, 201, 87, 0.25);
   --kale: rgba(56, 102, 65);
   --green-bean: rgba(106, 153, 78, 1);
   --eggplant-900: rgba(43, 36, 42, 1);
@@ -61,7 +62,17 @@ p {
   font-weight: var(--font-weight-regular);
 }
 
+.bold {
+  font-weight:var(--font-weight-bold);
+}
+
 .page {
   padding-left: 16px;
   padding-right: 16px;
 }
+
+.pageLeftPadding {
+  padding-left: 16px;
+  margin-bottom:8rem;
+}
+

@@ -6,11 +6,38 @@
   padding-right: 0px !important;
 }
 
-
 .bottom8 {
   margin-bottom: 8px;
 }
 
-.padding8 {
-  padding-left: 8px;
+.fullPostBack {
+  padding: 16px;
+  width: 91vw;
+  position: sticky;
+  top: 0;
+  background-color: var(--oatmeal-100);
+}
+
+.fullPostLower {
+  padding-left: 16px;
+  padding-right: 16px;
+  color: var(--eggplant-900);
+}
+
+.fullPostDescription {
+  margin-bottom: 16px;
+}
+
+.fullPostLikes {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+  font-family: var(--body-font);
+  font-size: var(--body-font);
+  margin-bottom: 16px;
+}
+
+.fullPostHeart {
+  width: 1rem;
 }

@@ -11,3 +11,6 @@ npm install react-heart
 
 Splide Slider library for the challenges
 $ npm install @splidejs/react-splide
+
+For tabs in feed:
+npm install @mui/material @mui/icons-material @mui/system @mui/styled-engine @mui/styled-engine-sc @emotion/react @emotion/styled

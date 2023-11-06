@@ -8,6 +8,7 @@ export default function HomeHeader () {
 
     return (
         <>
+            
             <div className="homeHeaderContainer">
                 <img 
                     className="home-logo"

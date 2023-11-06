@@ -11,8 +11,15 @@
     white-space: nowrap;
     padding:0;
     margin:0;
-    gap:8px;
-    height:13rem;
+    gap:0.5rem;
+    height:fit-content;
+    margin-bottom:1.5rem;
+}
+
+.myChallengeSlider .coming-soon {
+    margin-right:0;
+    gap:0;
+
 }
 
 .myChallengeSlider::-webkit-scrollbar {
@@ -20,16 +27,68 @@
     display: none; /* Hide scrollbar */
 }
 
+.challenge-card-container {
+    display:flex;
+    flex-direction: column;
+    height:fit-content;
+}
+
 .challenge-card {
     display:flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items:center;
     background-color: var(--lime);
     padding:1rem;
-    height:auto;
+    width:18.5rem;
     border-radius:8px 8px 0px 0px;
+    gap:0.5rem;
+    margin-top:0.5rem;
+    box-shadow: var(--box-shadow);
+}
 
+.challenge-card p {
+    text-wrap:wrap;
+}
+
+.SmallChallengeSlider{
+    display:flex;
+    flex-direction:row;
+    overflow-y:auto;
+    white-space: nowrap;
+    padding:0;
+    margin:0;
+    gap:0.5rem;
+    height:11rem;
+    margin-bottom:0.5rem;
+}
+
+.SmallChallengeSlider::-webkit-scrollbar {
+    width: 0; /* Webkit (Chrome, Safari) */
+    display: none; /* Hide scrollbar */
+}
+
+.challenge-card-small {
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    background-color: var(--banana-300);
+    padding:0.5rem;
+    height:9rem;
+    width:9rem;
+    border-radius:8px;
+    gap:0.5rem;
+    text-align: center;
+    margin-top:0.5rem;
+    box-shadow: var(--box-shadow);
+
+}
+
+.challenge-card-small p {
+    text-wrap:wrap;
+}
+
+.challenge-card-small .challenge-image {
+    height:5rem;
 }
 
 .challenge-card-bottom {
@@ -58,8 +117,33 @@
     font-size: var(--body-text-small-size)
 }
 
-.challenge-card-container {
+
+.challenge-card-coming {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--lime-25);
+    padding:1rem;
+    border-radius:8px 8px 0px 0px;
+    gap:0.5rem;
+    margin-top:0.5rem;
+    box-shadow: var(--box-shadow);
+    border-radius: 8px;
+    width: auto;
+    margin-right:1rem;
+}
+
+.challenge-card-coming 
+.challenge-image, .challenge-card-text {
+    opacity: 50%;
+}
+
+
+
+.challenge-card-content {
     display:flex;
     flex-direction: column;
-    height:13rem;
+    align-items: space-between;
+    justify-content: space-between;
 }
+

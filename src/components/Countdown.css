@@ -1,0 +1,35 @@
+.counter {
+    display:flex;
+    flex-direction: row;
+    gap:0.4rem;
+    font-family: var(--body-font);
+    justify-content: flex-end;
+}
+
+.counter p {
+    font-size: 0.65rem;
+    margin:0;
+    padding:0;
+    line-height:1.2;
+}
+
+.counter-box {
+    background-color: var(--lime);
+    width: 1.5rem;
+    height:1.5rem;
+    padding:0.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.counter-number {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--body-text-size);
+    display:flex;
+    align-content: center;
+    line-height: 1.2;
+}
+

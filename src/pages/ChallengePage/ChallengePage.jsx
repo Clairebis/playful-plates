@@ -18,7 +18,7 @@ export default function ChallengePage() {
 
   //fetch all information about challenge from the database
   let { challengeId } = useParams();
-
+  let { userId } = useParams();
   const url = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/challenges/${challengeId}.json`;
   const urlPosts =
     "https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/posts.json";
