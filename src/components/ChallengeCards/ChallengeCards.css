@@ -1,15 +1,65 @@
 
-.challenge-card-container img {
-    height:10rem;
+
+.challenge-image {
+    height:7rem;
+}
+
+.myChallengeSlider{
+    display:flex;
+    flex-direction:row;
+    overflow-y:auto;
+    white-space: nowrap;
+    padding:0;
+    margin:0;
+    gap:8px;
+    height:13rem;
+}
+
+.myChallengeSlider::-webkit-scrollbar {
+    width: 0; /* Webkit (Chrome, Safari) */
+    display: none; /* Hide scrollbar */
 }
 
 .challenge-card {
     display:flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: var(--banana-300);
+    align-items:center;
+    background-color: var(--lime);
     padding:1rem;
-    width:18rem;
     height:auto;
+    border-radius:8px 8px 0px 0px;
+
+}
+
+.challenge-card-bottom {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding:8px;
+    background-color: #98BD55;
+    border-radius:0px 0px 8px 8px;
+}
+
+.challengeCardCompleted {
+    display:flex;
+    flex-direction: row;
+    gap:8px;
     border-radius: 8px;
+    text-decoration: none;
+    padding: 0.4rem 0.9rem;
+    color: var(--oatmeal-100);
+    background-color: var(--kale);
+    cursor: pointer;
+}
+
+.challengeCardCompleted p {
+    font-weight:var(--font-weight-bold);
+    font-size: var(--body-text-small-size)
+}
+
+.challenge-card-container {
+    display:flex;
+    flex-direction: column;
+    height:13rem;
 }
