@@ -1,7 +1,10 @@
 .button-green {
   border-radius: 8px;
+  padding: 8px;
+  width: 120px;
+  display: block;
+  text-align: center;
   text-decoration: none;
-  padding: 0.6em 1.2em;
   font-size: var(--body-text-size);
   font-weight: var(--font-weight-bold);
   font-family: var(--body-font);
@@ -16,7 +19,8 @@
 }
 
 .button-outline {
-  border: 2px solid var(--green-bean);
+  border-color: var(--green-bean);
+  border: 1px solid;
   background-color: var(--oatmeal-100);
   color: var(--green-bean);
 }
