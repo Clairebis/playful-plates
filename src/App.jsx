@@ -3,7 +3,7 @@ import "./App.css";
 import Nav from "./components/Navigation/Nav";
 import Landing from "./pages/Landing";
 import Home from "./pages/Home/Home";
-// import Recipes from "./pages/Recipes";
+import Recipes from "./pages/Recipes";
 import PostChallenge from "./pages/PostChallenge";
 import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
@@ -15,8 +15,7 @@ import Profile from "./pages/Profile";
 import "./firebase-config";
 import ChallengePage from "./pages/ChallengePage/ChallengePage";
 import ChallengeCompleted from "./pages/ChallengeCompleted/ChallengeCompleted";
-import Challenges from "./pages/Challenges"
-
+import Challenges from "./pages/Challenges";
 
 function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
@@ -45,13 +44,16 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/recipes" element={<Recipes />} />
-        <Route path="/challenges" element={<Challenges/>} />
+        <Route path="/challenges" element={<Challenges />} />
         <Route path="/feed" element={<Feed />} />
         <Route path="/post/:postId" element={<FullPost />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/challenges/:challengeId/*" element={<ChallengePage />} />
         <Route path="/postchallenge/:challengeId" element={<PostChallenge />} />
-        <Route path="/challengecompleted/:challengeId" element={<ChallengeCompleted />} />
+        <Route
+          path="/challengecompleted/:challengeId"
+          element={<ChallengeCompleted />}
+        />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
