@@ -1,0 +1,22 @@
+.profile-post-card {
+  box-shadow: var(--box-shadow);
+  height: 190px;
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 8px;
+  margin-bottom: 10px; /* Add margin to the bottom */
+}
+
+.profile-post-card-image {
+  width: 100%;
+  height: 136px;
+  object-fit: cover;
+  border-radius: 8px 8px 0px 0px;
+}
+
+.profile-post-card-bold {
+  font-weight: bold;
+  padding: 0.5rem;
+  font-family: var(--body-font);
+  font-size: var(--body-text-small-size);
+}

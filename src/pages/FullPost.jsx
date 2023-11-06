@@ -1,5 +1,4 @@
 import { useNavigate, useParams } from "react-router-dom";
-
 import { useEffect, useState } from "react";
 import FullPostUser from "../components/userAvatars/FullPostUser";
 import Heart from "react-heart";
@@ -25,9 +24,9 @@ export default function FullPost() {
 
   const [likeCount, setLikeCount] = useState(post.likes);
 
-  function backToFeed() {
-    navigate("/feed");
-  }
+  const goBack = () => {
+    navigate(-1); // Go back to the previous page
+  };
 
   function handleLikeClick() {
     setActive(!active);
@@ -41,7 +40,6 @@ export default function FullPost() {
   }
 
   useEffect(() => {
-    //fetch post data based on postId
     async function getPost() {
       const response = await fetch(url);
       const postData = await response.json();
@@ -52,13 +50,22 @@ export default function FullPost() {
 
   return (
     <section>
-      <div onClick={backToFeed} className="fullPostBack">
-        <img src={arrow} alt="back arrow" />
+      <div
+        onClick={goBack}
+        className="fullPostBack">
+        <img
+          src={arrow}
+          alt="back arrow"
+        />
       </div>
 
       <article style={{ marginBottom: "10rem" }}>
-        <img src={post.image} alt={post.title} className="fullPostImage" />
-        <section className="fullPostLower">
+        <img
+          src={post.image}
+          alt={post.title}
+          className="fullPostImage"
+        />
+        <section className="postCardLower">
           <h2 className="bottom8">{post.title}</h2>
           <p className="small ">{post.challengeid}</p>
           <FullPostUser uid={post.uid} />
@@ -70,7 +77,10 @@ export default function FullPost() {
           </div>*/}
           <div className="fullPostLikes">
             <div className="fullPostHeart">
-              <Heart isActive={active} onClick={handleLikeClick} />
+              <Heart
+                isActive={active}
+                onClick={handleLikeClick}
+              />
             </div>
             <div> {likeCount} likes </div>
           </div>

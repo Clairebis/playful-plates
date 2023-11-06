@@ -36,24 +36,24 @@ h1 {
   font-family: var(--heading-font);
   font-size: var(--heading-size);
   font-weight: var(--font-weight-bold);
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
 
 h2 {
   font-family: var(--heading-font);
   font-size: var(--subheading-size);
   font-weight: var(--font-weight-bold);
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
 
 p {
   font-family: var(--body-font);
   font-size: var(--body-text-size);
   font-weight: var(--font-weight-regular);
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
 
 .small {
@@ -63,7 +63,7 @@ p {
 }
 
 .bold {
-  font-weight:var(--font-weight-bold);
+  font-weight: var(--font-weight-bold);
 }
 
 .page {
@@ -71,8 +71,11 @@ p {
   padding-right: 16px;
 }
 
-.pageLeftPadding {
-  padding-left: 16px;
-  margin-bottom:8rem;
+a {
+  text-decoration: none;
 }
 
+.pageLeftPadding {
+  padding-left: 16px;
+  margin-bottom: 8rem;
+}

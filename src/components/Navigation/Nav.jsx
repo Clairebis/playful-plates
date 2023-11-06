@@ -11,7 +11,9 @@ export default function Nav() {
       <NavLink
         exact
         to="/"
-        className="nav-link">
+        className="nav-link"
+        activeClassName="active" // Specify the CSS class for the active link
+      >
         <img
           src={home}
           alt="Home"
@@ -20,7 +22,9 @@ export default function Nav() {
       </NavLink>
       <NavLink
         to="/recipes"
-        className="nav-link">
+        className="nav-link"
+        activeClassName="active" // Specify the CSS class for the active link
+      >
         <img
           src={recipes}
           alt="Recipes"
@@ -29,7 +33,9 @@ export default function Nav() {
       </NavLink>
       <NavLink
         to="/feed"
-        className="nav-link">
+        className="nav-link"
+        activeClassName="active" // Specify the CSS class for the active link
+      >
         <img
           src={feed}
           alt="Feed"
@@ -38,7 +44,9 @@ export default function Nav() {
       </NavLink>
       <NavLink
         to="/profile"
-        className="nav-link">
+        className="nav-link"
+        activeClassName="active" // Specify the CSS class for the active link
+      >
         <img
           src={profile}
           alt="Profile"
