@@ -6,6 +6,7 @@ import "../../pages/Home/Home.css";
 import ChallengeSlider from "../../components/ChallengeCards/MyChallengeSlider";
 import Button from "../../components/Button/Button";
 import SmallChallengeSlider from "../../components/ChallengeCards/SmallChallengeSlider";
+import Countdown from "../../components/Countdown";
 
 export default function Home() {
   const auth = getAuth();
@@ -50,6 +51,7 @@ export default function Home() {
         <SmallChallengeSlider sliderTitle="Featured Challenges"/>
         <Button className="button-yellow home-challenge-button" text="Discover more challenges"/>
 
+        <Countdown/>
       </div>
       {/* <div>
         <button onClick={handleLogout}>Logout</button>
