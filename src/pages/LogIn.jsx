@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import TextField from "@mui/material/TextField";
 import logoLarge from "../Assets/logoLarge.png";
 import { NavLink, useNavigate } from "react-router-dom";
-import Button from "../Components/Button/Button";
 import "./logIn.css";
-import { TextField } from "@mui/material";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -40,7 +39,7 @@ export default function Login() {
             name="email"
             type="email"
             required
-            placeholder="abc@email.com"
+            placeholder="Email address"
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
@@ -52,22 +51,20 @@ export default function Login() {
             name="password"
             type="password"
             required
-            placeholder="Your password"
+            placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 
         <div>
-          <Button
-            text="Login"
-            onClick={onLogin}
-            className="loginButton"
-          ></Button>
+          <button onClick={onLogin} className="loginButton button-green">
+            Login
+          </button>
         </div>
       </form>
 
       <div className="loginSignupLink">
-        <p>Don't have an account?</p>
+        <p>Don't have an account? </p>
         <NavLink to="/signup" className="signUpLink">
           Sign up
         </NavLink>
