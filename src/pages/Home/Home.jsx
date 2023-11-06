@@ -1,4 +1,4 @@
-import { getAuth /*signOut*/ } from "firebase/auth";
+import { getAuth} from "firebase/auth";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import HomeHeader from "../../components/HomeHeader/HomeHeader";
@@ -29,35 +29,17 @@ export default function Home() {
     getUser();
   }, [auth.currentUser, url]); // dependencies: useEffect is executed when auth.currentUser changes
 
-  // const handleLogout = () => {
-  //   signOut(auth)
-  //     .then(() => {
-  //       // Sign-out successful.
-  //       navigate("/");
-  //       console.log("Signed out successfully");
-  //     })
-  //     .catch((error) => {
-  //       // An error happened.
-  //       console.error("Error signing out", error);
-  //       console.log("Error signing out");
-  //     });
-
   return (
     <>
       <div className="page home-content">
         <HomeHeader />
         <h1>Hello {username}!</h1>
-      </div>
-      <div className="pageLeftPadding">
         <MyChallengeSlider sliderTitle="My challenges"/>
         <SmallChallengeSlider sliderTitle="Featured challenges"/>
-        <Button className="button-yellow home-challenge-button page" text="Discover more challenges" Link="/challenges"/>
+        <Button className="button-yellow home-challenge-button" text="Discover more challenges" Link="/challenges"/>
         <ComingChallengeSlider sliderTitle="Coming soon"/>
-        
       </div>
-      {/* <div>
-        <button onClick={handleLogout}>Logout</button>
-      </div> */}
+
     </>
   );
 }
