@@ -4,6 +4,10 @@ import placeholderImage from "../Assets/uploadPlaceholder.png";
 import { useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { useParams } from "react-router";
+import "./UpdatePost.css";
+import PostLabel from "../components/Label/PostLabel";
+import { useRef } from "react";
+import "../components/Label/PostChallenge.css";
 
 export default function UpdatePost() {
   //fetch information about currently logged in user - uid
@@ -12,11 +16,14 @@ export default function UpdatePost() {
   const params = useParams();
   const url = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/posts/${params.postId}.json`;
   const navigate = useNavigate();
+  const fileInputRef = useRef(null);
+  const [imageFile, setImageFile] = useState(null); // Initialize as null
 
   const [post, setPost] = useState({
     title: "",
     description: "",
     image: "",
+    tags: [],
     // uid: user.uid, // Make sure to set the correct user ID here
   });
 
@@ -35,6 +42,7 @@ export default function UpdatePost() {
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     if (file && file.size < 10000000) {
+      setImageFile(file);
       const reader = new FileReader();
       reader.onload = (event) => {
         setPost({ ...post, image: event.target.result });
@@ -45,6 +53,57 @@ export default function UpdatePost() {
       setErrorMessage("Image file size must be less than 1MB");
     }
   };
+
+  const handleImageClick = () => {
+    fileInputRef.current.click();
+  };
+
+  async function uploadImage() {
+    try {
+      //url to new image - make sure to have the correct firebase project id
+      const url = `https://firebasestorage.googleapis.com/v0/b/playful-plates-b4a84.appspot.com/o/${imageFile.name}`;
+
+      // POST request to upload image
+      const response = await fetch(url, {
+        method: "PUT",
+        body: imageFile,
+        headers: { "Content-Type": imageFile.type },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Image upload successful:", data);
+        const imageUrl = `${url}?alt=media`;
+        return imageUrl;
+      } else {
+        console.error(
+          "Image upload failed. Server response:",
+          response.status,
+          response.statusText
+        );
+        console.log(url);
+        return null; // Return null or handle the error as needed
+      }
+    } catch (error) {
+      console.error("An error occurred during image upload:", error);
+      return null; // Return null or handle the error as needed
+    }
+  }
+  //-------------------------GET CHOSEN TAGS-------------------------
+  // function getChosenTags() {
+  //   const chosenTags = [];
+  //   // Find all label elements with the "tagLabel" class and the "selected" class.
+  //   const selectedLabelElements = document.querySelectorAll(
+  //     ".postALabel.postALabelSelected"
+  //   );
+
+  //   // Extract the values of the selected labels and add them to the chosenTags array.
+  //   selectedLabelElements.forEach((labelElement) => {
+  //     chosenTags.push(labelElement.textContent);
+  //   });
+
+  //   return chosenTags;
+  // }
 
   const updatePost = async (event) => {
     event.preventDefault();
@@ -63,7 +122,7 @@ export default function UpdatePost() {
 
     if (response.ok) {
       console.log("Post updated");
-      navigate("/");
+      navigate("/feed");
     } else {
       console.log("An error occurred when updating the post");
     }
@@ -82,17 +141,28 @@ export default function UpdatePost() {
             onChange={handleImageChange}
             id="imageInput"
             style={{ display: "none" }}
+            ref={fileInputRef}
           />
-
-          {post.image ? (
-            <img src={post.image} alt="Image preview" className="photoUpload" />
-          ) : (
-            <img
-              src={placeholderImage}
-              alt="Choose an image"
-              className="photoUpload"
-            />
-          )}
+          <p className="textError">{errorMessage}</p>
+          <div
+            className="photoUpload"
+            style={{ cursor: "pointer" }}
+            onClick={handleImageClick}
+          >
+            {post.image ? (
+              <img
+                src={post.image}
+                alt="Image preview"
+                className="photoUpload"
+              />
+            ) : (
+              <img
+                src={placeholderImage}
+                alt="Choose an image"
+                className="photoUpload"
+              />
+            )}
+          </div>
         </>
         {/*----------TITLE UPLOAD SECTION------------- */}
 
@@ -117,13 +187,45 @@ export default function UpdatePost() {
             />
           </div>
 
+          {/*--------------Tags Choice ---------------*/}
+          <>
+            <div className="chooseALabelRow">
+              Preparation:
+              <PostLabel label="Quick" />
+              <PostLabel label="Complex" />
+            </div>
+
+            <div className="chooseALabelRow">
+              Diet:
+              <PostLabel label="Meat" />
+              <PostLabel label="Fish" />
+              <PostLabel label="Vegetarian" />
+              <PostLabel label="Vegan" />
+              <PostLabel label="Gluten-free" />
+              <PostLabel label="Lactose-free" />
+            </div>
+            <div className="chooseALabelRow">
+              Type:
+              <PostLabel label="Breakfast" />
+              <PostLabel label="Lunch" />
+              <PostLabel label="Main" />
+              <PostLabel label="Dessert" />
+              <PostLabel label="Snack" />
+              <PostLabel label="Soup" />
+            </div>
+          </>
+
           {/* Error Message */}
           {errorMessage && <p className="error-message">{errorMessage}</p>}
 
           {/* Button to Update Post */}
           <div className="containerButtonPostChallenge">
             {/* <Button text="Update Post" Link="/feed" /> */}
-            <input type="submit" value="Update Post"></input>
+            <input
+              type="submit"
+              value="Update Post"
+              className="button-green updatePostButton"
+            ></input>
           </div>
         </section>
       </form>
