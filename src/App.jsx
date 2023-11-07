@@ -59,7 +59,10 @@ function App() {
         <Route path="/myfriends" element={<MyFriends />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/postchallenge/:postId" element={<PostChallenge />} />
-        <Route path="/challengecompleted/:postId"element={<ChallengeCompleted />} 
+        <Route
+          path="/challengecompleted/:postId"
+          element={<ChallengeCompleted />}
+        />
         {/* Testing <Route
           path="/fullpost/:post.id"
           element={<FullPost />}

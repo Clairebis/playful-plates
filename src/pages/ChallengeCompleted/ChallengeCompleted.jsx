@@ -11,6 +11,7 @@ export default function ChallengeCompleted() {
   const postUrl = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/posts/${postId}.json`;
   console.log(postUrl);
   const [xp, setXp] = useState(null);
+  const [isPublic, setisPublic] = useState("");
 
   useEffect(() => {
     // Fetch data when the component mounts
@@ -23,22 +24,32 @@ export default function ChallengeCompleted() {
       })
       .then((data) => {
         // Extract the xp value from the data and store it in state
-        setXp(data.xppoints);
+        setXp(data.xp);
+        setisPublic(data.public);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
   }, [postUrl]);
 
+  //add xp for type of post
+  let xpForTypeOfPost = 0;
+  if (isPublic) {
+    xpForTypeOfPost = 5;
+  }
+  let xpToShow = Number(xp) + xpForTypeOfPost;
+
   const navigate = useNavigate();
   function handleClick() {
     navigate("/challenges");
   }
+
   return (
     <section className="page">
       <div className="successPostContent">
         <div className="xpContainer">
-          <CircularBar xp={xp} />
+          <h3>{isPublic}</h3>
+          <CircularBar xp={xpToShow} />
         </div>
         <h1>Congratulations, </h1>
         <h1>Chef Extraordinaire!</h1>
