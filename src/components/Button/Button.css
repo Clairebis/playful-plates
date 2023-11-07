@@ -19,6 +19,11 @@
     background-color: var(--banana);
   }
 
+  .button-kale {
+    background-color: var(--kale);
+    color: var(--oatmeal-100);
+  }
+
 .button-outline {
   border: 2px solid var(--green-bean);
   background-color: var(--oatmeal-100);

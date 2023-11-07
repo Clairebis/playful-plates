@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./Challengecards.css"
 import noChallenges from "../../assets/noChallenges.png"
+import { Button } from "@mui/material";
 
 
 export default function NoChallengeCard({ challenge}) {
@@ -17,7 +18,7 @@ export default function NoChallengeCard({ challenge}) {
                 <img src={noChallenges} />
                 <div>
                     <h2>No challenges yet!</h2>
-                    <p>{challenge.subheading}</p>
+                    <Button className="button-kale"link to="/challenges"/>
                 </div>
             </div>
 
