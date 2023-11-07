@@ -1,6 +1,7 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
+
+import Header from "../../components/Header/Header";
 
 function Settings() {
   const navigate = useNavigate();
@@ -18,11 +19,12 @@ function Settings() {
   };
 
   return (
-    <div>
-      <h1>Settings</h1>
-      {/* Other settings content can go here */}
+    <>
+      <section className="page">
+        <Header pageTitle="Settings" />
+      </section>
       <button onClick={handleLogout}>Logout</button>
-    </div>
+    </>
   );
 }
 

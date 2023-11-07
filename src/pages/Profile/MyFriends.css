@@ -1,0 +1,21 @@
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add-friend-button {
+  width: 70px;
+  height: 30px;
+  background-color: var(--lime);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.add-friend-button img {
+  width: 16px;
+  height: 16px;
+}
