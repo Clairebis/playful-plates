@@ -246,7 +246,7 @@ export default function PostChallenge() {
         uid: uid, // Keep the original uid
         publishedAt: formatDateToCustomSyntax(),
         public: isPostPublic(),
-        likes: "",
+        likes: 0,
         challengeId: originalChallengeID,
         challengeTitle: originalChallengeTitle,
         xppoints: originalXP,
