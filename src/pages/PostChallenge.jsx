@@ -246,7 +246,7 @@ export default function PostChallenge() {
         uid: uid, // Keep the original uid
         publishedAt: formatDateToCustomSyntax(),
         public: isPostPublic(),
-        likes: "",
+        likes: 0,
         challengeId: originalChallengeID,
         challengeTitle: originalChallengeTitle,
         xp: originalXP,
@@ -273,10 +273,11 @@ export default function PostChallenge() {
 
   return (
     <>
-      <section className="page">
-        <Header pageTitle={challengeTitle} />{" "}
-      </section>
-
+      <Header
+        pageTitle={challengeTitle}
+        className="biggerPadding"
+        titleStyleName="smallerMarginLeft"
+      />{" "}
       <input
         type="file"
         accept="image/*"

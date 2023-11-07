@@ -12,6 +12,8 @@ export default function SearchAndFilter() {
         setMultiFilterVisible(!isMultiFilterVisible);
     };
 
+    
+
     return (
         <>
         <div className="searchFilterBar">

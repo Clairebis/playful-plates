@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./Header.css";
 import arrow from "../../Assets/Icons/arrowback.svg";
 
-export default function Header({ pageTitle }) {
+export default function Header(props) {
   const navigate = useNavigate();
 
   const goBack = () => {
@@ -13,10 +13,15 @@ export default function Header({ pageTitle }) {
 
   return (
     <div className="app-header">
-      <div className="header-arrow" onClick={goBack}>
+      <div
+        className={`header-arrow ${props.className || "header-arrow"}`}
+        onClick={goBack}
+      >
         <img src={arrow} alt="" />
       </div>
-      <div className="page-title">{pageTitle}</div>
+      <div className={`page-title ${props.titleStyleName || "page-title"}`}>
+        {props.pageTitle}
+      </div>
     </div>
   );
 }

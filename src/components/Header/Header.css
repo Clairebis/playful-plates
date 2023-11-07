@@ -7,7 +7,7 @@
   font-family: var(--heading-font);
   font-size: var(--heading-size);
   font-weight: bold;
-  margin-top: 91px; /*to test*/
+  margin-top: 24px; /*to test*/
 }
 
 .header-arrow {
@@ -19,4 +19,12 @@
   flex-grow: 1;
   text-align: center;
   margin-right: 24px;
+}
+
+.biggerPadding {
+  padding-left: 22px !important;
+}
+
+.smallerMarginLeft {
+  margin-right: 40px;
 }

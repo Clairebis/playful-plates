@@ -175,3 +175,7 @@
   font-weight: var(--font-weight-bold);
   font-size: var(--subheading-size); /* Font size */
 }
+
+.profile-content {
+  margin-bottom: 6rem;
+}

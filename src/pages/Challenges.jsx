@@ -11,13 +11,12 @@ export default function Challenges() {
         window.scrollTo(0, 0); // Scroll to the top when the component mounts
       }, []);
 
+
     return (
         <>
             <section className="page">
                 <Header pageTitle="Challenges"/>
                 <SearchAndFilter/>
-            </section>
-            <section className="pageLeftPadding">
                 <LatestChallengeSlider sliderTitle="Latest Challenges"/>
                 <SmallChallengeSlider sliderTitle="Popular with Friends"/>
                 <SeasonalChallengeSlider sliderTitle="Seasonal Challenges"/>
