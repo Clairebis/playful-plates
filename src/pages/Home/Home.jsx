@@ -31,7 +31,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="page home-content hello">
+      <div className="page home-content">
         <HomeHeader />
         <h1>Hello {username}!</h1>
         <MyChallengeSlider sliderTitle="My challenges"/>
