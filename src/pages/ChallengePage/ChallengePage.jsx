@@ -93,7 +93,7 @@ export default function ChallengePage() {
         challengeId: challengeId,
         challengeTitle: challengeTitleData,
         public: false,
-        likes: "",
+        likes: 0,
         xp: challengeXPData,
       };
 
