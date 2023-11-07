@@ -45,58 +45,25 @@ function App() {
     <>
       <Nav location={location} /> {/* Pass location to Nav component */}
       <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/recipes" element={<Recipes />} />
+        <Route path="/challenges" element={<Challenges />} />
+        <Route path="/feed" element={<Feed />} />
+        <Route path="/post/:postId" element={<FullPost />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/challenges/:challengeId" element={<ChallengePage />} />
+        <Route path="/myfriends" element={<MyFriends />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/postchallenge/:postId" element={<PostChallenge />} />
         <Route
-          path="/"
-          element={<Home />}
-        />
-        <Route
-          path="/recipes"
-          element={<Recipes />}
-        />
-        <Route
-          path="/challenges"
-          element={<Challenges />}
-        />
-        <Route
-          path="/feed"
-          element={<Feed />}
-        />
-        <Route
-          path="/post/:postId"
-          element={<FullPost />}
-        />
-        <Route
-          path="/profile"
-          element={<Profile />}
-        />
-        <Route
-          path="/challenges/:challengeId"
-          element={<ChallengePage />}
-        />
-        <Route
-          path="/myfriends"
-          element={<MyFriends />}
-        />
-        <Route
-          path="/settings"
-          element={<Settings />}
-        />
-        <Route
-          path="/postchallenge/:challengeId"
-          element={<PostChallenge />}
-        />
-        <Route
-          path="/challengecompleted/:challengeId"
+          path="/challengecompleted/:postId"
           element={<ChallengeCompleted />}
         />
         {/* Testing <Route
           path="/fullpost/:post.id"
           element={<FullPost />}
         /> */}
-        <Route
-          path="*"
-          element={<Navigate to="/" />}
-        />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
   );
@@ -104,22 +71,10 @@ function App() {
   // public route, no nav bar
   const publicRoutes = (
     <Routes>
-      <Route
-        path="/"
-        element={<Landing />}
-      />
-      <Route
-        path="/signup"
-        element={<SignUp />}
-      />
-      <Route
-        path="/login"
-        element={<LogIn />}
-      />
-      <Route
-        path="*"
-        element={<Navigate to="/" />}
-      />
+      <Route path="/" element={<Landing />} />
+      <Route path="/signup" element={<SignUp />} />
+      <Route path="/login" element={<LogIn />} />
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 

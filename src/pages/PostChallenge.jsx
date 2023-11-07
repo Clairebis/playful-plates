@@ -15,21 +15,23 @@ export default function PostChallenge() {
   //fetch information about currently logged in user - uid
   const auth = getAuth();
   const uid = auth.currentUser.uid;
-  //------------------------------GET CHALLENGE NAME--------------------------------
-  let { challengeId } = useParams();
-  const [challengeTitle, setChallengeTitle] = useState("");
-  const challengeURL = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/challenges/${challengeId}.json`;
+  let { postId } = useParams();
 
+  //------------------------------GET CHALLENGE NAME--------------------------------
+  const [challengeTitle, setChallengeTitle] = useState("");
+  const challengeTitleURL = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/posts/${postId}/challengeTitle.json`;
+  console.log(challengeTitleURL);
   useEffect(() => {
     async function getChallengeTitle() {
-      const response = await fetch(challengeURL);
-      const challengeData = await response.json();
+      const response = await fetch(challengeTitleURL);
+      const challengeTitle = await response.json();
 
       // Set the challengeTitle state with the title from challengeData
-      setChallengeTitle(challengeData.title);
+      setChallengeTitle(challengeTitle);
     }
     getChallengeTitle();
-  }, [challengeId]);
+  }, [challengeTitleURL]);
+  console.log("Post is published under challenge: ", challengeTitle);
 
   //-------------------------------PHOTO UPLOAD-------------------------------------
   const [errorMessage, setErrorMessage] = useState("");
@@ -195,11 +197,44 @@ export default function PostChallenge() {
   }
 
   //------------------------GATHER ALL INFORMATION -------------------
+  //------------------------------GET EMPTY POST TO UPDATE--------------------------
   const navigate = useNavigate();
+
+  const postURL = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/posts/${postId}.json`;
+
+  const [post, setPost] = useState({
+    challengeCompleted: "",
+    image: "",
+    title: "",
+    description: "",
+    tags: "",
+    uid: "",
+    publishedAt: "",
+    challengeId: "",
+    challengeTitle: "",
+    public: "",
+    likes: "",
+    xppoints: "",
+  });
+
+  useEffect(() => {
+    //fetch existing post data based on the postId
+    async function getPost() {
+      const response = await fetch(postURL);
+      const postData = await response.json();
+      setPost(postData);
+    }
+    getPost();
+  }, [postURL]);
+
   async function gatherAllData(event) {
     event.preventDefault();
     try {
       const imageUrl = await uploadImage();
+      // Retrieve the original challengeID and challengeTitle from the post state
+      const originalChallengeID = post.challengeId;
+      const originalChallengeTitle = post.challengeTitle;
+      const originalXP = post.xppoints;
 
       // Create a new post object with updated values
       const updatedPost = {
@@ -210,14 +245,16 @@ export default function PostChallenge() {
         tags: getChosenTags(),
         uid: uid, // Keep the original uid
         publishedAt: formatDateToCustomSyntax(),
-        challengeId: challengeId, // Keep the original challengeId
         public: isPostPublic(),
+        likes: "",
+        challengeId: originalChallengeID,
+        challengeTitle: originalChallengeTitle,
+        xppoints: originalXP,
       };
 
-      const url =
-        "https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/posts.json";
-      const response = await fetch(url, {
-        method: "POST",
+      const updateURL = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/posts/${postId}.json`;
+      const response = await fetch(updateURL, {
+        method: "PUT", // Use PUT to update the existing post
         body: JSON.stringify(updatedPost), // Send the updated post object
       });
 
@@ -225,7 +262,7 @@ export default function PostChallenge() {
         console.log("Post added");
         console.log(updatedPost); // This will include the user's input
 
-        navigate(`/challengecompleted/${challengeId}`);
+        navigate(`/challengecompleted/${postId}`);
       } else {
         console.log("An error occurred when posting");
       }
@@ -235,110 +272,114 @@ export default function PostChallenge() {
   }
 
   return (
-    <section className="page">
-      <Header pageTitle={challengeTitle} />{" "}
-      {/* change to fetch from challenges*/}
-      {/* -------Photo upload section ----*/}
-      <>
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleImageChange}
-          id="imageInput"
-          style={{ display: "none" }}
-          ref={fileInputRef}
-        />
+    <>
+      <section className="page">
+        <Header pageTitle={challengeTitle} />{" "}
+      </section>
 
-        <p className="textError">{errorMessage}</p>
-        <div
-          className="photoUpload"
-          style={{ cursor: "pointer" }}
-          onClick={handleImageClick}
-        >
-          {image ? (
-            <img src={image} alt="Image preview" className="photoUpload" />
-          ) : (
-            <img
-              src={placeholderImage}
-              alt="Placeholder Image"
-              className="photoUpload"
-            />
-          )}
-        </div>
-      </>
-      {/*----------TITLE UPLOAD SECTION------------- */}
-      <div className="postATitle">
-        <input
-          type="text"
-          id="title"
-          value={title}
-          placeholder="Title: Name your dish here"
-          onChange={handleTitleChange}
-        />
-        <p>
-          {title.length}/{maxCharacterLimit}
-        </p>
-      </div>
-      {/*---------Description Upload---------*/}
-      <div className="postADescription">
-        <textarea
-          type="text"
-          id="description"
-          value={description}
-          placeholder="Share insights of how the challenge went and how the dish tasted!"
-          onChange={handleDescriptionChange}
-        />
-      </div>
-      {/*--------------Tags Choice ---------------*/}
-      <>
-        <div className="chooseALabelRow">
-          Preparation:
-          <PostLabel label="Quick" />
-          <PostLabel label="Complex" />
-        </div>
-
-        <div className="chooseALabelRow">
-          Diet:
-          <PostLabel label="Meat" />
-          <PostLabel label="Fish" />
-          <PostLabel label="Vegetarian" />
-          <PostLabel label="Vegan" />
-          <PostLabel label="Gluten-free" />
-          <PostLabel label="Lactose-free" />
-        </div>
-        <div className="chooseALabelRow">
-          Type:
-          <PostLabel label="Breakfast" />
-          <PostLabel label="Lunch" />
-          <PostLabel label="Main" />
-          <PostLabel label="Dessert" />
-          <PostLabel label="Snack" />
-          <PostLabel label="Soup" />
-        </div>
-      </>
-      {/*------------------Type of Post ----------------------- */}
-      <div className={`typeOfPost ${isExpanded ? "expanded" : ""}`}>
-        <div className="chosenTypeOfPost" onClick={toggleMenu}>
-          {isExpanded ? <img src={arrowUp} alt="" /> : <img src={arrowDown} />}{" "}
-          {selectedOption}
-        </div>
-        {isExpanded && (
-          <div className="alternativeTypeOfPost">
-            <div onClick={() => handleOptionClick(alternativeOption)}>
-              <div className="horizontalDividerPost"></div>
-              {alternativeOption}
-            </div>
-          </div>
+      <input
+        type="file"
+        accept="image/*"
+        onChange={handleImageChange}
+        id="imageInput"
+        style={{ display: "none" }}
+        ref={fileInputRef}
+      />
+      <p className="textError">{errorMessage}</p>
+      <div
+        className="photoUpload"
+        style={{ cursor: "pointer" }}
+        onClick={handleImageClick}
+      >
+        {image ? (
+          <img src={image} alt="Image preview" className="photoUpload" />
+        ) : (
+          <img
+            src={placeholderImage}
+            alt="Placeholder Image"
+            className="photoUpload"
+          />
         )}
       </div>
-      <div className="containerButtonPostChallenge">
-        {" "}
-        <Button
-          text="Post"
-          className={buttonClassName}
-          function={gatherAllData}
-        />
-      </div>
-    </section>
+      {/*----------TITLE UPLOAD SECTION------------- */}
+      <section className="page">
+        <div className="postATitle">
+          <input
+            type="text"
+            id="title"
+            value={title}
+            placeholder="Title: Name your dish here"
+            onChange={handleTitleChange}
+          />
+          <p>
+            {title.length}/{maxCharacterLimit}
+          </p>
+        </div>
+        {/*---------Description Upload---------*/}
+        <div className="postADescription">
+          <textarea
+            type="text"
+            id="description"
+            value={description}
+            placeholder="Share insights of how the challenge went and how the dish tasted!"
+            onChange={handleDescriptionChange}
+          />
+        </div>
+        {/*--------------Tags Choice ---------------*/}
+        <>
+          <div className="chooseALabelRow">
+            Preparation:
+            <PostLabel label="Quick" />
+            <PostLabel label="Complex" />
+          </div>
+
+          <div className="chooseALabelRow">
+            Diet:
+            <PostLabel label="Meat" />
+            <PostLabel label="Fish" />
+            <PostLabel label="Vegetarian" />
+            <PostLabel label="Vegan" />
+            <PostLabel label="Gluten-free" />
+            <PostLabel label="Lactose-free" />
+          </div>
+          <div className="chooseALabelRow">
+            Type:
+            <PostLabel label="Breakfast" />
+            <PostLabel label="Lunch" />
+            <PostLabel label="Main" />
+            <PostLabel label="Dessert" />
+            <PostLabel label="Snack" />
+            <PostLabel label="Soup" />
+          </div>
+        </>
+        {/*------------------Type of Post ----------------------- */}
+        <div className={`typeOfPost ${isExpanded ? "expanded" : ""}`}>
+          <div className="chosenTypeOfPost" onClick={toggleMenu}>
+            {isExpanded ? (
+              <img src={arrowUp} alt="" />
+            ) : (
+              <img src={arrowDown} />
+            )}{" "}
+            {selectedOption}
+          </div>
+          {isExpanded && (
+            <div className="alternativeTypeOfPost">
+              <div onClick={() => handleOptionClick(alternativeOption)}>
+                <div className="horizontalDividerPost"></div>
+                {alternativeOption}
+              </div>
+            </div>
+          )}
+        </div>
+        <div className="containerButtonPostChallenge">
+          {" "}
+          <Button
+            text="Post"
+            className={buttonClassName}
+            function={gatherAllData}
+          />
+        </div>
+      </section>
+    </>
   );
 }

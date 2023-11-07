@@ -1,3 +1,7 @@
+.postChallengeHeader {
+  margin-left: 16px !important;
+}
+
 .photoUpload {
   width: 100% !important;
   height: 380px;
