@@ -18,6 +18,7 @@ import "./firebase-config";
 import ChallengePage from "./pages/ChallengePage/ChallengePage";
 import ChallengeCompleted from "./pages/ChallengeCompleted/ChallengeCompleted";
 import Challenges from "./pages/Challenges";
+import UpdatePost from "./pages/UpdatePost";
 
 function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
@@ -28,7 +29,9 @@ function App() {
     const auth = getAuth();
 
     onAuthStateChanged(auth, (user) => {
-      if (user && user.metadata.creationTime !== user.metadata.lastSignInTime) {
+      if (
+        user /*&& user.metadata.creationTime !== user.metadata.lastSignInTime*/
+      ) {
         //user authenticted - signed in
         setIsAuth(true); //set isAuth to true
         localStorage.setItem("isAuth", true); //save isAuth to local storage
@@ -50,15 +53,13 @@ function App() {
         <Route path="/challenges" element={<Challenges />} />
         <Route path="/feed" element={<Feed />} />
         <Route path="/post/:postId" element={<FullPost />} />
+        <Route path="/post/:postId/update" element={<UpdatePost />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/challenges/:challengeId" element={<ChallengePage />} />
         <Route path="/myfriends" element={<MyFriends />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/postchallenge/:postId" element={<PostChallenge />} />
-        <Route
-          path="/challengecompleted/:postId"
-          element={<ChallengeCompleted />}
-        />
+        <Route path="/challengecompleted/:postId"element={<ChallengeCompleted />} 
         {/* Testing <Route
           path="/fullpost/:post.id"
           element={<FullPost />}

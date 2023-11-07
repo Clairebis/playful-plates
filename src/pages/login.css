@@ -1,0 +1,30 @@
+.loginHeading {
+  margin-top: 4rem;
+}
+
+.loginInputContainer {
+  margin-top: 0.5rem;
+}
+
+.loginInput {
+  width: 100%;
+}
+
+.loginButton {
+  margin: auto;
+  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+  border: none;
+}
+
+.loginSignupLink {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  font-family: var(--body-font);
+  font-size: var(--body-text-size);
+}
+
+.signUpLink {
+  color: var(--kale);
+}

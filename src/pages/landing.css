@@ -23,4 +23,6 @@
 
 .landingButton {
   text-align: center;
+  margin: auto;
+  width: 85vw;
 }

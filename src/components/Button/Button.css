@@ -15,9 +15,9 @@
   text-align: center;
 }
 
-.button-yellow {
-  background-color: var(--banana);
-}
+  .button-yellow {
+    background-color: var(--banana);
+  }
 
 .button-outline {
   border: 2px solid var(--green-bean);

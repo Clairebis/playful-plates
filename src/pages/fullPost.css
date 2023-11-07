@@ -6,6 +6,13 @@
   padding-right: 0px !important;
 }
 
+.fullPostButtons {
+  display: flex;
+  gap: 1rem;
+  margin: auto;
+  margin-bottom: 0.5rem;
+}
+
 .bottom8 {
   margin-bottom: 8px;
 }

@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import "./Challengecards.css"
 import chefHatIconWhite from "../../assets/Icons/chefHatIconWhite.svg"
+import placeholderImg from "../../Assets/Portrait_Placeholder.png";
+
 
 export default function MyChallengeCard({ challenge}) {
     const navigate = useNavigate();
@@ -21,17 +23,21 @@ export default function MyChallengeCard({ challenge}) {
             </div>
 
             <div className="challenge-card-bottom">
-                <p>2 friends joined</p>
+                
+                <div className="friendsChallengeCard">
+                {" "}
+                <img src={placeholderImg} alt="" />
+                <p>No friends joined yet</p>
+                </div>
                 <div className="challengeCardCompleted">
                     <img
                         src={chefHatIconWhite}
                         alt="chef hat icon"
                     />
                     <p>20 completed</p>
-                </div>
             </div>
-            
         </div>
+        </div> 
         </>
     );
     }
