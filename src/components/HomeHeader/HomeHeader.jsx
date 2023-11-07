@@ -1,13 +1,15 @@
 import logo from "../../assets/logo.png";
 import notifications from "../../assets/Icons/notifications.svg";
 import "../../components/HomeHeader/HomeHeader.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LevelInfoPopup from "../../pages/Profile/LevelInfoPopup";
 import chefHatIcon from "../../assets/Icons/chefHatIcon.svg"
+import { getAuth } from "firebase/auth";
 
 
 export default function HomeHeader() {
   const [isPopupVisible, setPopupVisible] = useState(false);
+  const [userXP, setUserXP] = useState(0); // Default value
 
   const handleXPClick = () => {
     setPopupVisible(true);
@@ -16,6 +18,26 @@ export default function HomeHeader() {
   const closePopup = () => {
     setPopupVisible(false);
   };
+
+  useEffect(() => {
+    async function getXpPoints() {
+        const auth = getAuth();
+        // const navigate = useNavigate();
+        const uid = auth.currentUser?.uid;
+      const url =
+        `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/users/${uid}.json`
+      const response = await fetch(url);
+      const data = await response.json();
+      console.log(data);
+
+      if (data) {
+        //if userData exists, set states with values from userData (firebase)
+        setUserXP(data.xp);
+        console.log("hello")
+    }}
+
+    getXpPoints();
+  }, []);
 
   return (
     <>
@@ -31,7 +53,7 @@ export default function HomeHeader() {
             src={chefHatIcon}
             alt="chef hat icon"
         />
-        <p>250 XP</p>
+        <p>{userXP} XP</p>
     </div>
 
         {isPopupVisible && (

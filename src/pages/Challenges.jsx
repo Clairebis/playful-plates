@@ -14,7 +14,7 @@ export default function Challenges() {
   const [challenges, setChallenges] = useState([]);
   const [isMultiFilterVisible, setMultiFilterVisible] = useState(false);
   const [challengeSlidersVisible, setChallengeSlidersVisible] = useState(true); // Initialize as false
-  const [showSmallChallengeCard, setShowSmallChallengeCard] = useState(false);
+  const [showSmallChallengeCard, setShowSmallChallengeCard] = useState(true);
   
   useEffect(() => {
     async function getChallenges() {
@@ -52,6 +52,7 @@ export default function Challenges() {
     setMultiFilterVisible(!isMultiFilterVisible);
     setChallengeSlidersVisible(!challengeSlidersVisible);
     setShowSmallChallengeCard(!showSmallChallengeCard);
+    console.log("clicked")
 
   };
 

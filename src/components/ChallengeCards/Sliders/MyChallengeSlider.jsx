@@ -1,7 +1,7 @@
 import MyChallengeCard from "../MyChallengeCard";
 import { useEffect, useState } from "react";
 
-export default function MyChallengeSlider({ sliderTitle, challenges }) {
+export default function MyChallengeSlider({ sliderTitle, challenges, username }) {
 
   let challengesToDisplay = challenges;
 

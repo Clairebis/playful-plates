@@ -30,7 +30,6 @@ export default function Home() {
   }, [auth.currentUser, url]); // dependencies: useEffect is executed when auth.currentUser changes
 
 
-
   const [challenges, setChallenges] = useState([]);
 
   useEffect(() => {
@@ -50,10 +49,11 @@ export default function Home() {
     getChallenges();
   }, []);
 
+
   return (
     <>
       <div className="page home-content">
-        <HomeHeader />
+        <HomeHeader/>
         <h1>Hello {username}!</h1>
         <MyChallengeSlider sliderTitle="My challenges" challenges={challenges}/>
         <SmallChallengeSlider sliderTitle="Featured challenges" challenges={challenges}/>
