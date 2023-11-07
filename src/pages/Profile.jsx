@@ -5,7 +5,7 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/
 import "@splidejs/splide/dist/css/splide.min.css";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import LevelInfoPopup from "../pages/Profile/LevelInfoPopup";
-import friendsImage from "../Assets/Icons/friends-image.svg";
+import friendsImage from "../Assets/Icons/friends-image.png";
 import ProfilePostCard from "./Profile/ProfilePostCard";
 import infoIcon from "../Assets/Icons/info-icon.svg";
 import editIcon from "../Assets/Icons/picture-edit.svg";
@@ -183,43 +183,45 @@ function Profile() {
           </div>
         </div>
       </div>
-      <section className="user-posts">
-        <h2 className="profile-posts-title">My Posts</h2>
-        {userPosts.length === 0 ? (
-          <p>You have not posted anything yet...</p>
-        ) : (
-          <Splide options={sliderOptions}>
-            {userPosts.map((post) => (
-              <SplideSlide key={post.id}>
-                <ProfilePostCard
-                  post={post}
-                  onClick={() => navigate(`/fullpost/${post.id}?fromProfile=true`)}
-                />
-              </SplideSlide>
-            ))}
-          </Splide>
-        )}
-      </section>
-      <Link
-        to="/myfriends"
-        className="friends-container">
-        <div className="friends-content">
-          <h2 className="friends-heading">Friends</h2>
-          <img
-            src={friendsImage}
-            alt="Friends Image"
-            width="115"
-            height="95"
-          />
-        </div>
-      </Link>
-      <Link
-        to="/settings"
-        className="settings-container">
-        <div className="settings-content">
-          <h2>Settings</h2>
-        </div>
-      </Link>
+      <div className="profile-content">
+        <section className="user-posts">
+          <h2 className="profile-posts-title">My Posts</h2>
+          {userPosts.length === 0 ? (
+            <p>You have not posted anything yet...</p>
+          ) : (
+            <Splide options={sliderOptions}>
+              {userPosts.map((post) => (
+                <SplideSlide key={post.id}>
+                  <ProfilePostCard
+                    post={post}
+                    onClick={() => navigate(`/fullpost/${post.id}?fromProfile=true`)}
+                  />
+                </SplideSlide>
+              ))}
+            </Splide>
+          )}
+        </section>
+        <Link
+          to="/myfriends"
+          className="friends-container">
+          <div className="friends-content">
+            <h2 className="friends-heading">Friends</h2>
+            <img
+              src={friendsImage}
+              alt="Friends Image"
+              width="115"
+              height="95"
+            />
+          </div>
+        </Link>
+        <Link
+          to="/settings"
+          className="settings-container">
+          <div className="settings-content">
+            <h2>Settings</h2>
+          </div>
+        </Link>
+      </div>
       {isPopupVisible && (
         <LevelInfoPopup
           isVisible={isPopupVisible}

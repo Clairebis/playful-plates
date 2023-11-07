@@ -30,6 +30,7 @@ export default function Countdown() {
 
     return (
         <>
+            {/* <p>Available in..</p> */}
             <div className="counter">
                 <div className="counter-box">
                     <div className="counter-number">{formattedDays}</div>

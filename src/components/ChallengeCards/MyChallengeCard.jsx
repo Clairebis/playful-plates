@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./Challengecards.css"
 import chefHatIconWhite from "../../assets/Icons/chefHatIconWhite.svg"
-import placeholderImg from "../../Assets/Portrait_Placeholder.png";
+import placeholderImg from "../../Assets/Portrait_Placeholder.png"
 
 
 export default function MyChallengeCard({ challenge}) {

@@ -147,6 +147,7 @@
     box-shadow: var(--box-shadow);
     border-radius: 8px;
     width: auto;
+    height: 8rem;
 }
 
 .challenge-card-coming 
@@ -154,6 +155,9 @@
     opacity: 50%;
 }
 
+.challenge-card-coming p{
+    font-weight: var(--font-weight-bold);
+}
 
 
 .challenge-card-content {
