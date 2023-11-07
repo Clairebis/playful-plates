@@ -60,7 +60,9 @@ function Profile() {
         .then((data) => {
           if (data) {
             // Filter posts created by the user
-            const posts = Object.values(data).filter((post) => post.uid === uid);
+            const posts = Object.values(data).filter(
+              (post) => post.uid === uid && post.challengeCompleted === true
+            );
             setUserPosts(posts);
           }
         })
