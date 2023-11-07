@@ -17,6 +17,7 @@ export default function FullPost() {
     image: "",
     title: "",
     challengeid: "",
+    challengeTitle: "",
     uid: "",
     description: "",
     tags: [],
@@ -95,7 +96,7 @@ export default function FullPost() {
             </Link>
           </section>
           <h2 className="bottom8">{post.title}</h2>
-          <p className="small ">{post.challengeid}</p>
+          <p className="small ">{post.challengeTitle}</p>
           <FullPostUser uid={post.uid} />
           <p className="fullPostDescription">{post.description}</p>
           {/*<div className="tags">
