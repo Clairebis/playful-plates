@@ -3,6 +3,7 @@ import './SearchAndFilter.css';
 
 import MultiFilter from "../Multifilter";
 import { useState } from "react";
+import SearchBar from "../searchBar/SearchBar";
 
 export default function SearchAndFilter() {
 
@@ -14,7 +15,7 @@ export default function SearchAndFilter() {
     return (
         <>
         <div className="searchFilterBar">
-        <div className="searchBar">search</div>
+        <SearchBar/>
             <div className="challengesFilter" onClick={toggleMultiFilter}>                
             <img 
                     src={sliders}
