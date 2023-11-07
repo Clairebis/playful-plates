@@ -52,7 +52,7 @@ export default function SearchAndFilter() {
                 setSearchValue={setSearchValue}
             />
 
-            <div className="challengesFilter" onClick={toggleMultiFilter}>                
+            <div className="challengesFilter" onClick={toggleMultiFilter}> 
             <img 
                     src={sliders}
                     alt="filtering button"

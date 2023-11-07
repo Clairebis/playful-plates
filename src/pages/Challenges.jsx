@@ -7,7 +7,7 @@ import { useEffect, useState } from "react"
 import SmallChallengeCard from "../components/ChallengeCards/SmallChallengeCard"
 import SearchBar from "../components/searchBar/SearchBar"
 import MultiFilter from "../components/Multifilter/Multifilter"
-import sliders from "../../assets/Icons/sliders"
+import sliders from "../assets/Icons/sliders.svg"
 
 export default function Challenges() {
 
@@ -50,12 +50,12 @@ export default function Challenges() {
 
       const toggleMultiFilter = () => {
         setMultiFilterVisible(!isMultiFilterVisible);
-    };
+      };
 
       return (
           <section className="page">
             <Header pageTitle="Challenges" />
-            <div className="searchAndFilter">
+            <div className="searchFilterBar">
             <SearchBar
                 placeholder="Search challenges"
                 searchValue={searchValue}
@@ -68,18 +68,23 @@ export default function Challenges() {
                 />
             </div>
             </div>
+            {isMultiFilterVisible && <MultiFilter />} {/* Render MultiFilter only if isMultiFilterVisible is true */}
+
             {challengesToDisplay.length === 0 ? (
               <p>No matching posts found.</p>
             ) : (
-              challengesToDisplay.map(challenge => (
-                <SmallChallengeCard challenge={challenge} key={challenge.id} />
-              ))
-            )}
-            {/* Other components can be rendered here if needed */}
-            {/* <LatestChallengeSlider sliderTitle="Latest Challenges"/>
+              <section className="SmallChallengeSlider">
+              {challengesToDisplay.map((challenge) => (
+              <SmallChallengeCard challenge={challenge} key={challenge.id} />
+              ))}
+              </section>
+              )}
+
+            <section className="allChallengeSliders">
+            <LatestChallengeSlider sliderTitle="Latest Challenges"/>
             <SmallChallengeSlider sliderTitle="Popular with Friends"/>
-            <SeasonalChallengeSlider sliderTitle="Seasonal Challenges"/> */}
-                    {isMultiFilterVisible && <MultiFilter />} {/* Render MultiFilter only if isMultiFilterVisible is true */}
+            <SeasonalChallengeSlider sliderTitle="Seasonal Challenges"/>
+            </section>
 
           </section>
           
