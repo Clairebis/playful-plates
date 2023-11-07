@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import TextField from "@mui/material/TextField";
 import logoLarge from "../Assets/logoLarge.png";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./logIn.css";
@@ -27,41 +28,47 @@ export default function Login() {
   };
 
   return (
-    <div>
+    <div className="page">
       <img src={logoLarge} alt="logo" className="landingLogo" />
+      <h2 className="loginHeading">Log in</h2>
       <form>
-        <div>
-          <label htmlFor="email-address">Email address</label>
-          <input
+        <div className="loginInputContainer">
+          <TextField
             id="email-address"
+            className="loginInput"
             name="email"
             type="email"
             required
-            placeholder="Email address"
+            placeholder="abc@email.com"
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
+        <div className="loginInputContainer">
+          <TextField
             id="password"
+            className="loginInput"
             name="password"
             type="password"
             required
-            placeholder="Password"
+            placeholder="Your password"
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 
         <div>
-          <button onClick={onLogin}>Login</button>
+          <button onClick={onLogin} className="loginButton button-green">
+            Login
+          </button>
         </div>
       </form>
 
-      <p>
-        No account yet? <NavLink to="/signup">Sign up</NavLink>
-      </p>
+      <div className="loginSignupLink">
+        <p>Don't have an account? </p>
+        <NavLink to="/signup" className="signUpLink">
+          Sign up
+        </NavLink>
+      </div>
     </div>
   );
 }
