@@ -8,6 +8,7 @@ import "./UpdatePost.css";
 import PostLabel from "../components/Label/PostLabel";
 import { useRef } from "react";
 import "../components/Label/PostChallenge.css";
+import arrow from "../Assets/Icons/arrowback.svg";
 
 export default function UpdatePost() {
   //fetch information about currently logged in user - uid
@@ -29,6 +30,10 @@ export default function UpdatePost() {
   });
 
   const [errorMessage, setErrorMessage] = useState("");
+
+  const goBack = () => {
+    navigate(-1); // Go back to the previous page
+  };
 
   useEffect(() => {
     //fetch existing post data based on the postId
@@ -168,7 +173,13 @@ export default function UpdatePost() {
 
   return (
     <section>
-      <h2 className="updateHeading">Edit post </h2>
+      <div className="updateHeader">
+        <div onClick={goBack} className="updateBack">
+          <img src={arrow} alt="back arrow" />
+        </div>
+        <h2>Edit post </h2>
+      </div>
+
       {/* -------Photo upload section ----*/}
 
       <>

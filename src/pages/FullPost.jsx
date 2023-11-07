@@ -59,6 +59,7 @@ export default function FullPost() {
       const response = await fetch(url);
       const postData = await response.json();
       setPost(postData);
+      console.log("Fetched postData:", postData);
     }
     getPost();
   }, [url]);
