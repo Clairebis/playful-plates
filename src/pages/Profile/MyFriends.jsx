@@ -106,7 +106,6 @@
 // }
 
 // export default MyFriends;
-
 import { useState, useEffect } from "react";
 import Header from "../../components/Header/Header";
 import addImage from "../../Assets/Icons/add.svg";
@@ -119,8 +118,9 @@ function MyFriends() {
   const [isPopupVisible, setPopupVisible] = useState(false);
   const [userData, setUserData] = useState(null);
 
-  // Retrieve friend data from local storage when the component loads
   useEffect(() => {
+    // You can simulate the friend data retrieval from local storage here.
+    // Replace this with your actual data retrieval logic.
     const storedFriendData = localStorage.getItem("myFriendsData");
     if (storedFriendData) {
       setUserData(JSON.parse(storedFriendData));
@@ -135,8 +135,16 @@ function MyFriends() {
     setPopupVisible(false);
   };
 
-  const updateUserData = (data) => {
-    setUserData(data);
+  const removeFriend = () => {
+    const confirmDelete = window.confirm("Are you sure you want to remove this friend?");
+
+    if (confirmDelete) {
+      // Here you can place the code for deleting the friend
+      // For example, you can send a request to your server to remove the friend
+
+      // Simulate removing the friend
+      setUserData(null);
+    }
   };
 
   return (
@@ -157,8 +165,10 @@ function MyFriends() {
 
         <FriendsPopup
           isVisible={isPopupVisible}
-          onClose={closePopup} // Pass the closePopup function
-          updateUserData={updateUserData}
+          onClose={closePopup}
+          updateUserData={(data) => {
+            setUserData(data);
+          }}
         />
         <div className="friends-friends-container">
           {userData && (
@@ -176,7 +186,9 @@ function MyFriends() {
                   <p className="friend-user-xp">{userData.xp} XP</p>
                 </div>
               </div>
-              <div className="more-icon">
+              <div
+                className="more-icon"
+                onClick={removeFriend}>
                 <img
                   src={moreImage}
                   alt="More"
