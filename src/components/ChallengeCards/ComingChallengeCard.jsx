@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "./Challengecards.css"
-import Countdown from "../Countdown";
+import Countdown from "../Countdown/Countdown";
 
 export default function ComingChallengeCard({ challenge}) {
     const navigate = useNavigate();

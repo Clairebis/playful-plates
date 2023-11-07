@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import SmallChallengeCard from "./ChallengeCards/SmallChallengeCard";
+import SmallChallengeCard from "../ChallengeCards/SmallChallengeCard";
 import "./Multifilter.css";
 
 export default function MultiFilter() {
