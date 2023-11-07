@@ -4,6 +4,7 @@ import kitchenAssistantImage from "../../Assets/Levels/kitchen-assistant.svg";
 import sousChefImage from "../../Assets/Levels/sous-chef.svg";
 import chefImage from "../../Assets/Levels/chef.svg";
 import headChefImage from "../../Assets/Levels/head-chef.svg";
+import close from "../../Assets/Icons/close.svg";
 
 function LevelInfoPopup({ isVisible, onClose }) {
   if (!isVisible) return null;
@@ -42,11 +43,17 @@ function LevelInfoPopup({ isVisible, onClose }) {
   ];
 
   return (
-    <div
-      className="level-info-popup"
-      onClick={onClose}>
+    <div className="level-info-popup">
       <div className="popup-content">
-        <h1>Your level explained</h1>
+        <div className="popup-header">
+          <h1>Your level explained</h1>
+          <img
+            src={close}
+            alt="Close"
+            className="close-button"
+            onClick={onClose}
+          />
+        </div>
         <p>
           Gain Experience Points (XP) by participating in challenges and inviting friends. Climb the
           ranks from Kitchen Porter to Head Chef. Here's how the XP system works:
