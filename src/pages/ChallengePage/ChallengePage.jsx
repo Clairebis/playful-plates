@@ -228,7 +228,7 @@ export default function ChallengePage() {
           {" "}
           <p>
             Difficulty:{" "}
-            <span className="boldSpan">{challenge.categories[1]} </span>
+            <span className="boldSpan">{challenge.categories[0]} </span>
           </p>
         </div>
         <div className="challengeXPLabel">
