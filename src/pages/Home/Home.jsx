@@ -34,7 +34,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="page home-content">
+      <div className="page home-content hello">
         <HomeHeader />
 
         <h1>Hello {name}!</h1>
