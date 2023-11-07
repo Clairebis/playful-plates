@@ -6,12 +6,16 @@
 .landingLogo {
   display: flex;
   margin: auto;
-  margin-top: 9rem;
+  margin-top: 7rem;
 }
 
 .landingText {
   margin-top: 4rem;
   text-align: center;
+}
+
+.landingPara {
+  margin-bottom: 0.5rem;
 }
 
 .landingButtons {

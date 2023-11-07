@@ -4,6 +4,7 @@ import { auth } from "../firebase-config";
 import { useState } from "react";
 import logoLarge from "../Assets/logoLarge.png";
 import "./signUp.css";
+import TextField from "@mui/material/TextField";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -53,65 +54,67 @@ export default function SignUp() {
   }
 
   return (
-    <div>
+    <div className="page">
       <img src={logoLarge} alt="logo" className="landingLogo" />
+      <h2 className="signupHeading">Sign up</h2>
       <form>
-        <div>
-          <label htmlFor="email-address">Email address</label>
-          <input
+        <div className="loginInputContainer">
+          <TextField
+            className="loginInput"
             type="email"
-            label="Email address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            placeholder="Email address"
+            placeholder="abc@email.com"
           />
         </div>
 
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
+        <div className="loginInputContainer">
+          <TextField
             type="password"
-            label="Create password"
+            className="loginInput"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            placeholder="Password"
+            placeholder="Choose a password"
           />
         </div>
 
-        <div>
-          <label htmlFor="name">Name</label>
-          <input
+        <div className="loginInputContainer">
+          <TextField
             type="text"
-            label="Your name"
+            className="loginInput"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-            placeholder="Name"
+            placeholder="Your name"
+          />
+        </div>
+
+        <div className="loginInputContainer">
+          <TextField
+            type="text"
+            className="loginInput"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+            placeholder="Choose a username"
           />
         </div>
 
         <div>
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            label="Create username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-            placeholder="Username"
-          />
+          <button className="loginButton button-green" onClick={onSubmit}>
+            Sign up
+          </button>
         </div>
-
-        <button type="submit" onClick={onSubmit}>
-          Sign up
-        </button>
       </form>
 
-      <p>
-        Already have an account? <NavLink to="/login">Log in</NavLink>
-      </p>
+      <div className="loginSignupLink">
+        <p>Already have an account? </p>
+        <NavLink to="/login" className="signUpLink">
+          Log in
+        </NavLink>
+      </div>
     </div>
   );
 }

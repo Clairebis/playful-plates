@@ -8,9 +8,11 @@ export default function Landing() {
       <div className="landingPage">
         <img src={logoLarge} alt="logo" className="landingLogo" />
         <section className="landingText">
-          <p>Lacking inspiration in the kitchen?</p>
-          <p>Ready to challenge yourself and your friends?</p>
-          <p> Let us help you with that!</p>
+          <p className="landingPara">Lacking inspiration in the kitchen?</p>
+          <p className="landingPara">
+            Ready to challenge yourself and your friends?
+          </p>
+          <p className="landingPara"> Let us help you with that!</p>
         </section>
         <section className="landingButtons">
           <Button text="Login" Link="/login" className="landingButton" />
