@@ -273,10 +273,11 @@ export default function PostChallenge() {
 
   return (
     <>
-      <section className="page">
-        <Header pageTitle={challengeTitle} />{" "}
-      </section>
-
+      <Header
+        pageTitle={challengeTitle}
+        className="biggerPadding"
+        titleStyleName="smallerMarginLeft"
+      />{" "}
       <input
         type="file"
         accept="image/*"
