@@ -2,9 +2,8 @@ import { useEffect, useState } from "react";
 import SmallChallengeCard from "../ChallengeCards/SmallChallengeCard";
 import "./Multifilter.css";
 
-export default function MultiFilter() {
+export default function MultiFilter({challenges}) {
   // State variables to store challenges, selected filters, selected difficulty, and filtered challenges
-  const [challenges, setChallenges] = useState([]);
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [selectedDifficulty, setSelectedDifficulty] = useState("");
   const [filteredItems, setFilteredItems] = useState([]);
@@ -19,21 +18,6 @@ export default function MultiFilter() {
     "Theme",
   ];
 
-  useEffect(() => {
-    async function getChallenges() {
-      const url =
-        "https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/challenges.json";
-      const response = await fetch(url);
-      const data = await response.json();
-      const challengesArray = Object.keys(data).map((key) => ({
-        id: key,
-        ...data[key],
-      }));
-      setChallenges(challengesArray);
-    }
-
-    getChallenges();
-  }, []);
 
   const handleFilter = (category) => {
     if (selectedFilters.includes(category)) {
@@ -71,6 +55,7 @@ export default function MultiFilter() {
     setFilteredItems(filteredItems);
     setFiltersSelected(selectedFilters.length > 0 || selectedDifficulty !== "");
   };
+  
 
   return (
     <div>
@@ -104,7 +89,7 @@ export default function MultiFilter() {
           ))}
         </div>
       </div>
-
+{/* 
       {filtersSelected && (
         <>
           <h2>Results</h2>
@@ -114,7 +99,7 @@ export default function MultiFilter() {
             ))}
           </div>
         </>
-      )}
+      )} */}
     </div>
   );
 }
