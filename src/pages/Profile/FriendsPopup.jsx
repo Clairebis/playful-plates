@@ -141,7 +141,7 @@ function FriendsPopup({ isVisible, onClose, updateUserData }) {
           const userUid = userDataKeys[0];
           const user = userData[userUid];
           updateUserData(user);
-          setMessage(`User found: ${user.username}`);
+          setMessage(`Friend has been added!`);
 
           // Save the friend data to local storage
           localStorage.setItem("myFriendsData", JSON.stringify(user));
@@ -171,19 +171,22 @@ function FriendsPopup({ isVisible, onClose, updateUserData }) {
             onClick={onClose} // Call the onClose function to close the popup
           />
         </div>
-        <input
-          type="text"
-          placeholder="Username"
-          className="username-input"
-          value={username}
-          onChange={handleUsernameChange}
-        />
-        <button
-          className="invite-button"
-          onClick={handleFetchUserInfo}>
-          Invite
-        </button>
-        {message && <p>{message}</p>}
+        <div className="container-align">
+          <input
+            type="text"
+            placeholder="Username"
+            className="username-input"
+            value={username}
+            onChange={handleUsernameChange}
+          />
+          <button
+            className="invite-button"
+            onClick={handleFetchUserInfo}>
+            Invite
+          </button>
+
+          {message && <p>{message}</p>}
+        </div>
       </div>
     </div>
   ) : null;

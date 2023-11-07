@@ -66,3 +66,9 @@ input.username-input {
 }
 
 /* Add any additional styling or global styles you want to apply */
+.container-align {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
