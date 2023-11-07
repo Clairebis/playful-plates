@@ -10,8 +10,8 @@ export default function FullPost() {
   const params = useParams();
   const navigate = useNavigate();
   const url = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/posts/${params.postId}.json`;
-  const [active, setActive] = useState(false);
   const postId = params.postId;
+  const [active, setActive] = useState(false);
 
   const [post, setPost] = useState({
     image: "",
@@ -25,22 +25,9 @@ export default function FullPost() {
     publishedAt: "",
   });
 
-  const [likeCount, setLikeCount] = useState(post.likes);
-
   const goBack = () => {
     navigate(-1); // Go back to the previous page
   };
-
-  function handleLikeClick() {
-    setActive(!active);
-
-    // Update the like count based on the active state (not connected to db...)
-    if (active) {
-      setLikeCount(likeCount - 1);
-    } else {
-      setLikeCount(likeCount + 1);
-    }
-  }
 
   async function deletePost() {
     const confirmDelete = window.confirm(
@@ -76,6 +63,25 @@ export default function FullPost() {
     getPost();
   }, [url]);
 
+  //const [likeCount, setLikeCount] = useState(post.likes);
+
+  function handleLikeClick() {
+    setActive(!active);
+
+    // Update the like count based on the active state (not connected to db...)
+    if (active) {
+      setPost((prevPost) => ({
+        ...prevPost,
+        likes: prevPost.likes - 1,
+      }));
+    } else {
+      setPost((prevPost) => ({
+        ...prevPost,
+        likes: prevPost.likes + 1,
+      }));
+    }
+  }
+
   return (
     <section>
       <div onClick={goBack} className="fullPostBack">
@@ -108,7 +114,7 @@ export default function FullPost() {
             <div className="fullPostHeart">
               <Heart isActive={active} onClick={handleLikeClick} />
             </div>
-            <div> {likeCount} likes </div>
+            <div> {post.likes} likes </div>
           </div>
           <p>Published {post.publishedAt}</p>
         </section>
