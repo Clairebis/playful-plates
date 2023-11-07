@@ -1,6 +1,6 @@
 .button-green {
   border-radius: 8px;
-  padding: 8px;
+  padding: 10px;
   width: 120px;
   display: block;
   text-align: center;
@@ -12,25 +12,23 @@
   background-color: var(--lime);
   cursor: pointer;
   box-shadow: var(--box-shadow);
-  text-align:center;
-  
+  text-align: center;
 }
 
   .button-yellow {
     background-color: var(--banana);
   }
-  
-  .button-outline {
-    border: 2px solid var(--green-bean);
-    background-color: var(--oatmeal-100);
-    color:var(--green-bean);
-  }
 
-  .home-challenge-button {
-    display:block;
-    width: auto;
-    margin-right:1rem;
-    margin-bottom:1.5rem;
+.button-outline {
+  border: 2px solid var(--green-bean);
+  background-color: var(--oatmeal-100);
+  color: var(--green-bean);
+  padding: 8px;
+}
 
-  }
-
+.home-challenge-button {
+  display: block;
+  width: auto;
+  margin-right: 1rem;
+  margin-bottom: 1.5rem;
+}

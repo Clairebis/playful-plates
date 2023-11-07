@@ -1,5 +1,6 @@
 .bigBtn {
   width: 200px;
+  margin-bottom: 10px;
 }
 
 .successPostContent {
@@ -17,11 +18,18 @@
 
 .animatedCircle {
   stroke-dasharray: 565;
-  stroke-dashoffset: 567;
+  stroke-dashoffset: 565;
   animation: dash 2s linear forwards;
   margin-bottom: 30px;
 }
+.btnNewChallenge {
+  padding-top: 8px;
+}
 
+.pointsXP {
+  font-family: var(--heading-font);
+  margin-top: 5px;
+}
 @keyframes dash {
   to {
     stroke-dashoffset: 0;

@@ -18,7 +18,6 @@ export default function ChallengePage() {
 
   //fetch all information about challenge from the database
   let { challengeId } = useParams();
-  let { userId } = useParams();
   const url = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/challenges/${challengeId}.json`;
   const urlPosts =
     "https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/posts.json";
@@ -52,7 +51,6 @@ export default function ChallengePage() {
     async function getPostExists() {
       const response = await fetch(urlPosts);
       const postsData = await response.json();
-      console.log(typeof postsData, postsData);
       const exists = Object.values(postsData).some(
         (post) => post.uid == uid && post.challengeId == challengeId
       );
@@ -70,9 +68,20 @@ export default function ChallengePage() {
   }, [uid, challengeId]);
 
   //create an empty post when CTA Join Challenge is clicked and rerender the div with buttons
+
   async function joinChallenge(event) {
     event.preventDefault();
     try {
+      // Fetch the challenge title based on challengeId
+      const challengeTitleUrl = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/challenges/${challengeId}/title.json`;
+      const challengeTitleResponse = await fetch(challengeTitleUrl);
+      const challengeTitleData = await challengeTitleResponse.json();
+
+      //fetch the XP based on challengeId
+      const challengeXPUrl = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/challenges/${challengeId}/xppoints.json`;
+      const challengeXPResponse = await fetch(challengeXPUrl);
+      const challengeXPData = await challengeXPResponse.json();
+
       const newPost = {
         challengeCompleted: false,
         image: "",
@@ -82,8 +91,10 @@ export default function ChallengePage() {
         uid: uid,
         publishedAt: "",
         challengeId: challengeId,
+        challengeTitle: challengeTitleData,
         public: false,
         likes: "",
+        xp: challengeXPData,
       };
 
       const url =
@@ -92,12 +103,11 @@ export default function ChallengePage() {
         method: "POST",
         body: JSON.stringify(newPost),
       });
-      const data = await response.json(); // Get the response data, which includes the postID
-      console.log("Post added with ID:", data.name);
 
       if (response.ok) {
         console.log(newPost);
         setPostExists(true);
+        searchPost();
       } else {
         console.log("An error occurred when posting");
       }
@@ -116,7 +126,6 @@ export default function ChallengePage() {
   function openModal() {
     modal.style.display = "block";
   }
-
   //delete empty Post with current uid and challenge Id to remove the challenge from list of active and rerender the div with buttons
   async function removeChallenge() {
     try {
@@ -156,6 +165,54 @@ export default function ChallengePage() {
     }
   }
 
+  //search for a post with challengeID and uid and challengeCompleted state = "false" to get it's id and pass it to the link
+  const [postId, setPostId] = useState("");
+  useEffect(() => {
+    async function searchPost() {
+      try {
+        // Fetch posts data from the URL
+        const response = await fetch(
+          "https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/posts.json"
+        );
+        const postsData = await response.json();
+        // Initialize a variable to store the matching postId
+        let matchingPostId = null;
+
+        // Iterate through the posts to find a match
+        for (const postId in postsData) {
+          const post = postsData[postId];
+          console.log(
+            postId,
+            "--------------------",
+            post,
+            "---------------------",
+            uid,
+            "----------------",
+            challengeId
+          );
+          // Check if the post meets your search criteria
+          if (
+            post.uid === uid && // User UID matches
+            post.challengeId === challengeId && // Challenge ID matches
+            post.challengeCompleted === false // challengeCompleted is false
+          ) {
+            // A matching post is found
+            matchingPostId = postId;
+            break; // Exit the loop once a match is found
+          }
+        }
+
+        // Update the state with the matching postId (or null if no match was found)
+        setPostId(matchingPostId);
+        console.log(matchingPostId);
+      } catch (error) {
+        console.error("An error occurred:", error);
+      }
+    }
+    // Call the searchPost function when the component mounts
+    searchPost();
+  }, [uid, challengeId]);
+
   return (
     <section className="page">
       <Header className="singleArrow" />
@@ -171,7 +228,7 @@ export default function ChallengePage() {
           {" "}
           <p>
             Difficulty:{" "}
-            <span className="boldSpan">{challenge.categories[1]} </span>
+            <span className="boldSpan">{challenge.categories[0]} </span>
           </p>
         </div>
         <div className="challengeXPLabel">
@@ -197,7 +254,7 @@ export default function ChallengePage() {
           <Button
             text="Complete Challenge"
             className="completeBtn"
-            Link={`/postchallenge/${challengeId}`}
+            Link={`/postchallenge/${postId}`}
           />
           <div>
             {" "}

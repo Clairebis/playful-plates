@@ -3,8 +3,13 @@ import SmallChallengeSlider from "../components/ChallengeCards/Sliders/SmallChal
 import SearchAndFilter from "../components/SearchAndFilter/SearchAndFilter"
 import LatestChallengeSlider from "../components/ChallengeCards/Sliders/LatestChallengeSlider"
 import SeasonalChallengeSlider from "../components/ChallengeCards/Sliders/SeasonalChallengeSlider"
+import { useEffect } from "react"
 
 export default function Challenges() {
+
+    useEffect(() => {
+        window.scrollTo(0, 0); // Scroll to the top when the component mounts
+      }, []);
 
     return (
         <>
