@@ -4,6 +4,7 @@ import "./feed.css";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import SearchBar from "../components/searchBar/SearchBar";
+import sliders from "../Assets/Icons/sliders.svg";
 
 export default function Feed() {
   const [posts, setPosts] = useState([]);
@@ -61,6 +62,9 @@ export default function Feed() {
           searchValue={searchValue}
           setSearchValue={setSearchValue}
         />
+        <div className="challengesFilter">
+          <img src={sliders} alt="filtering button" />
+        </div>
       </section>
 
       <section className="feed">
