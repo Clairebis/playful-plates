@@ -55,7 +55,7 @@ export default function Home() {
       <div className="page home-content">
         <HomeHeader/>
         <h1>Hello {username}!</h1>
-        <MyChallengeSlider sliderTitle="My challenges" challenges={challenges}/>
+        <MyChallengeSlider sliderTitle="My challenges" challenges={challenges}username={username}/>
         <SmallChallengeSlider sliderTitle="Featured challenges" challenges={challenges}/>
         <Button className="button-yellow home-challenge-button" text="Discover more challenges" Link="/challenges"/>
         <ComingChallengeSlider sliderTitle="Coming soon" challenges={challenges}/>

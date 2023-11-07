@@ -89,7 +89,7 @@ export default function MultiFilter({challenges}) {
           ))}
         </div>
       </div>
-{/* 
+
       {filtersSelected && (
         <>
           <h2>Results</h2>
@@ -99,7 +99,7 @@ export default function MultiFilter({challenges}) {
             ))}
           </div>
         </>
-      )} */}
+      )}
     </div>
   );
 }

@@ -33,7 +33,6 @@ export default function HomeHeader() {
       if (data) {
         //if userData exists, set states with values from userData (firebase)
         setUserXP(data.xp);
-        console.log("hello")
     }}
 
     getXpPoints();
