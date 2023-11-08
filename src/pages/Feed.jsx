@@ -47,6 +47,7 @@ export default function Feed() {
     <section className="page">
       <Tabs
         className="feedTabs"
+        variant="fullWidth"
         value={value}
         onChange={(event, newValue) => {
           setValue(newValue);
