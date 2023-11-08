@@ -48,7 +48,7 @@ export default function MyChallengeSlider({ sliderTitle }) {
 
     // Fetch user's challenges and challenges data
     fetchData();
-  }, []);
+  }, [[]]);
 
   return (
     <>
