@@ -119,7 +119,7 @@ import "./FriendsPopup.css";
 
 function FriendsPopup({ isVisible, onClose, updateFriendsData }) {
   const [username, setUsername] = useState("");
-  const [message, setMessage] = useState(""); // Add this line
+  const [message, setMessage] = useState("");
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -133,41 +133,53 @@ function FriendsPopup({ isVisible, onClose, updateFriendsData }) {
 
     try {
       const snapshot = await get(userQuery);
-      console.log("Snapshot data:", snapshot.val());
+      const userData = snapshot.val();
 
-      if (snapshot.exists()) {
-        const userData = snapshot.val();
-        const userUid = Object.keys(userData)[0]; // Get the first user ID
-        const user = userData[userUid];
+      if (userData) {
+        let user;
 
-        const storedFriendsData = JSON.parse(localStorage.getItem("myFriendsData") || "[]");
+        if (typeof userData === "object") {
+          if (Object.keys(userData).length > 0) {
+            // Get the first user in case there are multiple
+            const userUid = Object.keys(userData)[0];
+            user = userData[userUid];
+          }
+        }
 
-        // Check if the user already exists in storedFriendsData
-        const userExists = storedFriendsData.some((friend) => friend.username === user.username);
+        if (user) {
+          const storedFriendsData = localStorage.getItem("myFriendsData")
+            ? JSON.parse(localStorage.getItem("myFriendsData"))
+            : [];
+          // Check if the user already exists in storedFriendsData
+          const userExists = storedFriendsData.some((friend) => friend.username === user.username);
+          console.log("Stored friends", storedFriendsData);
+          if (!userExists) {
+            // Add the new user to the existing data
+            console.log("User check", user);
+            storedFriendsData.push(user);
 
-        if (!userExists) {
-          // Add the new user to the existing data
-          const updatedFriendsData = [...storedFriendsData, user];
+            // Update the local storage with the updated data
+            localStorage.setItem("myFriendsData", JSON.stringify(storedFriendsData));
+            console.log("Updated localStorage:", localStorage.getItem("myFriendsData"));
+            console.log("New friend data:", user);
 
-          // Update the local storage with the updated data
-          localStorage.setItem("myFriendsData", JSON.stringify(updatedFriendsData));
-          console.log("Updated localStorage:", localStorage.getItem("myFriendsData"));
-          console.log("New friend data:", user);
-
-          // Update the state with the new user
-          updateFriendsData(user);
-          setMessage("Friend has been added!");
+            // Update the state with the new user
+            updateFriendsData(user);
+            setMessage("Friend has been added!");
+          } else {
+            setMessage("User is already your friend.");
+          }
         } else {
-          setMessage("User is already your friend.");
+          setMessage("No user data found.");
         }
       } else {
-        updateFriendsData([]);
         setMessage("User not found. Please try again.");
       }
     } catch (error) {
       console.error("Error fetching user data", error);
     }
   };
+
   return isVisible ? (
     <div className="friends-popup visible">
       <div className="popup-content">
