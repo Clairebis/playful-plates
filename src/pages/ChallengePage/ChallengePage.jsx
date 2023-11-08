@@ -68,6 +68,7 @@ export default function ChallengePage() {
   }, [uid, challengeId]);
 
   //create an empty post when CTA Join Challenge is clicked and rerender the div with buttons
+  const [newPostId, setNewPostId] = useState("");
 
   async function joinChallenge(event) {
     event.preventDefault();
@@ -105,9 +106,11 @@ export default function ChallengePage() {
       });
 
       if (response.ok) {
-        console.log(newPost);
+        const newPostData = await response.json();
+        const newPostId = newPostData.name;
+        console.log("New Post Created with Id", newPostId);
+        setNewPostId(newPostId);
         setPostExists(true);
-        searchPost();
       } else {
         console.log("An error occurred when posting");
       }
@@ -115,6 +118,7 @@ export default function ChallengePage() {
       console.error("An error occurred:", error);
     }
   }
+
   //everything about modals function
   const modal = document.querySelector(".modalRemove");
   const modalConfirmation = document.querySelector(".confirmation");
@@ -166,7 +170,7 @@ export default function ChallengePage() {
   }
 
   //search for a post with challengeID and uid and challengeCompleted state = "false" to get it's id and pass it to the link
-  const [postId, setPostId] = useState("");
+  //const [postId, setPostId] = useState("");
   useEffect(() => {
     async function searchPost() {
       try {
@@ -181,15 +185,6 @@ export default function ChallengePage() {
         // Iterate through the posts to find a match
         for (const postId in postsData) {
           const post = postsData[postId];
-          console.log(
-            postId,
-            "--------------------",
-            post,
-            "---------------------",
-            uid,
-            "----------------",
-            challengeId
-          );
           // Check if the post meets your search criteria
           if (
             post.uid === uid && // User UID matches
@@ -203,7 +198,7 @@ export default function ChallengePage() {
         }
 
         // Update the state with the matching postId (or null if no match was found)
-        setPostId(matchingPostId);
+        setNewPostId(matchingPostId);
         console.log(matchingPostId);
       } catch (error) {
         console.error("An error occurred:", error);
@@ -254,7 +249,7 @@ export default function ChallengePage() {
           <Button
             text="Complete Challenge"
             className="completeBtn"
-            Link={`/postchallenge/${postId}`}
+            Link={`/postchallenge/${newPostId}`}
           />
           <div>
             {" "}

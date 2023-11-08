@@ -214,7 +214,7 @@ export default function PostChallenge() {
     challengeTitle: "",
     public: "",
     likes: "",
-    xppoints: "",
+    xp: "",
   });
 
   useEffect(() => {
@@ -234,7 +234,7 @@ export default function PostChallenge() {
       // Retrieve the original challengeID and challengeTitle from the post state
       const originalChallengeID = post.challengeId;
       const originalChallengeTitle = post.challengeTitle;
-      const originalXP = post.xppoints;
+      const originalXP = post.xp;
 
       // Create a new post object with updated values
       const updatedPost = {
@@ -249,7 +249,7 @@ export default function PostChallenge() {
         likes: 0,
         challengeId: originalChallengeID,
         challengeTitle: originalChallengeTitle,
-        xppoints: originalXP,
+        xp: originalXP,
       };
 
       const updateURL = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/posts/${postId}.json`;
@@ -273,10 +273,11 @@ export default function PostChallenge() {
 
   return (
     <>
-      <section className="page">
-        <Header pageTitle={challengeTitle} />{" "}
-      </section>
-
+      <Header
+        pageTitle={challengeTitle}
+        className="biggerPadding"
+        titleStyleName="smallerMarginLeft"
+      />{" "}
       <input
         type="file"
         accept="image/*"

@@ -20,3 +20,11 @@
   text-align: center;
   margin-right: 24px;
 }
+
+.biggerPadding {
+  padding-left: 22px !important;
+}
+
+.smallerMarginLeft {
+  margin-right: 40px;
+}
