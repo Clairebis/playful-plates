@@ -61,30 +61,6 @@ export default function UpdatePost() {
     }
   };
 
-  // const handleImageChange = (event) => {
-  //   const file = event.target.files[0];
-  //   if (file && file.size < 10000000) {
-  //     // setImageFile(file);
-  //     const reader = new FileReader();
-  //     reader.onload = (event) => {
-  //       //todo: upload image to firebase
-  //       //todo: get image url
-  //       //todo: call setPost e.g. setPost({...post, image: imageUrl})
-
-  //       // imageFile = event.target.result;
-  //       setImageFile(event.target.result);
-
-  //       uploadImage().then((imageUrl) => {
-  //         setPost({ ...post, image: imageUrl });
-  //       });
-  //     };
-  //     reader.readAsDataURL(file);
-  //     setErrorMessage(""); // Reset errorMessage state
-  //   } else {
-  //     setErrorMessage("Image file size must be less than 1MB");
-  //   }
-  // };
-
   const handleImageClick = () => {
     fileInputRef.current.click();
   };
