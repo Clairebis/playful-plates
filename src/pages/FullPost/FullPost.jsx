@@ -2,11 +2,11 @@
 
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import FullPostUser from "../components/userAvatars/FullPostUser";
+import FullPostUser from "../../components/userAvatars/FullPostUser";
 import Heart from "react-heart";
 import "./fullpost.css";
 import arrow from "../Assets/Icons/arrowback.svg";
-import Button from "../components/Button/Button";
+import Button from "../../components/Button/Button";
 import { getAuth } from "firebase/auth";
 
 export default function FullPost() {

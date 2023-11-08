@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { useParams } from "react-router";
 import "./UpdatePost.css";
-import PostLabel from "../components/Label/PostLabel";
+import PostLabel from "../../components/Label/PostLabel";
 import { useRef } from "react";
 import "../components/Label/PostChallenge.css";
 import arrow from "../Assets/Icons/arrowback.svg";

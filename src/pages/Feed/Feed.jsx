@@ -1,11 +1,11 @@
 /*Claire*/
 
 import { useEffect, useState } from "react";
-import PostCard from "../components/postCard/PostCard";
+import PostCard from "../../components/postCard/PostCard";
 import "./feed.css";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
-import SearchBar from "../components/searchBar/SearchBar";
+import SearchBar from "../../components/searchBar/SearchBar";
 import sliders from "../Assets/Icons/sliders.svg";
 
 export default function Feed() {

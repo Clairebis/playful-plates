@@ -1,6 +1,6 @@
 /*Claire*/
 
-import Button from "../components/Button/Button";
+import Button from "../../components/Button/Button";
 import logoLarge from "../Assets/logoLarge.png";
 import "./landing.css";
 
