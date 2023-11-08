@@ -1,3 +1,5 @@
+/*------------Paulius ----------*/
+
 import moreImage from "../../Assets/Icons/more.svg";
 
 const FriendCard = ({ friend, onRemoveFriend }) => {
@@ -5,15 +7,15 @@ const FriendCard = ({ friend, onRemoveFriend }) => {
     <div className="friends-user-info">
       <div className="container-flex">
         <img
-          src={friend.image}
+          src={friend?.image}
           alt="User"
           className="friend-user-image"
         />
         <div className="friend-user-details">
-          <p className="friend-user-name">{friend.name}</p>
-          <p className="friend-user-username">{friend.username}</p>
-          <p className="friend-user-level">{friend.level}</p>
-          <p className="friend-user-xp">{friend.xp} XP</p>
+          <p className="friend-user-name">{friend?.name}</p>
+          <p className="friend-user-username">{friend?.username}</p>
+          <p className="friend-user-level">{friend?.level}</p>
+          <p className="friend-user-xp">{friend?.xp} XP</p>
         </div>
       </div>
       <div className="more-icon">

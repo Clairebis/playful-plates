@@ -1,10 +1,12 @@
+/*------------Paulius ----------*/
+
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import "@splidejs/splide/dist/css/splide.min.css";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import LevelInfoPopup from "../pages/Profile/LevelInfoPopup";
+import LevelInfoPopup from "./Profile/LevelInfoPopup";
 import friendsImage from "../Assets/Icons/friends-image.png";
 import ProfilePostCard from "./Profile/ProfilePostCard";
 import infoIcon from "../Assets/Icons/info-icon.svg";
@@ -22,13 +24,14 @@ function Profile() {
   });
   const [userPosts, setUserPosts] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
-
   const [isPopupVisible, setPopupVisible] = useState(false);
 
+  // Function to display a level info popup
   const handleInfoIconClick = () => {
     setPopupVisible(true);
   };
 
+  // Function to close the level info popup
   const closePopup = () => {
     setPopupVisible(false);
   };
@@ -88,6 +91,7 @@ function Profile() {
     focus: "left",
   };
 
+  // Function to handle editing the user profile
   const handleEditProfile = () => {
     const input = document.createElement("input");
     input.type = "file";
@@ -99,6 +103,7 @@ function Profile() {
     input.click();
   };
 
+  // Function to upload the selected image
   const uploadImage = async (imageFile) => {
     if (imageFile) {
       const storage = getStorage();
@@ -107,9 +112,7 @@ function Profile() {
 
       uploadTask.on(
         "state_changed",
-        () => {
-          // Handle progress (if needed)
-        },
+        () => {},
         (error) => {
           console.error("Error uploading image", error);
         },

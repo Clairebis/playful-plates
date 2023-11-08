@@ -1,3 +1,5 @@
+/*------------Paulius ----------*/
+
 .friends-popup {
   position: fixed;
   top: 0;
@@ -16,7 +18,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 20px; /* Adjust top padding for spacing between header and top edge */
+  padding-top: 20px;
 }
 
 .popup-content {
@@ -25,11 +27,7 @@
   width: 100%;
   border-radius: 16px 16px 0 0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-  position: relative; /* Add position relative for close button positioning */
-}
-
-p {
-  margin-top: 0; /* Add space between h1 and p */
+  position: relative;
 }
 
 input.username-input {
@@ -43,7 +41,7 @@ input.username-input {
 .input-container {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center the content horizontally */
+  align-items: center;
   margin-top: 20px;
 }
 
@@ -55,7 +53,7 @@ input.username-input {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  margin: 20px auto; /* Center the button horizontally and add vertical margin */
+  margin: 20px auto;
 }
 
 .close-button {
@@ -65,7 +63,6 @@ input.username-input {
   right: 20px;
 }
 
-/* Add any additional styling or global styles you want to apply */
 .container-align {
   display: flex;
   flex-direction: column;

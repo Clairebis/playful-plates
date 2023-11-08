@@ -1,12 +1,16 @@
+/*------------Paulius ----------*/
+
 import { useNavigate } from "react-router-dom";
 import "./ProfilePostCard.css";
 
 function ProfilePostCard({ post }) {
   const navigate = useNavigate();
 
+  // Function to open the post when the card is clicked
   function openPost() {
-    console.log(`/post/${post.id}`);
-    navigate(`/post/${post.id}`);
+    const postUrl = `/post/${post.id}`;
+    console.log(postUrl);
+    navigate(postUrl);
   }
 
   return (

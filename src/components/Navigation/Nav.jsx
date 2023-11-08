@@ -1,3 +1,5 @@
+/*------------Paulius ----------*/
+
 import { NavLink } from "react-router-dom";
 import home from "../../Assets/Icons/home.svg";
 import recipes from "../../Assets/Icons/recipes.svg";
@@ -12,41 +14,40 @@ export default function Nav() {
         exact
         to="/"
         className="nav-link"
-        activeClassName="active" // Specify the CSS class for the active link
-      >
+        activeClassName="active">
         <img
           src={home}
           alt="Home"
         />
         <span>Home</span>
       </NavLink>
+
       <NavLink
         to="/recipes"
         className="nav-link"
-        activeClassName="active" // Specify the CSS class for the active link
-      >
+        activeClassName="active">
         <img
           src={recipes}
           alt="Recipes"
         />
         <span>Recipes</span>
       </NavLink>
+
       <NavLink
         to="/feed"
         className="nav-link"
-        activeClassName="active" // Specify the CSS class for the active link
-      >
+        activeClassName="active">
         <img
           src={feed}
           alt="Feed"
         />
         <span>Feed</span>
       </NavLink>
+
       <NavLink
         to="/profile"
         className="nav-link"
-        activeClassName="active" // Specify the CSS class for the active link
-      >
+        activeClassName="active">
         <img
           src={profile}
           alt="Profile"

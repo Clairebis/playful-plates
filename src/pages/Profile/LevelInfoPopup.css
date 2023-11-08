@@ -1,26 +1,28 @@
+/*------------Paulius ----------*/
+
 .level-info-popup {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999; /* Ensure it's above other content */
+  z-index: 999;
 }
 
 .popup-header {
   display: flex;
-  justify-content: space-between; /* Align elements horizontally */
-  align-items: center; /* Center vertically */
-  margin-bottom: 20px; /* Add some space between the header and content */
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .popup-content {
   background: #fff;
-  align-self: flex-end; /* Place the content at the bottom */
+  align-self: flex-end;
   padding: 20px;
   max-width: 100%;
   border-radius: 16px 16px 0 0;
@@ -28,7 +30,7 @@
 }
 
 .level-list {
-  padding: 1rem 0 1rem 0;
+  padding: 1rem 0;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -57,8 +59,4 @@
 
 .level-description {
   margin-top: 0.2rem;
-}
-
-.xp-range {
-  /* Apply your global styles here */
 }
