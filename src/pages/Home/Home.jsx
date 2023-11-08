@@ -29,15 +29,36 @@ export default function Home() {
     getUser();
   }, [auth.currentUser, url]); // dependencies: useEffect is executed when auth.currentUser changes
 
+
+  const [challenges, setChallenges] = useState([]);
+
+  useEffect(() => {
+    async function getChallenges() {
+      const url =
+        "https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/challenges.json";
+      const response = await fetch(url);
+      const data = await response.json();
+      console.log(data);
+      const challengesArray = Object.keys(data).map((key) => ({
+        id: key,
+        ...data[key],
+      })); // from object to array
+      setChallenges(challengesArray);
+    }
+
+    getChallenges();
+  }, []);
+
+
   return (
     <>
       <div className="page home-content">
-        <HomeHeader />
+        <HomeHeader/>
         <h1>Hello {username}!</h1>
-        <MyChallengeSlider sliderTitle="My challenges"/>
-        <SmallChallengeSlider sliderTitle="Featured challenges"/>
+        <MyChallengeSlider sliderTitle="My challenges" challenges={challenges}username={username}/>
+        <SmallChallengeSlider sliderTitle="Featured challenges" challenges={challenges}/>
         <Button className="button-yellow home-challenge-button" text="Discover more challenges" Link="/challenges"/>
-        <ComingChallengeSlider sliderTitle="Coming soon"/>
+        <ComingChallengeSlider sliderTitle="Coming soon" challenges={challenges}/>
       </div>
 
     </>

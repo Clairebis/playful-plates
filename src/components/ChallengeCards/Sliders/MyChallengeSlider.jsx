@@ -1,39 +1,71 @@
 import MyChallengeCard from "../MyChallengeCard";
 import { useEffect, useState } from "react";
+import { getAuth } from "firebase/auth";
+import NoChallengesCard from "../NoChallengesCard";
 
-export default function MyChallengeSlider ({sliderTitle}) {
+export default function MyChallengeSlider({ sliderTitle }) {
+  const [myChallenges, setMyChallenges] = useState([]);
+  const [challengeData, setChallengeData] = useState({}); // State to store challenges data
+  const [challengeIds, setChallengeIds] = useState([]); // State to store challenge ids
 
-    const [challenges, setChallenges] = useState([]);
+  useEffect(() => {
+    const auth = getAuth();
+    const uid = auth.currentUser?.uid;
+
+    async function fetchData() {
+      if (uid) {
+        // Fetch the user's challenges data
+        const userDataUrl = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/users/${uid}.json`;
+        const response = await fetch(userDataUrl);
+        const userData = await response.json();
+
+        if (userData && userData.posts) {
+          // Filter posts with challengeCompleted set to false
+          const filteredChallenges = Object.values(userData.posts).filter(
+            (post) => post.challengeCompleted === false
+          );
+          console.log("User data:", userData);
+
+          // Extract challengeids from filtered challenges
+          const challengeIds = filteredChallenges.map(
+            (post) => post.challengeid
+          );
+
+          // Set challenge ids to state
+          setChallengeIds(challengeIds);
+
+          // Fetch the challenges data
+          const challengesUrl = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/challenges.json`;
+          const challengesResponse = await fetch(challengesUrl);
+          const challengesData = await challengesResponse.json();
 
 
-    useEffect(() => {
-        async function getChallenges() {
-            const url =
-                "https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/challenges.json";
-            const response = await fetch(url);
-            const data = await response.json();
-            console.log(data);
-            const challengesArray = Object.keys(data).map(key => ({
-                id: key,
-                ...data[key]
-            })); // from object to array
-            setChallenges(challengesArray);
+          // Set challenges data to state
+          setChallengeData(challengesData);
         }
-  
-        getChallenges();
-    }, []);
-  
-    let challengesToDisplay = [...challenges];
+      }
+    }
 
-    return (
+    // Fetch user's challenges and challenges data
+    fetchData();
+  }, [[]]);
+
+  return (
     <>
-        <h2>{sliderTitle}</h2>
-        <div className="myChallengeSlider">
-                {challengesToDisplay.filter(c => c.categories.includes("Many Ingredients") || c.categories.includes("One Ingredient")).map(challenge => (
-                    <MyChallengeCard challenge={challenge} key={challenge.id} />
-                ))}
-        </div>
-
-      </>
-    )
+      <h2>{sliderTitle}</h2>
+        {myChallenges.length === 0 ? (
+          <NoChallengesCard/>
+        ) : (
+          <div className="myChallengeSlider">
+            {myChallenges.map((challenge, index) => (
+              <MyChallengeCard
+                challenge={challenge}
+                key={index}
+                challengeData={challengeData[challengeIds[index]]}
+              />
+            ))}
+          </div>
+        )}
+    </>
+  );
 }

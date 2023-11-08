@@ -55,7 +55,7 @@ function App() {
         <Route path="/post/:postId" element={<FullPost />} />
         <Route path="/post/:postId/update" element={<UpdatePost />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/challenges/:challengeId" element={<ChallengePage />} />
+        <Route path="challenges/:challengeId" element={<ChallengePage />} />
         <Route path="/myfriends" element={<MyFriends />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/postchallenge/:postId" element={<PostChallenge />} />

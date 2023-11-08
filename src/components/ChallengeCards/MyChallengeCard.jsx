@@ -8,7 +8,7 @@ export default function MyChallengeCard({ challenge}) {
     const navigate = useNavigate();
 
     function handleClick() {
-        navigate(`/challenges/${challenge.id}`);
+        navigate(`challenges/${challenge.id}`);
     }
 
     return (
