@@ -1,0 +1,18 @@
+.content404 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 120px 0px;
+}
+.content404 img {
+  margin-bottom: 50px;
+  width: 70%;
+}
+.content404 p {
+  width: 75%;
+  text-align: center;
+}
+.content404 > * {
+  margin-bottom: 30px;
+}
