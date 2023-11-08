@@ -23,6 +23,7 @@ export default function Landing() {
             Link="/signup"
             className="button-outline landingButton"
           />
+          <Button text="Recipes" Link="/recipes" className="landingButton" />
         </section>
       </div>
     </>

@@ -6,7 +6,7 @@ import Nav from "./components/Navigation/Nav";
 import Landing from "./pages/Landing/Landing";
 import PostChallenge from "./pages/PostChallenge";
 import Home from "./pages/Home/Home";
-import Recipes from "./pages/Recipes";
+import Recipes from "./pages/Recipes/Recipes";
 import SignUp from "./pages/SignUp/SignUp";
 import LogIn from "./pages/LogIn/LogIn";
 import FullPost from "./pages/FullPost/FullPost";
@@ -81,6 +81,7 @@ function App() {
       <Route path="/" element={<Landing />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/login" element={<LogIn />} />
+      <Route path="/recipes" element={<Recipes />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
