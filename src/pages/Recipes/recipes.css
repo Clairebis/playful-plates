@@ -1,3 +1,10 @@
 .recipesText {
   margin-bottom: 1rem;
 }
+
+.recipesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 7rem;
+}

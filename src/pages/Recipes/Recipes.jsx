@@ -48,7 +48,7 @@ export default function Recipes() {
           <img src={sliders} alt="filtering button" />
         </div>
       </div>
-      <section className="grid">
+      <section className="recipesGrid">
         {recipes.map((recipe) => (
           <RecipeCard recipe={recipe} key={recipe.id} />
         ))}
