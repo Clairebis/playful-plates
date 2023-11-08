@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 import NoChallengesCard from "../NoChallengesCard";
 
-export default function MyChallengeSlider({sliderTitle}) {
+export default function MyChallengeSlider({ sliderTitle, challenges }) {
   const [myChallenges, setMyChallenges] = useState([]);
   const auth = getAuth();
   //get challenge data
-
+  /*
   const [challenges, setChallenges] = useState([]);
   useEffect(() => {
     async function getChallenges() {
@@ -23,11 +23,11 @@ export default function MyChallengeSlider({sliderTitle}) {
       setChallenges(challengesArray);
     }
     getChallenges();
-  }, []);
-  
+  }, []);*/
+
   useEffect(() => {
     const uid = auth.currentUser?.uid;
-    console.log("uid", uid)
+    console.log("uid", uid);
 
     async function fetchData() {
       if (uid) {
@@ -40,20 +40,22 @@ export default function MyChallengeSlider({sliderTitle}) {
         const postsData = await postsResponse.json();
         console.log("User data:", userData);
         console.log("Post data:", postsData);
-        
-        //turn object of objects into an array of objects
-        const userPosts=Object.values(postsData)
-        console.log(userPosts)
 
-        //push challenges that match challengeId from userPosts array into 
-        const filteredChallenges = []
-        for (const post of userPosts){
-        const challenge = challenges.find(challenge=> challenge.id == post.challengeId)
-        console.log(challenge)
-        filteredChallenges.push(challenge)
+        //turn object of objects into an array of objects
+        const userPosts = Object.values(postsData);
+        console.log(userPosts);
+
+        //push challenges that match challengeId from userPosts array into
+        const filteredChallenges = [];
+        for (const post of userPosts) {
+          const challenge = challenges.find(
+            (challenge) => challenge.id == post.challengeId
+          );
+          console.log(challenge);
+          filteredChallenges.push(challenge);
         }
-        console.log(filteredChallenges)
-        setMyChallenges([...filteredChallenges])
+        console.log(filteredChallenges);
+        setMyChallenges([...filteredChallenges]);
       }
     }
 
@@ -66,18 +68,15 @@ export default function MyChallengeSlider({sliderTitle}) {
   return (
     <>
       <h2>{sliderTitle}</h2>
-        {myChallenges.length === 0 ? (
-          <NoChallengesCard/>
-        ) : (
-          <div className="myChallengeSlider">
-            {myChallenges.map((challenge) => (
-              <MyChallengeCard
-                challenge={challenge}
-
-              />
-            ))}
-          </div>
-        )}
+      {myChallenges.length === 0 ? (
+        <NoChallengesCard />
+      ) : (
+        <div className="myChallengeSlider">
+          {myChallenges.map((challenge) => (
+            <MyChallengeCard challenge={challenge} />
+          ))}
+        </div>
+      )}
     </>
   );
 }
