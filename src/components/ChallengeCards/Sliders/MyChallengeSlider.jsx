@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 import NoChallengesCard from "../NoChallengesCard";
 
-export default function MyChallengeSlider({ sliderTitle }) {
+export default function MyChallengeSlider({sliderTitle}) {
   const [myChallenges, setMyChallenges] = useState([]);
   const auth = getAuth();
   //get challenge data
-  const [challenges, setChallenges] = useState([]);
 
+  const [challenges, setChallenges] = useState([]);
   useEffect(() => {
     async function getChallenges() {
       const url =
@@ -22,7 +22,6 @@ export default function MyChallengeSlider({ sliderTitle }) {
       })); // from object to array
       setChallenges(challengesArray);
     }
-
     getChallenges();
   }, []);
   
@@ -59,8 +58,10 @@ export default function MyChallengeSlider({ sliderTitle }) {
     }
 
     // Fetch user's challenges and challenges data
-    fetchData();
-  }, [auth.currentUser?.uid]);
+    if (!myChallenges.length) {
+      fetchData();
+    }
+  }, [[]]);
 
   return (
     <>
