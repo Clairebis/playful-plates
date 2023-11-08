@@ -4,17 +4,14 @@ import "./ProfilePostCard.css";
 function ProfilePostCard({ post }) {
   const navigate = useNavigate();
 
-  const handlePostClick = () => {
-    if (post && post.id) {
-      navigate(`/post/${post.id}`);
-    } else {
-      console.error("Invalid post data or post ID is missing", post);
-    }
-  };
+  function openPost() {
+    console.log(`/post/${post.id}`);
+    navigate(`/post/${post.id}`);
+  }
 
   return (
     <div
-      onClick={handlePostClick}
+      onClick={openPost}
       className="profile-post-card-link">
       <div className="profile-post-card">
         {post && post.image && (

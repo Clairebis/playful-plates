@@ -11,6 +11,7 @@ export default function Challenges() {
         window.scrollTo(0, 0); // Scroll to the top when the component mounts
       }, []);
 
+
     return (
         <>
             <section className="page">

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import "@splidejs/splide/dist/css/splide.min.css";
@@ -13,7 +13,6 @@ import "./Profile/Profile.css";
 
 function Profile() {
   const auth = getAuth();
-  const navigate = useNavigate();
   const [userData, setUserData] = useState({
     username: "",
     image: "",
@@ -59,9 +58,18 @@ function Profile() {
         .then((response) => response.json())
         .then((data) => {
           if (data) {
-            // Filter posts created by the user
-            const posts = Object.values(data).filter((post) => post.uid === uid);
+            // Get the keys (post IDs)
+            const postIds = Object.keys(data);
+
+            // Filter posts created by the user and challengeCompleted is true
+            const posts = postIds
+              .filter(
+                (postId) => data[postId].uid === uid && data[postId].challengeCompleted === true
+              )
+              .map((postId) => ({ id: postId, ...data[postId] }));
+
             setUserPosts(posts);
+            console.log(posts);
           }
         })
         .catch((error) => {
@@ -77,7 +85,7 @@ function Profile() {
     gap: "1rem",
     pagination: false,
     arrows: false,
-    focus: "center",
+    focus: "left",
   };
 
   const handleEditProfile = () => {
@@ -192,10 +200,7 @@ function Profile() {
             <Splide options={sliderOptions}>
               {userPosts.map((post) => (
                 <SplideSlide key={post.id}>
-                  <ProfilePostCard
-                    post={post}
-                    onClick={() => navigate(`/fullpost/${post.id}?fromProfile=true`)}
-                  />
+                  <ProfilePostCard post={post} />
                 </SplideSlide>
               ))}
             </Splide>
