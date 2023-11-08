@@ -1,3 +1,5 @@
+/*Claire*/
+
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { NavLink, useNavigate } from "react-router-dom";
 import { auth } from "../firebase-config";

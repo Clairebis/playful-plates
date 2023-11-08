@@ -1,3 +1,5 @@
+/*Claire*/
+
 import "../components/Label/PostChallenge.css";
 import { useState, useEffect } from "react";
 import placeholderImage from "../Assets/uploadPlaceholder.png";
@@ -96,21 +98,6 @@ export default function UpdatePost() {
       return null; // Return null or handle the error as needed
     }
   }
-  //-------------------------GET CHOSEN TAGS-------------------------
-  // function getChosenTags() {
-  //   const chosenTags = [];
-  //   // Find all label elements with the "tagLabel" class and the "selected" class.
-  //   const selectedLabelElements = document.querySelectorAll(
-  //     ".postALabel.postALabelSelected"
-  //   );
-
-  //   // Extract the values of the selected labels and add them to the chosenTags array.
-  //   selectedLabelElements.forEach((labelElement) => {
-  //     chosenTags.push(labelElement.textContent);
-  //   });
-
-  //   return chosenTags;
-  // }
 
   const updatePost = async (event) => {
     event.preventDefault();

@@ -1,3 +1,5 @@
+/*Claire*/
+
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import Nav from "./components/Navigation/Nav";

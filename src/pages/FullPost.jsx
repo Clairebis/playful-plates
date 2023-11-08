@@ -1,3 +1,5 @@
+/*Claire*/
+
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import FullPostUser from "../components/userAvatars/FullPostUser";

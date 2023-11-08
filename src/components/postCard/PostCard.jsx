@@ -1,3 +1,5 @@
+/*Claire*/
+
 import { useNavigate } from "react-router-dom";
 import PostCardUser from "../userAvatars/PostCardUser";
 import Heart from "react-heart";
