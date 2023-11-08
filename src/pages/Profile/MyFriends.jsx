@@ -106,24 +106,26 @@
 // }
 
 // export default MyFriends;
-import { useState, useEffect } from "react";
+
+import { useState, useEffect, useRef } from "react";
 import Header from "../../components/Header/Header";
 import addImage from "../../Assets/Icons/add.svg";
-import moreImage from "../../Assets/Icons/more.svg";
 import FriendsPopup from "../../pages/Profile/FriendsPopup";
+import FriendCard from "./FriendCard";
 
 import "./MyFriends.css";
 
 function MyFriends() {
   const [isPopupVisible, setPopupVisible] = useState(false);
-  const [userData, setUserData] = useState(null);
+  const [friends, setFriends] = useState([]);
+
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
-    // You can simulate the friend data retrieval from local storage here.
-    // Replace this with your actual data retrieval logic.
-    const storedFriendData = localStorage.getItem("myFriendsData");
-    if (storedFriendData) {
-      setUserData(JSON.parse(storedFriendData));
+    if (isFirstRender.current) {
+      const storedFriendsData = JSON.parse(localStorage.getItem("myFriendsData") || "[]");
+      setFriends(storedFriendsData);
+      isFirstRender.current = false; // Mark as not the first render
     }
   }, []);
 
@@ -135,15 +137,34 @@ function MyFriends() {
     setPopupVisible(false);
   };
 
-  const removeFriend = () => {
+  const removeFriend = (friend) => {
     const confirmDelete = window.confirm("Are you sure you want to remove this friend?");
 
     if (confirmDelete) {
-      // Here you can place the code for deleting the friend
-      // For example, you can send a request to your server to remove the friend
+      setFriends((prevFriends) => {
+        const updatedFriends = prevFriends.filter((f) => f.id !== friend.id);
+        localStorage.setItem("myFriendsData", JSON.stringify(updatedFriends));
+        console.log("Removed friend:", friend);
+        return updatedFriends;
+      });
+    }
+  };
 
-      // Simulate removing the friend
-      setUserData(null);
+  const updateFriendsData = (user) => {
+    const userUid = Object.keys(user)[0]; // Get the UID of the user
+    const userExists = friends.some((friend) => friend.uid === userUid);
+
+    if (!userExists) {
+      // Add the new user to the state
+      const updatedFriendsData = [...friends, { ...user[userUid], uid: userUid }];
+
+      // Update the local storage with the updated data
+      localStorage.setItem("myFriendsData", JSON.stringify(updatedFriendsData));
+      console.log("Updated friends data:", updatedFriendsData);
+      console.log("New friend data:", { ...user[userUid], uid: userUid });
+
+      // Update the state with the new user
+      setFriends(updatedFriendsData);
     }
   };
 
@@ -166,36 +187,19 @@ function MyFriends() {
         <FriendsPopup
           isVisible={isPopupVisible}
           onClose={closePopup}
-          updateUserData={(data) => {
-            setUserData(data);
-          }}
+          updateFriendsData={updateFriendsData}
         />
         <div className="friends-friends-container">
-          {userData && (
-            <div className="friends-user-info">
-              <div className="container-flex">
-                <img
-                  src={userData.image}
-                  alt="User"
-                  className="friend-user-image"
-                />
-                <div className="friend-user-details">
-                  <p className="friend-user-name">{userData.name}</p>
-                  <p className="friend-user-username">{userData.username}</p>
-                  <p className="friend-user-level">{userData.level}</p>
-                  <p className="friend-user-xp">{userData.xp} XP</p>
-                </div>
-              </div>
-              <div
-                className="more-icon"
-                onClick={removeFriend}>
-                <img
-                  src={moreImage}
-                  alt="More"
-                  className="more-image"
-                />
-              </div>
-            </div>
+          {Array.isArray(friends) && friends.length > 0 ? (
+            friends.map((friend) => (
+              <FriendCard
+                key={friend.id}
+                friend={friend}
+                onRemoveFriend={removeFriend}
+              />
+            ))
+          ) : (
+            <p>No friends to display.</p>
           )}
         </div>
       </section>
