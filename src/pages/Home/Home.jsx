@@ -54,7 +54,6 @@ export default function Home() {
         <h1>Hello {name}!</h1>
         <MyChallengeSlider
           sliderTitle="My challenges"
-          challenges={challenges}
         />
         <SmallChallengeSlider
           sliderTitle="Featured challenges"

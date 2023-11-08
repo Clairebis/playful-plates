@@ -14,7 +14,7 @@ export default function MyChallengeCard({challenge}) {
     return (
         <>
         <div className="challenge-card-container">
-            <div className="challenge-card" key={challenge?.id} onClick={handleClick}>
+            <div className="challenge-card" key={challenge.id} onClick={handleClick}>
                 <img className="challenge-image"src={challenge?.image} alt={challenge?.title} />
                 <div>
                     <h2>{challenge?.title}</h2>
