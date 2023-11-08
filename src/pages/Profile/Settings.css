@@ -1,0 +1,52 @@
+/* ------------ Paulius ------------ */
+
+.settings-container-structure {
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px 16px;
+}
+
+.inside-structure {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.inside-structure img {
+  margin-right: 16px;
+}
+
+.inside-structure-different {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.inside-structure-different img {
+  margin-right: 16px;
+}
+.together {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.padding-settings-page {
+  padding: 0 16px;
+}
+
+.settings-button-logout {
+  border: none;
+  background-color: var(--oatmeal-100);
+  margin: 2rem auto;
+  display: block;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  padding: 8px;
+  width: 120px;
+}
