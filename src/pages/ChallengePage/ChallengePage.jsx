@@ -122,13 +122,19 @@ export default function ChallengePage() {
   //everything about modals function
   const modal = document.querySelector(".modalRemove");
   const modalConfirmation = document.querySelector(".confirmation");
+  const modalFriends = document.querySelector(".modalFriends");
   function closeModal() {
     modal.style.display = "none";
     modalConfirmation.style.display = "none";
+    modalFriends.style.display = "none";
   }
 
   function openModal() {
     modal.style.display = "block";
+  }
+
+  function openModalFriends() {
+    modalFriends.style.display = "block";
   }
   //delete empty Post with current uid and challenge Id to remove the challenge from list of active and rerender the div with buttons
   async function removeChallenge() {
@@ -260,7 +266,11 @@ export default function ChallengePage() {
         </div>
       ) : (
         <div className="buttonsChallengePage">
-          <Button text="Share with Friends" className="button-outline" />
+          <Button
+            text="Share with Friends"
+            className="button-outline"
+            function={openModalFriends}
+          />
           <Button text="Join Challenge" function={joinChallenge} />
         </div>
       )}
@@ -300,6 +310,21 @@ export default function ChallengePage() {
               Challenge was removed from your active challenges.
             </p>
             <img src={tick} alt="" />
+          </div>
+        </div>
+      </div>
+
+      {/*----------Modal with share with friends 404 ------- */}
+      <div className="modalRemove modalFriends confirmation">
+        <div className="modalFriendsContent">
+          <div className="closeModalRemove">
+            <img src={close} alt="" onClick={closeModal} />
+          </div>
+          <div className="modalRemoveText">
+            <p style={{ fontWeight: "bold" }}>
+              This functionality is <br />
+              not available yet.
+            </p>
           </div>
         </div>
       </div>
