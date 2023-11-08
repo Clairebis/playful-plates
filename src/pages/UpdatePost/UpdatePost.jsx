@@ -1,16 +1,16 @@
 /*Claire*/
 
-import "../components/Label/PostChallenge.css";
 import { useState, useEffect } from "react";
-import placeholderImage from "../Assets/uploadPlaceholder.png";
+import placeholderImage from "../../Assets/uploadPlaceholder.png";
 import { useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { useParams } from "react-router";
 import "./UpdatePost.css";
 import PostLabel from "../../components/Label/PostLabel";
 import { useRef } from "react";
-import "../components/Label/PostChallenge.css";
-import arrow from "../Assets/Icons/arrowback.svg";
+
+import arrow from "../../Assets/Icons/arrowback.svg";
+import "../../components/Label/PostChallenge.css";
 
 export default function UpdatePost() {
   //fetch information about currently logged in user - uid

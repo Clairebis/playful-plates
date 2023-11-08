@@ -3,16 +3,16 @@
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import Nav from "./components/Navigation/Nav";
-import Landing from "./pages/Landing";
+import Landing from "./pages/Landing/Landing";
 import PostChallenge from "./pages/PostChallenge";
 import Home from "./pages/Home/Home";
 import Recipes from "./pages/Recipes";
-import SignUp from "./pages/SignUp";
-import LogIn from "./pages/LogIn";
-import FullPost from "./pages/FullPost";
+import SignUp from "./pages/SignUp/SignUp";
+import LogIn from "./pages/LogIn/LogIn";
+import FullPost from "./pages/FullPost/FullPost";
 import { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import Feed from "./pages/Feed";
+import Feed from "./pages/Feed/Feed";
 import Profile from "./pages/Profile";
 import MyFriends from "./pages/Profile/MyFriends";
 import Settings from "./pages/Profile/Settings";
@@ -20,7 +20,7 @@ import "./firebase-config";
 import ChallengePage from "./pages/ChallengePage/ChallengePage";
 import ChallengeCompleted from "./pages/ChallengeCompleted/ChallengeCompleted";
 import Challenges from "./pages/Challenges";
-import UpdatePost from "./pages/UpdatePost";
+import UpdatePost from "./pages/UpdatePost/UpdatePost";
 import Page404 from "./pages/Page404/page404";
 
 function App() {
