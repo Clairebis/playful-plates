@@ -4,7 +4,7 @@ import chefHatIconWhite from "../../assets/Icons/chefHatIconWhite.svg"
 import placeholderImg from "../../Assets/Portrait_Placeholder.png"
 
 
-export default function MyChallengeCard({ challenge}) {
+export default function MyChallengeCard({challenge}) {
     const navigate = useNavigate();
 
     function handleClick() {
@@ -14,11 +14,11 @@ export default function MyChallengeCard({ challenge}) {
     return (
         <>
         <div className="challenge-card-container">
-            <div className="challenge-card" key={challenge.id} onClick={handleClick}>
-                <img className="challenge-image"src={challenge.image} alt={challenge.title} />
+            <div className="challenge-card" key={challenge?.id} onClick={handleClick}>
+                <img className="challenge-image"src={challenge?.image} alt={challenge?.title} />
                 <div>
-                    <h2>{challenge.title}</h2>
-                    <p>{challenge.subheading}</p>
+                    <h2>{challenge?.title}</h2>
+                    <p>{challenge?.subheading}</p>
                 </div>
             </div>
 
