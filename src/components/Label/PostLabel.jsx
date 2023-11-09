@@ -1,3 +1,5 @@
+//--------------------------------Natalia------------------------------
+
 import { useState } from "react";
 
 export default function PostLabel({ label }) {
