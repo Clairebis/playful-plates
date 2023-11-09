@@ -1,3 +1,5 @@
+/*Claire*/
+
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import Nav from "./components/Navigation/Nav";
@@ -19,6 +21,7 @@ import ChallengePage from "./pages/ChallengePage/ChallengePage";
 import ChallengeCompleted from "./pages/ChallengeCompleted/ChallengeCompleted";
 import Challenges from "./pages/Challenges";
 import UpdatePost from "./pages/UpdatePost";
+import Page404 from "./pages/Page404/page404";
 
 function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
@@ -52,7 +55,7 @@ function App() {
         />
         <Route
           path="/recipes"
-          element={<Recipes />}
+          element={<Page404 />}
         />
         <Route
           path="/challenges"
@@ -75,7 +78,7 @@ function App() {
           element={<Profile />}
         />
         <Route
-          path="/challenges/:challengeId"
+          path="challenges/:challengeId"
           element={<ChallengePage />}
         />
         <Route

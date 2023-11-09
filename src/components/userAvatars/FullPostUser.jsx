@@ -1,3 +1,5 @@
+/*Claire*/
+
 import { useEffect, useState } from "react";
 import "./userAvatars.css";
 

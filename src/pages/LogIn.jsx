@@ -1,3 +1,5 @@
+/*Claire*/
+
 import { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import TextField from "@mui/material/TextField";

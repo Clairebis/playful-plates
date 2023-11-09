@@ -68,6 +68,7 @@ export default function ChallengePage() {
   }, [uid, challengeId]);
 
   //create an empty post when CTA Join Challenge is clicked and rerender the div with buttons
+  const [newPostId, setNewPostId] = useState("");
 
   async function joinChallenge(event) {
     event.preventDefault();
@@ -105,9 +106,11 @@ export default function ChallengePage() {
       });
 
       if (response.ok) {
-        console.log(newPost);
+        const newPostData = await response.json();
+        const newPostId = newPostData.name;
+        console.log("New Post Created with Id", newPostId);
+        setNewPostId(newPostId);
         setPostExists(true);
-        searchPost();
       } else {
         console.log("An error occurred when posting");
       }
@@ -115,16 +118,23 @@ export default function ChallengePage() {
       console.error("An error occurred:", error);
     }
   }
+
   //everything about modals function
   const modal = document.querySelector(".modalRemove");
   const modalConfirmation = document.querySelector(".confirmation");
+  const modalFriends = document.querySelector(".modalFriends");
   function closeModal() {
     modal.style.display = "none";
     modalConfirmation.style.display = "none";
+    modalFriends.style.display = "none";
   }
 
   function openModal() {
     modal.style.display = "block";
+  }
+
+  function openModalFriends() {
+    modalFriends.style.display = "block";
   }
   //delete empty Post with current uid and challenge Id to remove the challenge from list of active and rerender the div with buttons
   async function removeChallenge() {
@@ -166,7 +176,7 @@ export default function ChallengePage() {
   }
 
   //search for a post with challengeID and uid and challengeCompleted state = "false" to get it's id and pass it to the link
-  const [postId, setPostId] = useState("");
+  //const [postId, setPostId] = useState("");
   useEffect(() => {
     async function searchPost() {
       try {
@@ -181,15 +191,6 @@ export default function ChallengePage() {
         // Iterate through the posts to find a match
         for (const postId in postsData) {
           const post = postsData[postId];
-          console.log(
-            postId,
-            "--------------------",
-            post,
-            "---------------------",
-            uid,
-            "----------------",
-            challengeId
-          );
           // Check if the post meets your search criteria
           if (
             post.uid === uid && // User UID matches
@@ -203,7 +204,7 @@ export default function ChallengePage() {
         }
 
         // Update the state with the matching postId (or null if no match was found)
-        setPostId(matchingPostId);
+        setNewPostId(matchingPostId);
         console.log(matchingPostId);
       } catch (error) {
         console.error("An error occurred:", error);
@@ -254,7 +255,7 @@ export default function ChallengePage() {
           <Button
             text="Complete Challenge"
             className="completeBtn"
-            Link={`/postchallenge/${postId}`}
+            Link={`/postchallenge/${newPostId}`}
           />
           <div>
             {" "}
@@ -265,7 +266,11 @@ export default function ChallengePage() {
         </div>
       ) : (
         <div className="buttonsChallengePage">
-          <Button text="Share with Friends" className="button-outline" />
+          <Button
+            text="Share with Friends"
+            className="button-outline"
+            function={openModalFriends}
+          />
           <Button text="Join Challenge" function={joinChallenge} />
         </div>
       )}
@@ -305,6 +310,21 @@ export default function ChallengePage() {
               Challenge was removed from your active challenges.
             </p>
             <img src={tick} alt="" />
+          </div>
+        </div>
+      </div>
+
+      {/*----------Modal with share with friends 404 ------- */}
+      <div className="modalRemove modalFriends confirmation">
+        <div className="modalFriendsContent">
+          <div className="closeModalRemove">
+            <img src={close} alt="" onClick={closeModal} />
+          </div>
+          <div className="modalRemoveText">
+            <p style={{ fontWeight: "bold" }}>
+              This functionality is <br />
+              not available yet.
+            </p>
           </div>
         </div>
       </div>
