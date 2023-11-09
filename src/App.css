@@ -82,8 +82,7 @@ a {
 }
 
 .bottom-nav {
-  /*background-color: #fefdfa;*/
-  background-color: red;
+  background-color: #fefdfa;
   position: fixed;
   bottom: 0;
   left: 0;
