@@ -15,6 +15,7 @@
   border: none;
   border-radius: 16px;
   cursor: pointer;
+  color: var(--eggplant-900) !important;
 }
 
 .add-friend-button img {
