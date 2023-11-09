@@ -12,16 +12,16 @@ import { useNavigate } from "react-router-dom";
 export default function HomeHeader() {
   const [isPopupVisible, setPopupVisible] = useState(false); // State for level info popup visibility
   const [userXP, setUserXP] = useState(0); // State for user XP, default value is 0
+  const navigate = useNavigate();
+
+  // Function to open 404
+  function open404() {
+    navigate(`/404`);
+  }
 
   // Function to handle the XP click event
   const handleXPClick = () => {
     setPopupVisible(true);
-  };
-
-  // Function to handle the notifications icon click event
-  const handleIconClick = () => {
-    const navigate = useNavigate(); // Using useNavigate hook for navigation
-    navigate(`/404`);
   };
 
   // Function to close the level info popup
@@ -72,7 +72,7 @@ export default function HomeHeader() {
           className="notification-icon"
           src={notifications}
           alt="notifications icon"
-          onClick={handleIconClick}
+          onClick={open404}
         />
       </div>
     </>

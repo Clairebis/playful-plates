@@ -3,11 +3,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 120px 0px;
+  margin: 100px 0px;
 }
 .content404 img {
   margin-bottom: 50px;
-  width: 70%;
+  width: 55%;
 }
 .content404 p {
   width: 75%;
