@@ -43,6 +43,7 @@
 .settings-button-logout {
   border: none;
   background-color: var(--oatmeal-100);
+  color: var(--eggplant-900) !important;
   margin: 2rem auto;
   display: block;
   border: 1px solid rgba(0, 0, 0, 0.25);

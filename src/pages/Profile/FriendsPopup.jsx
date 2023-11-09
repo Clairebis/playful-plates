@@ -56,7 +56,6 @@ function FriendsPopup({ isVisible, onClose, updateFriendsData }) {
             // Update the state with the new user
             updateFriendsData(user);
             setMessage("Friend has been added!");
-            window.location.reload();
           } else {
             setMessage("User is already your friend.");
           }
