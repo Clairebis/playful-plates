@@ -2,9 +2,9 @@
 
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { NavLink, useNavigate } from "react-router-dom";
-import { auth } from "../firebase-config";
+import { auth } from "../../firebase-config";
 import { useState } from "react";
-import logoLarge from "../Assets/logoLarge.png";
+import logoLarge from "../../Assets/logoLarge.png";
 import "./signUp.css";
 import TextField from "@mui/material/TextField";
 

@@ -1,7 +1,7 @@
 /*Claire*/
 
-import Button from "../components/Button/Button";
-import logoLarge from "../Assets/logoLarge.png";
+import Button from "../../components/Button/Button";
+import logoLarge from "../../Assets/logoLarge.png";
 import "./landing.css";
 
 export default function Landing() {
@@ -23,6 +23,7 @@ export default function Landing() {
             Link="/signup"
             className="button-outline landingButton"
           />
+          <Button text="Recipes" Link="/recipes" className="landingButton" />
         </section>
       </div>
     </>

@@ -2,11 +2,12 @@
 
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import FullPostUser from "../components/userAvatars/FullPostUser";
+import FullPostUser from "../../components/userAvatars/FullPostUser";
 import Heart from "react-heart";
 import "./fullpost.css";
-import arrow from "../Assets/Icons/arrowback.svg";
-import Button from "../components/Button/Button";
+import arrow from "../../Assets/Icons/arrowback.svg";
+import Button from "../../components/Button/Button";
+import { getAuth } from "firebase/auth";
 
 export default function FullPost() {
   const params = useParams();
@@ -14,6 +15,8 @@ export default function FullPost() {
   const url = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/posts/${params.postId}.json`;
   const postId = params.postId;
   const [active, setActive] = useState(false);
+  const auth = getAuth();
+  const currentUser = auth.currentUser;
 
   const [post, setPost] = useState({
     image: "",
@@ -94,16 +97,19 @@ export default function FullPost() {
       <article style={{ marginBottom: "10rem" }}>
         <img src={post.image} alt={post.title} className="fullPostImage" />
         <section className="postCardLower">
-          <section className="fullPostButtons">
-            <Button
-              text="Delete"
-              className="button-outline"
-              function={deletePost}
-            ></Button>
-            <Link to={`/post/${postId}/update`} className="button-green">
-              Edit
-            </Link>
-          </section>
+          {currentUser && currentUser.uid === post.uid && (
+            <section className="fullPostButtons">
+              <Button
+                text="Delete"
+                className="button-outline"
+                function={deletePost}
+              ></Button>
+              <Link to={`/post/${postId}/update`} className="button-green">
+                Edit
+              </Link>
+            </section>
+          )}
+
           <h2 className="bottom8">{post.title}</h2>
           <p className="small ">{post.challengeTitle}</p>
           <FullPostUser uid={post.uid} />
