@@ -7,7 +7,6 @@ import { useState } from "react";
 import "./Recipes.css";
 import { useEffect } from "react";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
-import { useNavigate } from "react-router-dom";
 
 export default function Recipes() {
   const [searchValue, setSearchValue] = useState("");
