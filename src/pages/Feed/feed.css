@@ -29,6 +29,11 @@
   font-family: var(--heading-font);
   font-size: var(--subheading-size) !important;
 }
+.css-251er.Mui-selected {
+  color: var(--eggplant-900) !important;
+  font-family: var(--heading-font);
+  font-size: var(--subheading-size) !important;
+}
 .MuiButtonBase-root,
 .MuiTab-root,
 .MuiTab-textColorPrimary,
