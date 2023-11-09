@@ -8,6 +8,7 @@ import Tabs from "@mui/material/Tabs";
 import SearchBar from "../../components/searchBar/SearchBar";
 import sliders from "../../Assets/Icons/sliders.svg";
 import PostMultifilter from "../../components/PostMultifilter/PostMultifilter";
+import { getAuth } from "firebase/auth";
 
 export default function Feed() {
   const [posts, setPosts] = useState([]);
@@ -16,6 +17,10 @@ export default function Feed() {
   const [isPostMultifilterVisible, setPostMultifilterVisible] = useState(false);
   const [allPostsVisible, setAllPostsVisible] = useState(true); // Initialize as false
   const [showPosts, setShowPosts] = useState(true);
+
+  const auth = getAuth();
+  const uid = auth.currentUser?.uid;
+  const [friendIds, setFriendIds] = useState([]);
 
   //fetch posts from firebase
   useEffect(() => {
@@ -32,10 +37,19 @@ export default function Feed() {
       console.log(data);
       console.log(postsArray);
       setPosts(postsArray);
+
+      const userUrl = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/users/${uid}.json`;
+      const userResponse = await fetch(userUrl);
+      const userData = await userResponse.json();
+
+      if (userData && userData.FriendIds) {
+        const friendIdsArray = Object.values(userData.FriendIds);
+        setFriendIds(friendIdsArray);
+      }
     }
 
     getPosts();
-  }, []);
+  }, [uid]);
 
   let postsToDisplay = [...posts]; // copy of the posts array
 
@@ -92,7 +106,10 @@ export default function Feed() {
               // Check the selected tab (value) and filter posts accordingly
               if (value === 0 /*&& post.isFriendPost*/) {
                 // Show all friends public posts based on our logic (e.g., using the isFriendPost property)
-                return <PostCard post={post} key={post.id} />;
+                const isFriendPost = friendIds.includes(post.id);
+                if (isFriendPost) {
+                  return <PostCard post={post} key={post.id} />;
+                }
               } else if (value === 1) {
                 // Display all public posts for "All" tab
                 return <PostCard post={post} key={post.id} />;
