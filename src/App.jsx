@@ -3,16 +3,16 @@
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import Nav from "./components/Navigation/Nav";
-import Landing from "./pages/Landing";
+import Landing from "./pages/Landing/Landing";
 import PostChallenge from "./pages/PostChallenge";
 import Home from "./pages/Home/Home";
-import Recipes from "./pages/Recipes";
-import SignUp from "./pages/SignUp";
-import LogIn from "./pages/LogIn";
-import FullPost from "./pages/FullPost";
+//import Recipes from "./pages/Recipes/Recipes";
+import SignUp from "./pages/SignUp/SignUp";
+import LogIn from "./pages/LogIn/LogIn";
+import FullPost from "./pages/FullPost/FullPost";
 import { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import Feed from "./pages/Feed";
+import Feed from "./pages/Feed/Feed";
 import Profile from "./pages/Profile";
 import MyFriends from "./pages/Profile/MyFriends";
 import Settings from "./pages/Profile/Settings";
@@ -20,7 +20,7 @@ import "./firebase-config";
 import ChallengePage from "./pages/ChallengePage/ChallengePage";
 import ChallengeCompleted from "./pages/ChallengeCompleted/ChallengeCompleted";
 import Challenges from "./pages/Challenges";
-import UpdatePost from "./pages/UpdatePost";
+import UpdatePost from "./pages/UpdatePost/UpdatePost";
 import Page404 from "./pages/Page404/page404";
 
 function App() {
@@ -32,7 +32,9 @@ function App() {
     const auth = getAuth();
 
     onAuthStateChanged(auth, (user) => {
-      if (user /*&& user.metadata.creationTime !== user.metadata.lastSignInTime*/) {
+      if (
+        user /*&& user.metadata.creationTime !== user.metadata.lastSignInTime*/
+      ) {
         //user authenticted - signed in
         setIsAuth(true); //set isAuth to true
         localStorage.setItem("isAuth", true); //save isAuth to local storage
@@ -49,50 +51,17 @@ function App() {
     <>
       <Nav location={location} /> {/* Pass location to Nav component */}
       <Routes>
-        <Route
-          path="/"
-          element={<Home />}
-        />
-        <Route
-          path="/recipes"
-          element={<Page404 />}
-        />
-        <Route
-          path="/challenges"
-          element={<Challenges />}
-        />
-        <Route
-          path="/feed"
-          element={<Feed />}
-        />
-        <Route
-          path="/post/:postId"
-          element={<FullPost />}
-        />
-        <Route
-          path="/post/:postId/update"
-          element={<UpdatePost />}
-        />
-        <Route
-          path="/profile"
-          element={<Profile />}
-        />
-        <Route
-          path="challenges/:challengeId"
-          element={<ChallengePage />}
-        />
-        <Route
-          path="/myfriends"
-          element={<MyFriends />}
-        />
-        <Route
-          path="/settings"
-          element={<Settings />}
-        />
-        <Route
-          path="/postchallenge/:postId"
-          element={<PostChallenge />}
-        />
+        <Route path="/" element={<Home />} />
+        <Route path="/recipes" element={<Page404 />} />
+        <Route path="/challenges" element={<Challenges />} />
+        <Route path="/feed" element={<Feed />} />
+        <Route path="/post/:postId" element={<FullPost />} />
+        <Route path="/post/:postId/update" element={<UpdatePost />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="challenges/:challengeId" element={<ChallengePage />} />
+        <Route path="/myfriends" element={<MyFriends />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/postchallenge/:postId" element={<PostChallenge />} />
         <Route
           path="/challengecompleted/:postId"
           element={<ChallengeCompleted />}
@@ -101,10 +70,7 @@ function App() {
           path="/fullpost/:post.id"
           element={<FullPost />}
         /> */}
-        <Route
-          path="*"
-          element={<Navigate to="/" />}
-        />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
   );
@@ -112,22 +78,11 @@ function App() {
   // public route, no nav bar
   const publicRoutes = (
     <Routes>
-      <Route
-        path="/"
-        element={<Landing />}
-      />
-      <Route
-        path="/signup"
-        element={<SignUp />}
-      />
-      <Route
-        path="/login"
-        element={<LogIn />}
-      />
-      <Route
-        path="*"
-        element={<Navigate to="/" />}
-      />
+      <Route path="/" element={<Landing />} />
+      <Route path="/signup" element={<SignUp />} />
+      <Route path="/login" element={<LogIn />} />
+
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 

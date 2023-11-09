@@ -1,21 +1,24 @@
-import { useEffect, useState } from "react";
-import SmallChallengeCard from "../ChallengeCards/SmallChallengeCard";
-import "./Multifilter.css";
+/*shows / toggles filter category options, but can't click on filter options yet*/
 
-export default function MultiFilter({ challenges }) {
+import { useEffect, useState } from "react";
+import "./postMultifilter.css";
+import PostCard from "../postCard/PostCard";
+
+export default function MultiFilter({ posts }) {
   // State variables to store challenges, selected filters, selected difficulty, and filtered challenges
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [selectedDifficulty, setSelectedDifficulty] = useState("");
   const [filteredItems, setFilteredItems] = useState([]);
   const [filtersSelected, setFiltersSelected] = useState(false);
 
-  let difficultyFilters = ["Easy", "Medium", "Hard"];
+  let difficultyFilters = ["Quick", "Complex"];
   let categoryFilters = [
-    "Many Ingredients",
-    "One Ingredient",
-    "Seasonal",
-    "Technique",
-    "Theme",
+    "Meat",
+    "Fish",
+    "Vegetarian",
+    "Vegan",
+    "Gluten Free",
+    "Lactose Free",
   ];
 
   const handleFilter = (category) => {
@@ -41,15 +44,14 @@ export default function MultiFilter({ challenges }) {
   }, [selectedFilters, selectedDifficulty]);
 
   const filterItems = () => {
-    const filteredItems = challenges.filter((challenge) => {
+    const filteredItems = posts.filter((post) => {
       const hasSelectedCategory =
         selectedFilters.length === 0 ||
         selectedFilters.every((selectedCategory) =>
-          challenge.categories.includes(selectedCategory)
+          post.categories.includes(selectedCategory)
         );
       const hasSelectedDifficulty =
-        selectedDifficulty === "" ||
-        challenge.categories.includes(selectedDifficulty);
+        selectedDifficulty === "" || post.tags.includes(selectedDifficulty);
 
       return hasSelectedCategory && hasSelectedDifficulty;
     });
@@ -93,23 +95,11 @@ export default function MultiFilter({ challenges }) {
 
       {filtersSelected && (
         <>
-          <h2>Results</h2>
-
-          {filteredItems ? (
-            filteredItems.length === 0 ? (
-              <p>No matching challenges found.</p>
-            ) : (
-              <div className="SmallChallengeSlider">
-                {filteredItems.map((challenge) => (
-                  <SmallChallengeCard
-                    challenge={challenge}
-                    key={challenge.id}
-                  />
-                ))}
-              </div>
-            )
-          ) : null}
-          
+          <div className="SmallChallengeSlider">
+            {filteredItems.map((post) => (
+              <PostCard post={post} key={post.id} />
+            ))}
+          </div>
         </>
       )}
     </div>

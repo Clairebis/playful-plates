@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import TextField from "@mui/material/TextField";
-import logoLarge from "../Assets/logoLarge.png";
+import logoLarge from "../../Assets/logoLarge.png";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./logIn.css";
 

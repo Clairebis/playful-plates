@@ -1,17 +1,21 @@
 /*Claire*/
 
 import { useEffect, useState } from "react";
-import PostCard from "../components/postCard/PostCard";
+import PostCard from "../../components/postCard/PostCard";
 import "./feed.css";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
-import SearchBar from "../components/searchBar/SearchBar";
-import sliders from "../Assets/Icons/sliders.svg";
+import SearchBar from "../../components/searchBar/SearchBar";
+import sliders from "../../Assets/Icons/sliders.svg";
+import PostMultifilter from "../../components/PostMultifilter/PostMultifilter";
 
 export default function Feed() {
   const [posts, setPosts] = useState([]);
   const [value, setValue] = useState(1);
   const [searchValue, setSearchValue] = useState("");
+  const [isPostMultifilterVisible, setPostMultifilterVisible] = useState(false);
+  const [allPostsVisible, setAllPostsVisible] = useState(true); // Initialize as false
+  const [showPosts, setShowPosts] = useState(true);
 
   //fetch posts from firebase
   useEffect(() => {
@@ -45,6 +49,13 @@ export default function Feed() {
     );
   }
 
+  const toggleMultiFilter = () => {
+    setPostMultifilterVisible(!isPostMultifilterVisible);
+    setAllPostsVisible(!allPostsVisible);
+    setShowPosts(!showPosts);
+    console.log("clicked");
+  };
+
   return (
     <section className="page">
       <Tabs
@@ -65,10 +76,11 @@ export default function Feed() {
           searchValue={searchValue}
           setSearchValue={setSearchValue}
         />
-        <div className="challengesFilter">
+        <div className="challengesFilter" onClick={toggleMultiFilter}>
           <img src={sliders} alt="filtering button" />
         </div>
       </section>
+      {isPostMultifilterVisible && <PostMultifilter posts={posts} />}
 
       <section className="feed">
         {postsToDisplay.length === 0 ? (
