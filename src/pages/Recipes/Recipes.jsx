@@ -33,19 +33,21 @@ export default function Recipes() {
 
   return (
     <section className="page">
-      <Header pageTitle="Recipes" />
-      <p className="recipesText">
-        Looking for help to complete your challenge? Here’s a collection of
-        recipes to inspire you!
-      </p>
-      <div className="searchFilterBar">
-        <SearchBar
-          placeholder="Search challenges"
-          searchValue={searchValue}
-          setSearchValue={setSearchValue}
-        />
-        <div className="challengesFilter">
-          <img src={sliders} alt="filtering button" />
+      <div className="recipesFixed">
+        <Header pageTitle="Recipes" />
+        <p className="recipesText">
+          Looking for help to complete your challenge? Here’s a collection of
+          recipes to inspire you!
+        </p>
+        <div className="searchFilterBar">
+          <SearchBar
+            placeholder="Search challenges"
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+          />
+          <div className="challengesFilter">
+            <img src={sliders} alt="filtering button" />
+          </div>
         </div>
       </div>
       <section className="recipesGrid">

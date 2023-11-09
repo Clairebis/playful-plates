@@ -13,7 +13,7 @@ export default function RecipeCard({ recipe }) {
           className="recipeCardImage"
         />
         <section className="recipeCardRight">
-          <p className="postCardBoldTitle">{recipe.title}</p>
+          <p className="recipeCardBoldTitle">{recipe.title}</p>
           <div className="pinAndChallenge">
             <img src={pin} alt="" />
             <p className="postCardDate">{recipe.challenge}</p>

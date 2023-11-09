@@ -8,3 +8,9 @@
   gap: 1rem;
   margin-bottom: 7rem;
 }
+
+.recipesFixed {
+  position: sticky;
+  top: 0;
+  background-color: var(--oatmeal-100);
+}
