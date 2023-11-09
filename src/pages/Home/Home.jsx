@@ -1,3 +1,6 @@
+/*------------Claire and Siiri ----------*/
+
+
 import { getAuth } from "firebase/auth";
 import { useEffect, useState } from "react";
 import HomeHeader from "../../components/HomeHeader/HomeHeader";
