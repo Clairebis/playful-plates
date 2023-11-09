@@ -46,7 +46,7 @@ export default function HomeHeader() {
     }
 
     getXpPoints();
-  }, [[]]); // Empty dependency array ensures this effect runs only once when the component mounts
+  }, [[]]); // Make sure the effect runs every time there is a change so that data updates on first page load
 
   return (
     <>
