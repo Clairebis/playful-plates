@@ -7,10 +7,16 @@ import { useState } from "react";
 import "./Recipes.css";
 import { useEffect } from "react";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
+import { useNavigate } from "react-router-dom";
 
 export default function Recipes() {
   const [searchValue, setSearchValue] = useState("");
   const [recipes, setRecipes] = useState([]);
+  const navigate = useNavigate;
+
+  function open404() {
+    navigate(`/404`);
+  }
 
   useEffect(() => {
     async function getRecipes() {

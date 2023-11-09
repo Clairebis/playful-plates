@@ -6,7 +6,7 @@ import Nav from "./components/Navigation/Nav";
 import Landing from "./pages/Landing/Landing";
 import PostChallenge from "./pages/PostChallenge";
 import Home from "./pages/Home/Home";
-//import Recipes from "./pages/Recipes/Recipes";
+import Recipes from "./pages/Recipes/Recipes";
 import SignUp from "./pages/SignUp/SignUp";
 import LogIn from "./pages/LogIn/LogIn";
 import FullPost from "./pages/FullPost/FullPost";
@@ -52,7 +52,7 @@ function App() {
       <Nav location={location} /> {/* Pass location to Nav component */}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/recipes" element={<Page404 />} />
+        <Route path="/recipes" element={<Recipes />} />
         <Route path="/challenges" element={<Challenges />} />
         <Route path="/feed" element={<Feed />} />
         <Route path="/post/:postId" element={<FullPost />} />
@@ -61,6 +61,7 @@ function App() {
         <Route path="challenges/:challengeId" element={<ChallengePage />} />
         <Route path="/myfriends" element={<MyFriends />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/404" element={<Page404 />} />
         <Route path="/postchallenge/:postId" element={<PostChallenge />} />
         <Route
           path="/challengecompleted/:postId"
