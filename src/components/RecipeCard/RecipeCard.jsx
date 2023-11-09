@@ -13,11 +13,13 @@ export default function RecipeCard({ recipe }) {
   return (
     <section className="recipeCardContainer" onClick={open404}>
       <article className="recipeCard">
-        <img
-          src={recipe.image}
-          alt={recipe.title}
-          className="recipeCardImage"
-        />
+        <div className="recipeImageContainer">
+          <img
+            src={recipe.image}
+            alt={recipe.title}
+            className="recipeCardImage"
+          />
+        </div>
         <section className="recipeCardRight">
           <p className="recipeCardBoldTitle">{recipe.title}</p>
           <div className="pinAndChallenge">
