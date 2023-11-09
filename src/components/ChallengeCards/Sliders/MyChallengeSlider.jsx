@@ -1,5 +1,3 @@
-/*------------Siiri ----------*/
-
 import MyChallengeCard from "../MyChallengeCard";
 import { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";

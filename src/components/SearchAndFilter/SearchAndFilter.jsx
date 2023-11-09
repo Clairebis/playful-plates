@@ -1,5 +1,3 @@
-/*------------Siiri ----------*/
-
 import sliders from "../../assets/Icons/sliders.svg"
 import './SearchAndFilter.css'; 
 import MultiFilter from "../Multifilter/Multifilter";

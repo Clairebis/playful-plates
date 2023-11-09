@@ -1,5 +1,3 @@
-/*------------Siiri ----------*/
-
 import chefHatIcon from "../../assets/Icons/chefHatIcon.svg"
 
 export default function HomeXpPoints () {

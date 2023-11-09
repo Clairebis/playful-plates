@@ -1,5 +1,3 @@
-/*------------Siiri----------*/
-
 import { Link } from "react-router-dom";
 import "./Button.css";
 

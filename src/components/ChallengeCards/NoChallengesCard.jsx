@@ -1,5 +1,3 @@
-/*------------Siiri ----------*/
-
 import { useNavigate } from "react-router-dom";
 import "./Challengecards.css"
 import noChallenges from "../../assets/noChallenges.png"

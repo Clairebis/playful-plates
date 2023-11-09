@@ -1,5 +1,3 @@
-/*------------Siiri ----------*/
-
 import logo from "../../assets/logo.png";
 import notifications from "../../assets/Icons/notifications.svg";
 import "../../components/HomeHeader/HomeHeader.css";

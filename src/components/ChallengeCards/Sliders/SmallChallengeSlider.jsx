@@ -1,5 +1,4 @@
-/*------------Siiri ----------*/
-
+import { useEffect, useState } from "react";
 import SmallChallengeCard from "../SmallChallengeCard";
 
 export default function SmallChallengeSlider ({sliderTitle, challenges}) {
