@@ -8,6 +8,7 @@ import placeholderImg from "../../Assets/Portrait_Placeholder.png";
 export default function MyChallengeCard({ challenge }) {
   const navigate = useNavigate();
 
+  // Function to handle clicks on the card and navigate to the specific challenge
   function handleClick() {
     navigate(`challenges/${challenge.id}`);
   }
