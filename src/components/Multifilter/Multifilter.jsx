@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import SmallChallengeCard from "../ChallengeCards/SmallChallengeCard";
 import "./Multifilter.css";
 
-export default function MultiFilter({challenges}) {
+export default function MultiFilter({ challenges }) {
   // State variables to store challenges, selected filters, selected difficulty, and filtered challenges
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [selectedDifficulty, setSelectedDifficulty] = useState("");
@@ -18,10 +18,11 @@ export default function MultiFilter({challenges}) {
     "Theme",
   ];
 
-
   const handleFilter = (category) => {
     if (selectedFilters.includes(category)) {
-      const updatedFilters = selectedFilters.filter((filter) => filter !== category);
+      const updatedFilters = selectedFilters.filter(
+        (filter) => filter !== category
+      );
       setSelectedFilters(updatedFilters);
     } else {
       setSelectedFilters([...selectedFilters, category]);
@@ -47,7 +48,8 @@ export default function MultiFilter({challenges}) {
           challenge.categories.includes(selectedCategory)
         );
       const hasSelectedDifficulty =
-        selectedDifficulty === "" || challenge.categories.includes(selectedDifficulty);
+        selectedDifficulty === "" ||
+        challenge.categories.includes(selectedDifficulty);
 
       return hasSelectedCategory && hasSelectedDifficulty;
     });
@@ -55,7 +57,6 @@ export default function MultiFilter({challenges}) {
     setFilteredItems(filteredItems);
     setFiltersSelected(selectedFilters.length > 0 || selectedDifficulty !== "");
   };
-  
 
   return (
     <div>
@@ -93,11 +94,22 @@ export default function MultiFilter({challenges}) {
       {filtersSelected && (
         <>
           <h2>Results</h2>
-          <div className="SmallChallengeSlider">
-            {filteredItems.map((challenge) => (
-              <SmallChallengeCard challenge={challenge} key={challenge.id} />
-            ))}
-          </div>
+
+          {filteredItems ? (
+            filteredItems.length === 0 ? (
+              <p>No matching challenges found.</p>
+            ) : (
+              <div className="SmallChallengeSlider">
+                {filteredItems.map((challenge) => (
+                  <SmallChallengeCard
+                    challenge={challenge}
+                    key={challenge.id}
+                  />
+                ))}
+              </div>
+            )
+          ) : null}
+          
         </>
       )}
     </div>
