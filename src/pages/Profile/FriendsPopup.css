@@ -1,0 +1,71 @@
+/*------------Paulius ----------*/
+
+.friends-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 20px;
+  width: 100%;
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+input.username-input {
+  width: 290px;
+  height: 30px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.invite-button {
+  width: 260px;
+  padding: 12px 0;
+  background-color: var(--lime);
+  color: #2b242a;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 20px auto;
+}
+
+.close-button {
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.container-align {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

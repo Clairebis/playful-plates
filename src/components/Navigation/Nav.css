@@ -1,4 +1,6 @@
-/* Nav.css */
+/*------------Paulius ----------*/
+
+/* Style the bottom navigation bar */
 .bottom-nav {
   background-color: var(--oatmeal-100);
   position: fixed;
@@ -24,11 +26,11 @@
   font-size: var(--body-text-small-size);
   color: rgba(43, 36, 42, 0.4);
 }
+
+/* Style for active links */
 .nav-link.active {
-  /* Your styles for active links go here */
   color: var(--eggplant-900);
   opacity: 1;
-  /* Add any other styles you want for active links */
 }
 
 /* Set the opacity for icons within .nav-link */

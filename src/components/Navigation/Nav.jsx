@@ -15,8 +15,7 @@ export default function Nav() {
     location.pathname.includes("/postchallenge") ||
     location.pathname.includes("/challengecompleted");
 
-  const isFeedActive =
-    location.pathname === "/feed" || location.pathname.includes("/post/");
+  const isFeedActive = location.pathname === "/feed" || location.pathname.includes("/post/");
 
   const isProfileActive =
     location.pathname === "/profile" ||
@@ -28,32 +27,41 @@ export default function Nav() {
       <NavLink
         exact
         to="/"
-        className={`nav-link ${isHomeActive ? "active" : ""}`}
-      >
-        <img src={home} alt="Home" />
+        className={`nav-link ${isHomeActive ? "active" : ""}`}>
+        <img
+          src={home}
+          alt="Home"
+        />
         <span>Home</span>
       </NavLink>
+
       <NavLink
         to="/recipes"
-        className={`nav-link ${
-          location.pathname.includes("/recipes") ? "active" : ""
-        }`}
-      >
-        <img src={recipes} alt="Recipes" />
+        className={`nav-link ${location.pathname.includes("/recipes") ? "active" : ""}`}>
+        <img
+          src={recipes}
+          alt="Recipes"
+        />
         <span>Recipes</span>
       </NavLink>
+
       <NavLink
         to="/feed"
-        className={`nav-link ${isFeedActive ? "active" : ""}`}
-      >
-        <img src={feed} alt="Feed" />
+        className={`nav-link ${isFeedActive ? "active" : ""}`}>
+        <img
+          src={feed}
+          alt="Feed"
+        />
         <span>Feed</span>
       </NavLink>
+
       <NavLink
         to="/profile"
-        className={`nav-link ${isProfileActive ? "active" : ""}`}
-      >
-        <img src={profile} alt="Profile" />
+        className={`nav-link ${isProfileActive ? "active" : ""}`}>
+        <img
+          src={profile}
+          alt="Profile"
+        />
         <span>Profile</span>
       </NavLink>
     </nav>

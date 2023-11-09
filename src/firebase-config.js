@@ -15,6 +15,7 @@ const firebaseConfig = {
   storageBucket: "playful-plates-b4a84.appspot.com",
   messagingSenderId: "1079848232119",
   appId: "1:1079848232119:web:5c81ad17bae0f9f0cd5932",
+  databaseURL: "https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app", // Add the database URL here
 };
 
 // Initialize Firebase

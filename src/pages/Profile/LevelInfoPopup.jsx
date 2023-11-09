@@ -1,3 +1,5 @@
+/*------------Paulius----------*/
+
 import "./LevelInfoPopup.css";
 import kitchenPorterImage from "../../Assets/Levels/kitchen-porter.svg";
 import kitchenAssistantImage from "../../Assets/Levels/kitchen-assistant.svg";
@@ -7,6 +9,7 @@ import headChefImage from "../../Assets/Levels/head-chef.svg";
 import close from "../../Assets/Icons/close.svg";
 
 function LevelInfoPopup({ isVisible, onClose }) {
+  // Check if the popup is visible; if not, return null to hide it
   if (!isVisible) return null;
 
   const levels = [
@@ -71,7 +74,7 @@ function LevelInfoPopup({ isVisible, onClose }) {
               <div className="level-details">
                 <p className="level-title">{level.title}</p>
                 <p className="level-description">{level.description}</p>
-                <p className="xp-range">{level.xpRange}</p>
+                <p>{level.xpRange}</p>
               </div>
             </div>
           ))}
