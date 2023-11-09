@@ -97,11 +97,7 @@
     text-align: center;
     margin-top:0.5rem;
     box-shadow: var(--box-shadow);
-
-}
-
-.challenge-card-small p {
-    text-wrap:wrap;
+    width:fit-content;
 }
 
 .challenge-card-small .challenge-image {

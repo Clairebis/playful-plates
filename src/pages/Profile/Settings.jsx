@@ -13,6 +13,7 @@ import settingsContact from "../../Assets/Icons/settings-contact.svg";
 import settingsPrivacy from "../../Assets/Icons/settings-privacy.svg";
 
 function Settings() {
+  
   const navigate = useNavigate();
   const auth = getAuth();
 

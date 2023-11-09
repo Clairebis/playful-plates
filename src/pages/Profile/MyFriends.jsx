@@ -9,6 +9,7 @@ import FriendCard from "./FriendCard";
 import "./MyFriends.css";
 
 function MyFriends() {
+  
   // State to manage the visibility of the friends popup
   const [isPopupVisible, setPopupVisible] = useState(false);
 
