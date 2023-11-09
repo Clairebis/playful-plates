@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header/Header";
 import SmallChallengeSlider from "../components/ChallengeCards/Sliders/SmallChallengeSlider";
+import SearchAndFilter from "../components/SearchAndFilter/SearchAndFilter";
 import LatestChallengeSlider from "../components/ChallengeCards/Sliders/LatestChallengeSlider";
 import SeasonalChallengeSlider from "../components/ChallengeCards/Sliders/SeasonalChallengeSlider";
 import SearchBar from "../components/searchBar/SearchBar";
