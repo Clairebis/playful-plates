@@ -1,19 +1,22 @@
+//-----------Siiri-------------//
+
 import ComingChallengeCard from "../ComingChallengeCard";
-import { useEffect, useState } from "react";
 
-export default function ComingChallengeSlider ({sliderTitle, challenges}) {
+export default function ComingChallengeSlider({ sliderTitle, challenges }) {
+  // Copying the challenges array to challengesToDisplay
+  let challengesToDisplay = challenges;
 
-    let challengesToDisplay = challenges;
-
-    return (
+  return (
     <>
-        <h2>{sliderTitle}</h2>
-        <div>
-                {challengesToDisplay.filter(c => c.categories.includes("Coming Soon")).map(challenge => (
-                    <ComingChallengeCard challenge={challenge} key={challenge.id} />
-                ))}
-        </div>
-
-      </>
-    )
+      <h2>{sliderTitle}</h2>
+      <div>
+        {/* Mapping over challengesToDisplay and rendering ComingChallengeCard components for challenges with "Coming Soon" category */}
+        {challengesToDisplay
+          .filter((c) => c.categories.includes("Coming Soon"))
+          .map((challenge) => (
+            <ComingChallengeCard challenge={challenge} key={challenge.id} />
+          ))}
+      </div>
+    </>
+  );
 }
