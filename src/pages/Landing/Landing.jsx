@@ -1,10 +1,13 @@
 /*Claire*/
 
+// Importing necessary modules and components
 import Button from "../../components/Button/Button";
 import logoLarge from "../../Assets/logoLarge.png";
 import "./landing.css";
 
+// Landing component definition
 export default function Landing() {
+  // Rendering the landing page
   return (
     <>
       <div className="landingPage">

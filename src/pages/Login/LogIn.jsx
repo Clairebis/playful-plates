@@ -1,5 +1,6 @@
 /*Claire*/
 
+// Importing necessary modules and components
 import { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import TextField from "@mui/material/TextField";
@@ -7,14 +8,18 @@ import logoLarge from "../../Assets/logoLarge.png";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./logIn.css";
 
+// Login component definition
 export default function Login() {
+  // Initializing state variables and authentication-related objects
   const navigate = useNavigate();
   const auth = getAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // Function to handle login form submission
   const onLogin = (event) => {
     event.preventDefault();
+    // Attempting to sign in with provided email and password
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
@@ -23,12 +28,14 @@ export default function Login() {
         console.log(user);
       })
       .catch((error) => {
+        // Handling sign-in errors
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
       });
   };
 
+  // Rendering the login page
   return (
     <div className="page">
       <img src={logoLarge} alt="logo" className="landingLogo" />
