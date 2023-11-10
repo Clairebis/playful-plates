@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header/Header";
 import SmallChallengeSlider from "../components/ChallengeCards/Sliders/SmallChallengeSlider";
-import SearchAndFilter from "../components/SearchAndFilter/SearchAndFilter";
+import SearchAndFilter from "../components/SearchAndFilter/SearchAndFilter"; //this is here because the css linked affects the code, did not have time to fix before handing in!
 import LatestChallengeSlider from "../components/ChallengeCards/Sliders/LatestChallengeSlider";
 import SeasonalChallengeSlider from "../components/ChallengeCards/Sliders/SeasonalChallengeSlider";
 import SearchBar from "../components/searchBar/SearchBar";
@@ -11,12 +11,13 @@ import MultiFilter from "../components/Multifilter/Multifilter";
 import sliders from "../assets/Icons/sliders.svg";
 
 export default function Challenges() {
-  const [searchValue, setSearchValue] = useState("");
-  const [challenges, setChallenges] = useState([]);
-  const [isMultiFilterVisible, setMultiFilterVisible] = useState(false);
-  const [challengeSlidersVisible, setChallengeSlidersVisible] = useState(true); // Initialize as false
-  const [showSmallChallengeCard, setShowSmallChallengeCard] = useState(true);
-  
+  const [searchValue, setSearchValue] = useState(""); // State variable to store search input
+  const [challenges, setChallenges] = useState([]); //State variable to store challenges data
+  const [isMultiFilterVisible, setMultiFilterVisible] = useState(false); // State variable for the visibility of the MultiFilter component
+  const [challengeSlidersVisible, setChallengeSlidersVisible] = useState(true); // State variable for the visibility of challenge sliders
+  const [showSmallChallengeCard, setShowSmallChallengeCard] = useState(true); // State variable for the visibility of small challenge cards
+
+  // Effect to fetch challenges data and update state when the component mounts
   useEffect(() => {
     async function getChallenges() {
       const url =
@@ -28,14 +29,15 @@ export default function Challenges() {
         id: key,
         ...data[key],
       })); // from object to array
-      setChallenges(challengesArray);
+      setChallenges(challengesArray); // Setting the state with challenges data
     }
 
     getChallenges();
-  }, []);
+  }, []); // Dependencies: useEffect is executed when the component mounts
 
   let challengesToDisplay = [...challenges];
 
+  // Filtering challenges based on search input
   if (searchValue) {
     challengesToDisplay = challengesToDisplay.filter(
       (challenge) =>
@@ -45,18 +47,20 @@ export default function Challenges() {
     );
   }
 
+  // Effect to scroll to the top when the component mounts
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to the top when the component mounts
   }, []);
 
+  // Function to toggle the visibility of the MultiFilter component and challenge sliders
   const toggleMultiFilter = () => {
     setMultiFilterVisible(!isMultiFilterVisible);
     setChallengeSlidersVisible(!challengeSlidersVisible);
     setShowSmallChallengeCard(!showSmallChallengeCard);
-    console.log("clicked")
-
+    console.log("clicked");
   };
 
+  // Function to handle the click event of the SearchBar
   const handleSearchBarClick = () => {
     setChallengeSlidersVisible(false);
   };
@@ -75,21 +79,23 @@ export default function Challenges() {
           <img src={sliders} alt="filtering button" />
         </div>
       </div>
-      {isMultiFilterVisible && <MultiFilter challenges={challenges}/>}
-      {/* {showSmallChallengeCard ? (
-  challengesToDisplay.length === 0 ? (
-    <p>No matching posts found.</p>
-  ) : (
-    challengesToDisplay.map((challenge) => (
-      <SmallChallengeCard challenge={challenge} key={challenge.id} />
-    ))
-  )
-) : null} */}
+      {/* Conditionally rendering MultiFilter component based on visibility */}
+      {isMultiFilterVisible && <MultiFilter challenges={challenges} />}
+      {/* Conditionally rendering challenge sliders based on visibility */}
       {challengeSlidersVisible && (
         <section className="allChallengeSliders">
-          <LatestChallengeSlider sliderTitle="Latest Challenges" challenges={challenges} />
-          <SmallChallengeSlider sliderTitle="Popular with Friends" challenges={challenges} />
-          <SeasonalChallengeSlider sliderTitle="Seasonal Challenges" challenges={challenges} />
+          <LatestChallengeSlider
+            sliderTitle="Latest Challenges"
+            challenges={challenges}
+          />
+          <SmallChallengeSlider
+            sliderTitle="Popular with Friends"
+            challenges={challenges}
+          />
+          <SeasonalChallengeSlider
+            sliderTitle="Seasonal Challenges"
+            challenges={challenges}
+          />
         </section>
       )}
     </section>

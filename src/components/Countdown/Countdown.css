@@ -4,6 +4,7 @@
     gap:0.4rem;
     font-family: var(--body-font);
     justify-content: flex-end;
+    width:fit-content;
 }
 
 .counter p {

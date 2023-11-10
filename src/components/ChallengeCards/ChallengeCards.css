@@ -44,11 +44,13 @@
     gap:0.5rem;
     margin-top:0.5rem;
     box-shadow: var(--box-shadow);
+    overflow-y:none;
+
 }
 
-.challenge-card p {
+/* .challenge-card p {
     text-wrap:wrap;
-}
+} */
 
 .friendsChallengeCard {
         align-items: center;
@@ -97,14 +99,17 @@
     text-align: center;
     margin-top:0.5rem;
     box-shadow: var(--box-shadow);
-}
-
-.challenge-card-small p {
-    text-wrap:wrap;
+    max-width:8.75rem;
+    text-wrap: wrap;
+    overflow-y: none;
 }
 
 .challenge-card-small .challenge-image {
     height:5rem;
+}
+
+.challenge-card-small p {
+    font-size: var(--body-text-small-size);
 }
 
 .challenge-card-bottom {
@@ -114,6 +119,7 @@
     padding:8px;
     background-color: #98BD55;
     border-radius:0px 0px 8px 8px;
+    overflow-y: none;
 }
 
 .challengeCardCompleted {
@@ -145,7 +151,8 @@
     box-shadow: var(--box-shadow);
     border-radius: 8px;
     width: auto;
-    height: 8rem;
+    height: 9rem;
+    overflow-y: none;
 }
 
 
@@ -163,6 +170,7 @@
     width: auto;
     height: 8rem;
     margin-bottom: 1.5rem;
+    overflow-y: none;
 }
 
 .no-challenge-card img {

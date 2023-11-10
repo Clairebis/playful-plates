@@ -12,12 +12,12 @@ import ComingChallengeSlider from "../../components/ChallengeCards/Sliders/Comin
 
 export default function Home() {
   const auth = getAuth();
-  // const navigate = useNavigate();
-  const uid = auth.currentUser?.uid;
-  const [name, setName] = useState("");
+  const uid = auth.currentUser?.uid; // User ID from Firebase authentication
+  const [name, setName] = useState(""); // State variable to store user's name
 
   const url = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/users/${uid}.json`;
 
+    // Effect to fetch user data and update state when the component mounts or user changes
   useEffect(() => {
     async function getUser() {
       const response = await fetch(url);
@@ -31,8 +31,9 @@ export default function Home() {
     getUser();
   }, [auth.currentUser, url]); // dependencies: useEffect is executed when auth.currentUser changes
 
-  const [challenges, setChallenges] = useState([]);
+  const [challenges, setChallenges] = useState([]); // State variable to store challenges
 
+    // Effect to fetch challenges data and update state when the component mounts
   useEffect(() => {
     async function getChallenges() {
       const url =
@@ -44,11 +45,11 @@ export default function Home() {
         id: key,
         ...data[key],
       })); // from object to array
-      setChallenges(challengesArray);
+      setChallenges(challengesArray); // Setting the state with challenges data
     }
 
     getChallenges();
-  }, []);
+  }, []); //Dependencies: useEffect is executed when the component mounts
 
   return (
     <>

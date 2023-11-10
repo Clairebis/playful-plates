@@ -58,10 +58,14 @@ export default function MyChallengeSlider({ sliderTitle, challenges }) {
   return (
     <>
       <h2>{sliderTitle}</h2>
+      {/* Checking if there are no challenges for the user */}
       {myChallenges.length === 0 ? (
+        // If no challenges, render the NoChallengesCard component
         <NoChallengesCard />
       ) : (
+        // If there are challenges, render the MyChallengeSlider component
         <div className="myChallengeSlider">
+          {/* Mapping through the user's challenges and rendering MyChallengeCard for each */}
           {myChallenges.map((challenge) => (
             <MyChallengeCard challenge={challenge} />
           ))}
