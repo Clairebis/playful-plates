@@ -47,9 +47,6 @@
     overflow-y: none;
 }
 
-.challenge-card p {
-    text-wrap:wrap;
-}
 
 .friendsChallengeCard {
         align-items: center;
