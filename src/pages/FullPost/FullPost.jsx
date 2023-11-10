@@ -1,5 +1,6 @@
 /*Claire*/
 
+// Importing necessary modules and components
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import FullPostUser from "../../components/userAvatars/FullPostUser";
@@ -9,7 +10,9 @@ import arrow from "../../Assets/Icons/arrowback.svg";
 import Button from "../../components/Button/Button";
 import { getAuth } from "firebase/auth";
 
+// FullPost component definition
 export default function FullPost() {
+  // Extracting parameters from the URL and initializing state variables
   const params = useParams();
   const navigate = useNavigate();
   const url = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/posts/${params.postId}.json`;
@@ -18,6 +21,7 @@ export default function FullPost() {
   const auth = getAuth();
   const currentUser = auth.currentUser;
 
+  // State for storing post data
   const [post, setPost] = useState({
     image: "",
     title: "",
@@ -30,24 +34,30 @@ export default function FullPost() {
     publishedAt: "",
   });
 
+  // Function to navigate back to the previous page
   const goBack = () => {
     navigate(-1); // Go back to the previous page
   };
 
+  // Asynchronous function to delete a post
   async function deletePost() {
+    // Display confirmation dialog for deleting the post
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this post?"
     );
 
     if (confirmDelete) {
       try {
+        // Sending a DELETE request to the server to delete the post
         const response = await fetch(url, {
           method: "DELETE",
         });
 
+        // Check if the deletion was successful
         if (response.ok) {
           console.log("Post deleted");
-          navigate("/feed"); // Redirect to feed
+          // Redirect to the feed after successful deletion
+          navigate("/feed");
         } else {
           console.log("An error occurred while deleting the post");
           // Handle the error, show a message to the user, or perform other error-specific actions.
@@ -59,6 +69,7 @@ export default function FullPost() {
     }
   }
 
+  // useEffect hook to fetch and update post data
   useEffect(() => {
     async function getPost() {
       const response = await fetch(url);
@@ -66,11 +77,12 @@ export default function FullPost() {
       setPost(postData);
       console.log("Fetched postData:", postData);
     }
+    // Triggering the effect only when the URL changes
+    // (when postId or url changes)
     getPost();
   }, [url]);
 
-  //const [likeCount, setLikeCount] = useState(post.likes);
-
+  // Function to handle like button clicks and update like count
   function handleLikeClick() {
     setActive(!active);
 
@@ -88,6 +100,7 @@ export default function FullPost() {
     }
   }
 
+  // Rendering the FullPost component
   return (
     <section>
       <div onClick={goBack} className="fullPostBack">

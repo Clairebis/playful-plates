@@ -1,5 +1,5 @@
 /*Claire*/
-
+// Import necessary React components and styles
 import { useEffect, useState } from "react";
 import PostCard from "../../components/postCard/PostCard";
 import "./feed.css";
@@ -9,7 +9,9 @@ import SearchBar from "../../components/searchBar/SearchBar";
 import sliders from "../../Assets/Icons/sliders.svg";
 import PostMultifilter from "../../components/PostMultifilter/PostMultifilter";
 
+// Define the main functional component for the feed page
 export default function Feed() {
+  // State variables for managing data and UI state
   const [posts, setPosts] = useState([]);
   const [value, setValue] = useState(1);
   const [searchValue, setSearchValue] = useState("");
@@ -24,6 +26,7 @@ export default function Feed() {
         "https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/posts.json";
       const response = await fetch(url);
       const data = await response.json();
+      // Convert the fetched data from an object to an array of objects
       const postsArray = Object.keys(data).map((key) => ({
         id: key,
         ...data[key],
@@ -37,10 +40,10 @@ export default function Feed() {
     getPosts();
   }, []);
 
+  // Create a copy of the posts array for display
   let postsToDisplay = [...posts]; // copy of the posts array
 
   //filter the posts based on the searchValue input by the user
-  //does the searchValue match any of the post properties?
   if (searchValue) {
     postsToDisplay = postsToDisplay.filter(
       (post) =>
@@ -49,6 +52,7 @@ export default function Feed() {
     );
   }
 
+  // Toggle the visibility of the post multifilter
   const toggleMultiFilter = () => {
     setPostMultifilterVisible(!isPostMultifilterVisible);
     setAllPostsVisible(!allPostsVisible);
@@ -56,6 +60,7 @@ export default function Feed() {
     console.log("clicked");
   };
 
+  // Render the feed page
   return (
     <section className="page">
       <Tabs
