@@ -1,3 +1,5 @@
+//-----------Siiri-------------//
+
 import { useEffect, useState } from "react";
 import SmallChallengeCard from "../ChallengeCards/SmallChallengeCard";
 import "./Multifilter.css";
@@ -9,6 +11,7 @@ export default function MultiFilter({ challenges }) {
   const [filteredItems, setFilteredItems] = useState([]);
   const [filtersSelected, setFiltersSelected] = useState(false);
 
+  // Arrays to store difficulty and category filters
   let difficultyFilters = ["Easy", "Medium", "Hard"];
   let categoryFilters = [
     "Many Ingredients",
@@ -18,13 +21,17 @@ export default function MultiFilter({ challenges }) {
     "Theme",
   ];
 
+  // Function to handle category filters
   const handleFilter = (category) => {
+    // If the category is already selected, remove it
     if (selectedFilters.includes(category)) {
       const updatedFilters = selectedFilters.filter(
         (filter) => filter !== category
       );
       setSelectedFilters(updatedFilters);
     } else {
+      // If the category is not selected, add it
+
       setSelectedFilters([...selectedFilters, category]);
     }
   };
@@ -36,23 +43,35 @@ export default function MultiFilter({ challenges }) {
     );
   };
 
+  // Effect to filter items based on selected filters and difficulty
+
   useEffect(() => {
     filterItems();
   }, [selectedFilters, selectedDifficulty]);
 
+  // Function to filter challenges based on selected filters and difficulty
+
   const filterItems = () => {
     const filteredItems = challenges.filter((challenge) => {
+      // Check if the challenge has all selected categories
+
       const hasSelectedCategory =
         selectedFilters.length === 0 ||
         selectedFilters.every((selectedCategory) =>
           challenge.categories.includes(selectedCategory)
         );
+
+      // Check if the challenge has the selected difficulty
+
       const hasSelectedDifficulty =
         selectedDifficulty === "" ||
         challenge.categories.includes(selectedDifficulty);
 
+      // Return true if the challenge meets both category and difficulty criteria
       return hasSelectedCategory && hasSelectedDifficulty;
     });
+
+    // Update the filteredItems state and set the flag if filters are selected
 
     setFilteredItems(filteredItems);
     setFiltersSelected(selectedFilters.length > 0 || selectedDifficulty !== "");
@@ -91,14 +110,18 @@ export default function MultiFilter({ challenges }) {
         </div>
       </div>
 
+      {/* Display filtered results if filters are selected */}
       {filtersSelected && (
         <>
           <h2>Results</h2>
 
           {filteredItems ? (
+            // Check if there are matching challenges
             filteredItems.length === 0 ? (
               <p>No matching challenges found.</p>
             ) : (
+              // Display SmallChallengeCard for each matching challenge
+
               <div className="SmallChallengeSlider">
                 {filteredItems.map((challenge) => (
                   <SmallChallengeCard
@@ -109,7 +132,6 @@ export default function MultiFilter({ challenges }) {
               </div>
             )
           ) : null}
-          
         </>
       )}
     </div>

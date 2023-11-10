@@ -10,12 +10,16 @@ import MultiFilter from "../components/Multifilter/Multifilter";
 import sliders from "../assets/Icons/sliders.svg";
 
 export default function Challenges() {
+  // State variables for search, challenges, and filter visibility
+
   const [searchValue, setSearchValue] = useState("");
   const [challenges, setChallenges] = useState([]);
   const [isMultiFilterVisible, setMultiFilterVisible] = useState(false);
   const [challengeSlidersVisible, setChallengeSlidersVisible] = useState(true); // Initialize as false
   const [showSmallChallengeCard, setShowSmallChallengeCard] = useState(true);
-  
+
+  // Effect to fetch challenges data when the component mounts
+
   useEffect(() => {
     async function getChallenges() {
       const url =
@@ -33,8 +37,11 @@ export default function Challenges() {
     getChallenges();
   }, []);
 
+  // Clone the challenges array for displaying
+
   let challengesToDisplay = [...challenges];
 
+  // Filter challenges based on search value, does not work at the moment
   if (searchValue) {
     challengesToDisplay = challengesToDisplay.filter(
       (challenge) =>
@@ -43,17 +50,21 @@ export default function Challenges() {
         challenge.description.toLowerCase().includes(searchValue)
     );
   }
+  // Effect to scroll to the top when the component mounts
 
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to the top when the component mounts
   }, []);
 
+  // Function to toggle multi-filter visibility and sliders/cards visibility
+
   const toggleMultiFilter = () => {
     setMultiFilterVisible(!isMultiFilterVisible);
     setChallengeSlidersVisible(!challengeSlidersVisible);
-    setShowSmallChallengeCard(!showSmallChallengeCard);
-    console.log("clicked")
+    // Toggle SmallChallengeCard visibility
 
+    setShowSmallChallengeCard(!showSmallChallengeCard);
+    console.log("clicked");
   };
 
   const handleSearchBarClick = () => {
@@ -74,21 +85,24 @@ export default function Challenges() {
           <img src={sliders} alt="filtering button" />
         </div>
       </div>
-      {isMultiFilterVisible && <MultiFilter challenges={challenges}/>}
-      {/* {showSmallChallengeCard ? (
-  challengesToDisplay.length === 0 ? (
-    <p>No matching posts found.</p>
-  ) : (
-    challengesToDisplay.map((challenge) => (
-      <SmallChallengeCard challenge={challenge} key={challenge.id} />
-    ))
-  )
-) : null} */}
+      {/* Display the MultiFilter component if it's visible */}
+
+      {isMultiFilterVisible && <MultiFilter challenges={challenges} />}
+      {/* Display sliders based on visibility */}
       {challengeSlidersVisible && (
         <section className="allChallengeSliders">
-          <LatestChallengeSlider sliderTitle="Latest Challenges" challenges={challenges} />
-          <SmallChallengeSlider sliderTitle="Popular with Friends" challenges={challenges} />
-          <SeasonalChallengeSlider sliderTitle="Seasonal Challenges" challenges={challenges} />
+          <LatestChallengeSlider
+            sliderTitle="Latest Challenges"
+            challenges={challenges}
+          />
+          <SmallChallengeSlider
+            sliderTitle="Popular with Friends"
+            challenges={challenges}
+          />
+          <SeasonalChallengeSlider
+            sliderTitle="Seasonal Challenges"
+            challenges={challenges}
+          />
         </section>
       )}
     </section>

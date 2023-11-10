@@ -1,3 +1,5 @@
+//-----------Siiri-------------//
+
 import logo from "../../assets/logo.png";
 import notifications from "../../assets/Icons/notifications.svg";
 import "../../components/HomeHeader/HomeHeader.css";
@@ -8,22 +10,26 @@ import { getAuth } from "firebase/auth";
 
 
 export default function HomeHeader() {
+    // State variables for controlling the visibility of the XP popup and storing user XP
   const [isPopupVisible, setPopupVisible] = useState(false);
   const [userXP, setUserXP] = useState(0); // Default value
 
+    // Function to handle the XP click event
   const handleXPClick = () => {
     setPopupVisible(true);
   };
 
+    // Function to close the XP popup
   const closePopup = () => {
     setPopupVisible(false);
   };
 
+    // Effect to fetch user XP from Firebase when the component mounts
   useEffect(() => {
     async function getXpPoints() {
         const auth = getAuth();
         // const navigate = useNavigate();
-        const uid = auth.currentUser?.uid;
+        const uid = auth.currentUser?.uid; // User ID from Firebase authentication
       const url =
         `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/users/${uid}.json`
       const response = await fetch(url);
@@ -54,7 +60,7 @@ export default function HomeHeader() {
         />
         <p>{userXP} XP</p>
     </div>
-
+        {/* XP popup component, visible when isPopupVisible is true */}
         {isPopupVisible && (
           <LevelInfoPopup isVisible={isPopupVisible} onClose={closePopup} />
         )}
