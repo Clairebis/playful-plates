@@ -3,7 +3,7 @@
 import SmallChallengeCard from "../SmallChallengeCard";
 
 export default function LatestChallengeSlider ({sliderTitle, challenges}) {
-
+  // Copying the challenges array to challengesToDisplay
     let challengesToDisplay = challenges;
 
     return (

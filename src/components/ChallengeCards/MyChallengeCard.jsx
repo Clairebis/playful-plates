@@ -4,9 +4,11 @@ import chefHatIconWhite from "../../assets/Icons/chefHatIconWhite.svg";
 import placeholderImg from "../../Assets/Portrait_Placeholder.png";
 
 export default function MyChallengeCard({ challenge }) {
+  // Getting the navigation function from useNavigate
   const navigate = useNavigate();
 
   function handleClick() {
+    // Function to handle the click event and navigate to the specific challenge
     navigate(`challenges/${challenge.id}`);
   }
 
