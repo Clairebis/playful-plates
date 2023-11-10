@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+//-----------Siiri-------------//
+
 import SmallChallengeCard from "../SmallChallengeCard";
 
 export default function LatestChallengeSlider ({sliderTitle, challenges}) {
@@ -8,6 +9,7 @@ export default function LatestChallengeSlider ({sliderTitle, challenges}) {
     return (
     <>
         <h2>{sliderTitle}</h2>
+                {/* Mapping over challengesToDisplay and rendering ComingChallengeCard components for challenges with category "easy" */}
         <div className="SmallChallengeSlider">
                 {challengesToDisplay.filter(c => c.categories.includes("Easy")).map(challenge => (
                     <SmallChallengeCard challenge={challenge} key={challenge.id} />
