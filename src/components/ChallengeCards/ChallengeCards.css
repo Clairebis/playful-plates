@@ -113,6 +113,7 @@
     padding:8px;
     background-color: #98BD55;
     border-radius:0px 0px 8px 8px;
+    overflow-y:none;
 }
 
 .challengeCardCompleted {
