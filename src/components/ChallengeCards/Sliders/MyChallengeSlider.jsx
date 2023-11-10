@@ -1,4 +1,4 @@
-//-----------Siiri-------------//
+//-----------Siiri, Natalia, Claire (and thank you for help Rasmus!-------------//
 
 import MyChallengeCard from "../MyChallengeCard";
 import { useEffect, useState } from "react";
