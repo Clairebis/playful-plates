@@ -1,5 +1,6 @@
 /*Claire*/
 
+// Importing necessary modules and components
 import { useState, useEffect } from "react";
 import placeholderImage from "../../Assets/uploadPlaceholder.png";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +13,7 @@ import { useRef } from "react";
 import arrow from "../../Assets/Icons/arrowback.svg";
 import "../../components/Label/PostChallenge.css";
 
+// UpdatePost component definition
 export default function UpdatePost() {
   //fetch information about currently logged in user - uid
   const auth = getAuth();
@@ -33,12 +35,13 @@ export default function UpdatePost() {
 
   const [errorMessage, setErrorMessage] = useState("");
 
+  // Function to navigate back to the previous page
   const goBack = () => {
-    navigate(-1); // Go back to the previous page
+    navigate(-1);
   };
 
+  // Fetching existing post data based on the postId
   useEffect(() => {
-    //fetch existing post data based on the postId
     async function getPost() {
       const response = await fetch(url);
       const postData = await response.json();
@@ -47,6 +50,7 @@ export default function UpdatePost() {
     getPost();
   }, [url]);
 
+  // Handling image change event
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     if (file.size < 10000000) {
@@ -63,10 +67,12 @@ export default function UpdatePost() {
     }
   };
 
+  // Handling click on the image to trigger file input
   const handleImageClick = () => {
     fileInputRef.current.click();
   };
 
+  // Function to upload image to storage
   async function uploadImage() {
     try {
       //url to new image - make sure to have the correct firebase project id
@@ -79,6 +85,7 @@ export default function UpdatePost() {
         headers: { "Content-Type": imageFile.type },
       });
 
+      // Checking if the image upload was successful
       if (response.ok) {
         const data = await response.json();
         console.log("Image upload successful:", data);
@@ -99,6 +106,7 @@ export default function UpdatePost() {
     }
   }
 
+  // Function to update the post
   const updatePost = async (event) => {
     event.preventDefault();
 
@@ -134,6 +142,7 @@ export default function UpdatePost() {
     }
   };
 
+  // Rendering the UpdatePost component
   return (
     <section>
       <div className="updateHeader">
