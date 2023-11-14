@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 
 export default function MyChallengeCard({ challenge }) {
   console.log("THAT IS THE CHALLENGE DATA:", challenge);
-  const [postsData, setPostsData] = useState([]);
   const [completedPostsCount, setCompletedPostsCount] = useState("");
   const navigate = useNavigate();
 
