@@ -5,22 +5,23 @@ import NoChallengesCard from "../NoChallengesCard";
 
 export default function MyChallengeSlider({ sliderTitle, challenges }) {
   const [myChallenges, setMyChallenges] = useState([]);
+  const [isFetched, setIsFetched] = useState(false);
   const auth = getAuth();
+  const uid = auth.currentUser?.uid;
+  console.log("uid", uid);
 
   useEffect(() => {
-    const uid = auth.currentUser?.uid;
-    console.log("uid", uid);
-
     async function fetchData() {
       if (uid) {
         // Fetch the user's challenges data
         const userDataUrl = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/users/${uid}.json`;
         const response = await fetch(userDataUrl);
         const userData = await response.json();
+        console.log("User data:", userData);
+
         const postsUrl = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/posts.json?orderBy="uid"&equalTo="${uid}"`;
         const postsResponse = await fetch(postsUrl);
         const postsData = await postsResponse.json();
-        console.log("User data:", userData);
         console.log("Post data:", postsData);
 
         //turn object of objects into an array of objects and only with not completed challenges
@@ -42,7 +43,6 @@ export default function MyChallengeSlider({ sliderTitle, challenges }) {
         setMyChallenges([...filteredChallenges]);
       }
     }
-
     // Fetch user's challenges and challenges data
     try {
       if (myChallenges.length == 0) {
