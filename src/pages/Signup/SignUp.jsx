@@ -8,6 +8,8 @@ import { useState } from "react";
 import logoLarge from "../../Assets/logoLarge.png";
 import "./signUp.css";
 import TextField from "@mui/material/TextField";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // SignUp component definition
 export default function SignUp() {
@@ -47,6 +49,23 @@ export default function SignUp() {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
+
+        // handling toast error messages
+        if (error.code === "auth/email-already-in-use") {
+          toast.error("A user with this email address already exists", {
+            className: "toastMessage",
+          });
+        }
+        if (error.code === "auth/weak-password") {
+          toast.error("Please use a password with at least 6 characters", {
+            className: "toastMessage",
+          });
+        }
+        if (error.code === "auth/invalid-email") {
+          toast.error("Please enter a valid email address", {
+            className: "toastMessage",
+          });
+        }
       });
   };
 
@@ -69,8 +88,10 @@ export default function SignUp() {
   // Rendering the sign-up page
   return (
     <div className="page">
+      <ToastContainer></ToastContainer>
       <img src={logoLarge} alt="logo" className="landingLogo" />
       <h2 className="signupHeading">Sign up</h2>
+
       <form>
         <div className="loginInputContainer">
           <TextField

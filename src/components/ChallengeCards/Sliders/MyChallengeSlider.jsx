@@ -22,7 +22,7 @@ export default function MyChallengeSlider({ sliderTitle, challenges }) {
         const response = await fetch(userDataUrl);
         const userData = await response.json();
 
-        // Fetch the user's posts data (challenges data)
+        // Fetch the user's posts data (challenges data specific to that user)
         const postsUrl = `https://playful-plates-b4a84-default-rtdb.europe-west1.firebasedatabase.app/posts.json?orderBy="uid"&equalTo="${uid}"`;
         const postsResponse = await fetch(postsUrl);
         const postsData = await postsResponse.json();
@@ -70,7 +70,7 @@ export default function MyChallengeSlider({ sliderTitle, challenges }) {
         // If challenges exist, render the MyChallengeSlider with mapped MyChallengeCard components
         <div className="myChallengeSlider">
           {myChallenges.map((challenge) => (
-            <MyChallengeCard challenge={challenge} />
+            <MyChallengeCard key={challenge.id} challenge={challenge} />
           ))}
         </div>
       )}

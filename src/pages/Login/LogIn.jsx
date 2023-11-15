@@ -7,6 +7,8 @@ import TextField from "@mui/material/TextField";
 import logoLarge from "../../Assets/logoLarge.png";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./logIn.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // Login component definition
 export default function Login() {
@@ -32,14 +34,53 @@ export default function Login() {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
+
+        // Handling toast error messages
+        if (error.code === "auth/wrong-password") {
+          toast.error("Please check your password", {
+            className: "toastMessage",
+          });
+        }
+        if (error.code === "auth/invalid-login-credentials") {
+          toast.error("Your email and/or password do not match", {
+            className: "toastMessage",
+          });
+        }
+        if (error.code === "auth/user-not-found") {
+          toast.error("Your email address is not recognised", {
+            className: "toastMessage",
+          });
+        }
+        if (error.code === "auth/invalid-email") {
+          toast.error("Please provide a valid email address", {
+            className: "toastMessage",
+          });
+        }
+        if (error.code === "auth/missing-password") {
+          toast.error("Please enter your password", {
+            className: "toastMessage",
+          });
+        }
+        if (error.code === "auth/missing-email") {
+          toast.error("Please enter your email address", {
+            className: "toastMessage",
+          });
+        }
+        if (error.code === "auth/too-many-requests") {
+          toast.error("Too many requests. Please try again later", {
+            className: "toastMessage Toastify__progress-bar--error",
+          });
+        }
       });
   };
 
   // Rendering the login page
   return (
     <div className="page">
+      <ToastContainer></ToastContainer>
       <img src={logoLarge} alt="logo" className="landingLogo" />
       <h2 className="loginHeading">Log in</h2>
+
       <form>
         <div className="loginInputContainer">
           <TextField

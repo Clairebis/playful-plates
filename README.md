@@ -14,3 +14,6 @@ $ npm install @splidejs/react-splide
 
 For tabs in feed:
 npm install @mui/material @mui/icons-material @mui/system @mui/styled-engine @mui/styled-engine-sc @emotion/react @emotion/styled
+
+For signup notifications / alerts:
+npm install react-toastify

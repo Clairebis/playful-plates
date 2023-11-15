@@ -32,3 +32,18 @@
 .signUpLink {
   color: var(--kale);
 }
+
+.toastMessage {
+  font-family: var(--body-font);
+  font-size: var(--body-text-size);
+  background-color: var(--kale);
+  color: var(--oatmeal-100);
+}
+
+.Toastify__progress-bar {
+  background: var(--banana); /* Change progress bar color */
+}
+
+.Toastify__toast-icon {
+  color: var(--oatmeal-100); /* Change icon color */
+}

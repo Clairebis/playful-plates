@@ -1,6 +1,6 @@
 /* ------------ Paulius ------------ */
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 
 import "./Settings.css";
@@ -13,7 +13,6 @@ import settingsContact from "../../Assets/Icons/settings-contact.svg";
 import settingsPrivacy from "../../Assets/Icons/settings-privacy.svg";
 
 function Settings() {
-  
   const navigate = useNavigate();
   const auth = getAuth();
 
@@ -35,18 +34,12 @@ function Settings() {
         <Header pageTitle="Settings" />
         <div className="settings-container-structure">
           <div className="inside-structure">
-            <img
-              src={settingsEdit}
-              alt="Edit profile"
-            />
+            <img src={settingsEdit} alt="Edit profile" />
             <p>Edit profile information</p>
           </div>
           <div className="inside-structure-different">
             <div className="together">
-              <img
-                src={settingsNotify}
-                alt="Notifications"
-              />
+              <img src={settingsNotify} alt="Notifications" />
               <p>Notifications</p>
             </div>
             <p>OFF</p>
@@ -54,30 +47,19 @@ function Settings() {
         </div>
         <div className="settings-container-structure">
           <div className="inside-structure">
-            <img
-              src={settingsFaq}
-              alt="FAQ"
-            />
+            <img src={settingsFaq} alt="FAQ" />
             <p>FAQ</p>
           </div>
           <div className="inside-structure">
-            <img
-              src={settingsContact}
-              alt="Contact"
-            />
+            <img src={settingsContact} alt="Contact" />
             <p>Contact us</p>
           </div>
           <div className="inside-structure">
-            <img
-              src={settingsPrivacy}
-              alt="Edit profile"
-            />
+            <img src={settingsPrivacy} alt="Edit profile" />
             <p>Privacy policy</p>
           </div>
         </div>
-        <button
-          className="settings-button-logout"
-          onClick={handleLogout}>
+        <button className="settings-button-logout" onClick={handleLogout}>
           Logout
         </button>
       </section>
